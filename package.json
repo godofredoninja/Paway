@@ -1,88 +1,125 @@
 {
-    "name": "paway",
-    "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
-    "demo": "https://godofredo.ninja",
-    "version": "0.0.1",
-    "engines": {
-        "ghost": ">=2.0.0",
-        "ghost-api": "v2"
-    },
-    "license": "MIT",
-    "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg",
-        "mobile": "assets/screenshot-mobile.jpg"
-    },
-    "scripts": {
-    "dev": "gulp",
-    "zip": "gulp zip",
-    "test": "gscan .",
-    "preship": "yarn test",
-    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
-    },
-    "author": {
-        "name": "GodoFredo",
-        "email": "hello@godofredo.ninja",
-        "url": "https://godofredo.ninja"
-    },
-    "gpm": {
-        "type": "theme",
-        "categories": [
-          "Minimal",
-          "Blog",
-          "Magazine"
-      ]
-    },
-    "keywords": [
-        "ghost",
-        "theme",
-        "godofredo",
-        "ghost-theme"
-    ],
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "bugs": "",
-    "contributors": "",
-    "devDependencies": {
-        "autoprefixer": "6.3.6",
-        "beeper": "1.1.1",
-        "cssnano": "3.7.1",
-        "gscan": "2.0.0",
-        "gulp": "3.9.1",
-        "gulp-filter": "5.1.0",
-        "gulp-livereload": "3.8.1",
-        "gulp-postcss": "6.1.1",
-        "gulp-sourcemaps": "1.6.0",
-        "gulp-uglify": "3.0.1",
-        "gulp-watch": "4.3.8",
-        "gulp-zip": "4.0.0",
-        "postcss-color-function": "2.0.1",
-        "postcss-custom-properties": "5.0.1",
-        "postcss-easy-import": "1.0.1",
-        "pump": "3.0.0"
-    },
-    "config": {
-        "posts_per_page": 25,
-        "image_sizes": {
-            "xxs": {
-                "width": 30
-            },
-            "xs": {
-                "width": 100
-            },
-            "s": {
-                "width": 300
-            },
-            "m": {
-                "width": 600
-            },
-            "l": {
-                "width": 1000
-            },
-            "xl": {
-                "width": 2000
-            }
-        }
+  "name": "paway",
+  "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
+  "demo": "https://godofredo.ninja",
+  "version": "0.0.1",
+  "engines": {
+    "ghost": ">=2.0.0",
+    "ghost-api": "v2"
+  },
+  "license": "GPLv3",
+  "screenshots": {
+    "desktop": "assets/images/screenshot-desktop.jpg",
+    "mobile": "assets/images/screenshot-mobile.jpg"
+  },
+  "author": {
+    "name": "GodoFredo",
+    "email": "hello@godofredo.ninja",
+    "url": "https://godofredo.ninja"
+  },
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "Minimal",
+      "Blog",
+      "Magazine"
+    ]
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "godofredo",
+    "ghost-theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "contributors": "",
+  "config": {
+    "posts_per_page": 25,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
     }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "android 4",
+    "opera 12"
+  ],
+  "scripts": {
+    "build": "webpack --progress --config src/build/webpack.config.js",
+    "build:production": "webpack --env.production --progress --config src/build/webpack.config.js",
+    "build:profile": "webpack --progress --profile --json --config src/build/webpack.config.js",
+    "start": "webpack --hide-modules --watch --config src/build/webpack.config.js",
+    "rmassets": "rimraf assets",
+    "lint": "yarn run -s lint:scripts && yarn run -s lint:styles",
+    "lint:scripts": "eslint src/scripts src/build",
+    "lint:styles": "stylelint \"src/styles/**/*.{css,sass,scss,sss,less}\"",
+    "test": "yarn run -s lint"
+  },
+  "devDependencies": {
+    "autoprefixer": "~8.2.0",
+    "browser-sync": "~2.24.7",
+    "browsersync-webpack-plugin": "^0.6.0",
+    "bs-html-injector": "~3.0",
+    "buble-loader": "^0.4.1",
+    "cache-loader": "~1.2.5",
+    "clean-webpack-plugin": "^0.1.18",
+    "copy-globs-webpack-plugin": "^0.2.0",
+    "css-loader": "^0.28.9",
+    "cssnano": "~4.0.5",
+    "eslint": "~4.19.1",
+    "eslint-loader": "~1.9",
+    "eslint-plugin-import": "~2.14.0",
+    "extract-text-webpack-plugin": "~3.0.2",
+    "file-loader": "^1.1.6",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "imagemin-mozjpeg": "~7.0.0",
+    "imagemin-webpack-plugin": "~2.2.0",
+    "import-glob": "~1.5",
+    "node-sass": "~4.9.4",
+    "postcss-loader": "~2.1.0",
+    "postcss-safe-parser": "~3.0",
+    "resolve-url-loader": "~2.3.1",
+    "rimraf": "~2.6",
+    "sass-loader": "~6.0",
+    "style-loader": "^0.22.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "~18.2.0",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "url-loader": "^0.6.2",
+    "webpack": "~3.10.0",
+    "webpack-assets-manifest": "^1.0.0",
+    "webpack-dev-middleware": "~2.0.4",
+    "webpack-hot-middleware": "~2.22.3",
+    "webpack-merge": "~4.1.4",
+    "yargs": "~11.0.0"
+  },
+  "dependencies": {
+    "fuzzysort": "^1.1.4",
+    "lazysizes": "^4.1.5",
+    "normalize.css": "^8.0.1",
+    "prismjs": "^1.15.0",
+    "theia-sticky-sidebar": "^1.7.0"
+  }
 }
