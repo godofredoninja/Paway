@@ -1,0 +1,30 @@
+<header class="header">
+    <nav class="navbar">
+        {{!-- Logo --}}
+        <div class="logo">
+            <a class="logo-link" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img class="logo-img" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/>
+                {{else}}
+                    <span class="logo-text">{{@site.title}}</span>
+                {{/if}}
+            </a>
+        </div>
+
+        {{!-- Menu --}}
+        <div class="menu">{{navigation}}</div>
+
+        <div class="header-right">
+            <ul class="social-media">
+                {{!-- Facebook & Twitter --}}
+                {{#if @site.facebook}}<li><a href="{{facebook_url}}" title="Facebook {{@site.facebook}}" target="_blank" rel="noopener noreferrer"></a></li>{{/if}}
+                {{#if @site.twitter}}<li><a href="{{twitter_url}}" title="Twitter {{@site.twitter}}" target="_blank" rel="noopener noreferrer"></a></li>{{/if}}
+            </ul>
+
+            {{!-- Toggle Search --}}
+            <div class="search-toggle"></div>
+            {{!-- Toggle Menu --}}
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>

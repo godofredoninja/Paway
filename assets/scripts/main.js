@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "52e4c1e266350ae3bd0d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "73e18c92c1f184c3632a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -739,7 +739,7 @@ exports = module.exports = __webpack_require__(/*! ../../../simply-dev/node_modu
 
 
 // module
-exports.push([module.i, "/* line 1, stdin */\n\nbody {\n  color: red;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n", "", {"version":3,"sources":["/mnt/c/Users/Smigol/Projects/paway/src/styles/main.scss","/mnt/c/Users/Smigol/Projects/paway/src/styles/src/styles/main.scss"],"names":[],"mappings":"AAAA,mBAAA;;ACAA;EACE,WAAA;EACA,qBAAA;EAAA,qBAAA;EAAA,cAAA;CDGD","file":"main.scss","sourcesContent":["/* line 1, stdin */\nbody {\n  color: red;\n  display: flex; }\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMvbWFpbi5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmVkO1xuICBkaXNwbGF5OiBmbGV4O1xufVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxBQUFBLElBQUksQ0FBQztFQUNILEtBQUssRUFBRSxHQUFHO0VBQ1YsT0FBTyxFQUFFLElBQUksR0FDZCJ9 */","body {\n  color: red;\n  display: flex;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "/* line 1, stdin */\n\nbody {\n  color: black;\n}\n\n", "", {"version":3,"sources":["/mnt/c/Users/Smigol/Projects/paway/src/styles/main.scss","/mnt/c/Users/Smigol/Projects/paway/src/styles/src/styles/main.scss"],"names":[],"mappings":"AAAA,mBAAA;;ACAA;EACE,aAAA;CDGD","file":"main.scss","sourcesContent":["/* line 1, stdin */\nbody {\n  color: black; }\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMvbWFpbi5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogYmxhY2s7XG59XG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLEFBQUEsSUFBSSxDQUFDO0VBQ0gsS0FBSyxFQUFFLEtBQUssR0FDYiJ9 */","body {\n  color: black;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
