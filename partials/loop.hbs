@@ -1,0 +1,15 @@
+<section class="feed-entry-content">
+    <div class="feed-entry-wrap">
+        <div class="row">
+            {{#foreach posts}}
+                <div class="col s12 {{#has number="1,7"}}m12{{else}}{{#has number="2,3,8,9"}}m6{{else}}m4{{/has}}{{/has}}">
+                    {{!-- markup for each stories - partials/story/story-card.hbs --}}
+                    {{> "story/story-card" }}
+                </div>
+            {{/foreach}}
+        </div>
+    </div>
+</section>
+
+{{!-- Pagination - partials/pagination.hbs --}}
+{{"pagination"}}

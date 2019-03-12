@@ -1,3 +1,23 @@
-body {
-  color: black;
-}
+@charset "UTF-8";
+
+// Import NPM
+@import "~normalize.css/normalize";
+
+// variables Godofredo
+@import "common/_variables";
+@import "common/mixins";
+
+// common
+@import "common/_global";
+@import "common/_typography";
+
+// Components
+@import "components/_grid";
+@import "components/_icons";
+
+// Layouts
+@import "layouts/header";
+@import "layouts/footer";
+@import "layouts/story";
+@import "layouts/post";
+@import "layouts/search";

@@ -1,0 +1,35 @@
+<article class="story">
+    {{!-- Featured Image --}}
+    {{#if feature_image}}
+    <a class="story-image" href="{{url}}">
+        <img class="story-img"
+            srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w,
+                    {{img_url feature_image size="xl"}} 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            src="{{img_url feature_image size="m"}}"
+            alt="{{title}}"
+        />
+        {{!-- overlay --}}
+        <div class="overlay"></div>
+    </a>
+
+    <div class="story-body">
+        {{!-- date - title - excerpt --}}
+        <a href="{{url}}">
+            <div class="date"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD"}}</time></div>
+            <h2 class="story-title">{{title}}</h2>
+            <p class="story-excerpt">{{excerpt words="25"}}</p>
+        </a>
+        {{!-- author - tags - readingTime --}}
+        <div class="story-meta">
+            <span>{{t "By"}}</span>
+            {{#primary_author}} <a href="{{url}}" rel="author">{{name}}</a>{{/primary_author}}
+            {{#if primary_tag}}{{#primary_tag}}<i class="point"></i><a href="{{url}}" class="story-tags">{{name}}</a>{{/primary_tag}}{{/if}}
+            <i class="point"></i>
+            <span class="readingTime">{{reading_time seconds=(t "< 1 min read") minute=(t "1 min read") minutes=(t "% min read")}}</span></1>
+        </div>
+    </div>
+    {{/if}}
+</article>

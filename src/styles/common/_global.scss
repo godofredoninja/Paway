@@ -1,0 +1,135 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: $font-size-root;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+
+body {
+  @extend %primary-font;
+
+  background: #fff;
+  color: $primary-text-color;
+  font-size: 18px;
+  line-height: 1.8em;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  color: rgba(0, 0, 0, .68);
+  display: block;
+  font-family: $primary-font;
+  font-feature-settings: "liga" on, "lnum" on;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-top: 10px;
+  outline: 0;
+  position: relative;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+// Code
+// ==========================================================================
+kbd, samp, code {
+  background: $code-bg-color;
+  border-radius: 4px;
+  color: $code-color;
+  font-size: $font-size-code;
+  padding: 3px;
+  white-space: pre-wrap;
+}
+
+pre {
+  background-color: #29292e;
+  border-radius: 4px;
+  font-size: $font-size-code;
+  margin-top: 30px !important;
+  max-width: 100%;
+  padding: 1rem;
+  word-wrap: normal;
+
+  code {
+    background: transparent;
+    color: $pre-code-color;
+    padding: 0;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  width: auto;
+
+  &:not([src]) {
+    visibility: hidden;
+  }
+}
+
+i {
+  // display: inline-block;
+  vertical-align: middle;
+}
+
+// ol, ul {
+//   list-style: none;
+//   list-style-image: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// Table
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 35px 0 0;
+  max-width: 100%;
+  overflow-x: auto;
+  // vertical-align: top;
+  white-space: nowrap;
+  width: auto;
+  -webkit-overflow-scrolling: touch;
+
+  th,
+  td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+  }
+
+  tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  th {
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
