@@ -1,0 +1,53 @@
+.header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &-wrap {
+    height: $header-height;
+  }
+
+  &-right { width: 20% }
+}
+
+// Logo
+.logo {
+  width: 20%;
+
+  &-txt {
+    font-size: 36px;
+    font-weight: 700;
+    color: #151515;
+    line-height: 1;
+  }
+}
+
+.navbar {
+  width: 60%;
+
+  ul {
+    @extend %flex;
+
+    li {
+      @extend %secundary-font;
+
+      margin: 0 14px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+  }
+
+  ul > li > a {
+    padding: 16px 0;
+    color: $header-color;
+    display: block;
+    position: relative;
+
+    &:hover {
+      color: $header-color-hover;
+    }
+  }
+}

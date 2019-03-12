@@ -1,21 +1,21 @@
 <header class="header">
-    <nav class="navbar">
+    <nav class="header-wrap u-flex u-margin-0-15">
         {{!-- Logo --}}
-        <div class="logo">
+        <div class="logo u-flex0 u-flexCenter">
             <a class="logo-link" href="{{@site.url}}">
                 {{#if @site.logo}}
                     <img class="logo-img" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/>
                 {{else}}
-                    <span class="logo-text">{{@site.title}}</span>
+                    <span class="logo-txt">{{@site.title}}</span>
                 {{/if}}
             </a>
         </div>
 
-        {{!-- Menu --}}
-        <div class="menu">{{navigation}}</div>
+        {{!-- navbar --}}
+        <div class="navbar u-flex1 u-flexContentCenter">{{navigation}}</div>
 
-        <div class="header-right">
-            <ul class="social-media">
+        <div class="header-right u-flex u-flex0 u-flexEnd">
+            <ul class="social-media u-flex">
                 {{!-- Facebook & Twitter --}}
                 {{#if @site.facebook}}<li><a href="{{facebook_url}}" title="Facebook {{@site.facebook}}" target="_blank" rel="noopener noreferrer"></a></li>{{/if}}
                 {{#if @site.twitter}}<li><a href="{{twitter_url}}" title="Twitter {{@site.twitter}}" target="_blank" rel="noopener noreferrer"></a></li>{{/if}}

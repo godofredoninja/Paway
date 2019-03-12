@@ -1,7 +1,11 @@
-%primary-font {
-  font-family: $primary-font;
-}
+//  Fonts
+%primary-font { font-family: $primary-font }
+%secundary-font { font-family: $secundary-font }
 
-%secundary-font {
-  font-family: $secundary-font;
-}
+// flexbox
+%flex { display: flex }
+%flex-align-items-center { align-items: center }
+%flex-direction-column { flex-direction: column }
+%flex-direction-row { flex-direction: row }
+%flex-direction-wrap { flex-direction: wrap }
+%flex-justify-content-center { justify-content: center }
