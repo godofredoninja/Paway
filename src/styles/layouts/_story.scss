@@ -1,0 +1,67 @@
+.story {
+  height: 30em;
+  color: #fff;
+  text-align: center;
+
+  &-body {
+    padding: 10px 20px;
+  }
+
+  &-title {
+    @extend %primary-font;
+    // font-family: $primary-font;
+    font-weight: 400;
+    font-size: 2.125rem;
+    line-height: 1.5em;
+  }
+
+  &-excerpt {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    position: relative;
+
+    &::before {
+      content: "";
+      border-top: 2px solid #FF4F58;
+      display: block;
+      margin: 18px auto 26px auto;
+      width: 10%;
+    }
+  }
+
+  &-meta,
+  .date {
+    @extend %secundary-font;
+    // font-family: $secundary-font;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &-meta {
+    margin-top: 20px;
+
+    a:hover { color: $secundary-text-color }
+  }
+
+  // Hover
+  &:hover .u-overlay { background-color: rgba(0, 0, 0, .3) }
+}
+
+.ss12 .story {
+  height: 40em;
+
+  &-title {
+    font-size: 4rem;
+  }
+
+  &-excerpt { font-size: 24px }
+}
+
+.point {
+  font-size: 5px;
+  padding: 0 5px;
+  vertical-align: middle;
+}

@@ -1,8 +1,36 @@
-//  flex
-.u-flex { @extend %flex }
+.u-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+// zindex
+.zindex1 { z-index: 1 }
+.zindex2 { z-index: 2 }
+.zindex3 { z-index: 3 }
+.zindex4 { z-index: 4 }
 
 // margin
 .u-margin-0-15 { margin: 0 15px }
+
+// Positions
+.u-relative { position: relative; }
+.u-absolute { position: absolute; }
+.u-absolute0 { @extend %u-absolute0; }
+.u-fixed { position: fixed }
+
+.u-block { display: block }
+.u-inlineBlock { display: inline-block }
+
+//  Background
+.u-overlay {
+  background-color: rgba(0, 0, 0, .6);
+  transition: all 0.3s ease;
+}
+// .u-bgGradient { background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 29%, rgba(0, 0, 0, .7) 81%) }
+
+//  flex
+.u-flex { @extend %flex }
 
 .u-flexCenter {
   @extend %flex;

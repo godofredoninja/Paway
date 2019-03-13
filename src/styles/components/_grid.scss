@@ -6,14 +6,14 @@
   // flex-direction: row;
   flex-wrap: wrap;
   flex: 0 1 auto;
-  margin-left: - $container-gutter-width;
-  margin-right: - $container-gutter-width;
+  // margin-left: - $container-gutter-width;
+  // margin-right: - $container-gutter-width;
 
   .col {
     flex: 0 0 auto;
     box-sizing: border-box;
-    padding-left: $container-gutter-width;
-    padding-right: $container-gutter-width;
+    // padding-left: $container-gutter-width;
+    // padding-right: $container-gutter-width;
 
     $i: 1;
 

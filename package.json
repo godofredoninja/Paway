@@ -38,7 +38,7 @@
   "bugs": "",
   "contributors": "",
   "config": {
-    "posts_per_page": 25,
+    "posts_per_page": 12,
     "image_sizes": {
       "xxs": {
         "width": 30
