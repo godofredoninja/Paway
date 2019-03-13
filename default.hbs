@@ -20,13 +20,16 @@
 
 </head>
 <body class="{{body_class}}">
-    {{!-- Header --}}
+    {{!-- Site Header - partials/header.hbs --}}
     {{> "header"}}
 
     <div class="site-wrapper">
         {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
     </div>
+
+    {{!-- Site Fotoer - - partials/footer.hbs--}}
+    {{> "footer"}}
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
     {{ghost_foot}}

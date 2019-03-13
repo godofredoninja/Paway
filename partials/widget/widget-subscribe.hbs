@@ -1,0 +1,17 @@
+{{!-- The big email subscribe modal content --}}
+{{#if @labs.subscribers}}
+<div id="subscribe" class="subscribe">
+    <div class="subscribe-content">
+        <h2 class="subscribe-title">{{t "Subscribe to the best creative feed."}}</h2>
+        <p class="subscribe-description">{{t "Stay up to date! Get all the latest greatest posts delivered straight to your inbox"}}</p>
+        {{subscribe_form
+            form_class="u-flex"
+            input_id="subscribeEmail"
+            input_class="u-block"
+            button_class="u-flex0 i-send u-flexCenter"
+            placeholder=(t "Your email address")
+            autofocus=""
+        }}
+    </div>
+</div>
+{{/if}}

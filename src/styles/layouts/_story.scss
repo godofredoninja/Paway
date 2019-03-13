@@ -19,6 +19,8 @@
     font-size: 1.25rem;
     font-style: italic;
     font-weight: 400;
+    margin: 0 auto;
+    max-width: 1000px;
     position: relative;
 
     &::before {
@@ -47,7 +49,7 @@
   }
 
   // Hover
-  &:hover .u-overlay { background-color: rgba(0, 0, 0, .3) }
+  &:hover .u-overlay { background-color: rgba(0, 0, 0, .4) }
 }
 
 .ss12 .story {

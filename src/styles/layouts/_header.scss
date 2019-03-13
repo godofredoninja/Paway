@@ -23,6 +23,16 @@
   }
 }
 
+// Social media
+.search-toggle,
+.social-media > li {
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.header .social-media span { display: none }
+
+// Nav
 .navbar {
   width: 60%;
 

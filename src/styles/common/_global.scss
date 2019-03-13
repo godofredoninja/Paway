@@ -102,13 +102,6 @@ i {
   vertical-align: middle;
 }
 
-// ol, ul {
-//   list-style: none;
-//   list-style-image: none;
-//   margin: 0;
-//   padding: 0;
-// }
-
 // Table
 table {
   border-collapse: collapse;
@@ -139,5 +132,28 @@ table {
     letter-spacing: 0.2px;
     text-transform: uppercase;
     font-weight: 600;
+  }
+}
+
+// Pagination
+.pagination {
+  @extend %secundary-font;
+
+  text-align: center;
+  margin: 70px 0;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+
+  & > span { margin: 0 10px }
+
+  a {
+    color: #999;
+
+    &:hover {
+      color: $primary-text-color;
+      border-bottom: 1px solid #999;
+    }
   }
 }
