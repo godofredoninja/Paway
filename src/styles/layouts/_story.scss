@@ -1,5 +1,11 @@
 .story {
   height: 30em;
+
+  // Hover
+  &:hover .u-overlay { background-color: rgba(0, 0, 0, .4) }
+}
+
+.sss {
   color: #fff;
   text-align: center;
 
@@ -7,14 +13,16 @@
     padding: 10px 20px;
   }
 
+  // Title
   &-title {
     @extend %primary-font;
-    // font-family: $primary-font;
+    //
     font-weight: 400;
     font-size: 2.125rem;
     line-height: 1.5em;
   }
 
+  // Exerpt
   &-excerpt {
     font-size: 1.25rem;
     font-style: italic;
@@ -32,34 +40,40 @@
     }
   }
 
-  &-meta,
-  .date {
-    @extend %secundary-font;
-    // font-family: $secundary-font;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.7);
+  // tag
+  &-tag {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    padding-bottom: 2px;
+
+    &:hover { border: none }
   }
 
+  // Meta
   &-meta {
     margin-top: 20px;
 
     a:hover { color: $secundary-text-color }
   }
-
-  // Hover
-  &:hover .u-overlay { background-color: rgba(0, 0, 0, .4) }
 }
 
-.ss12 .story {
+.sss-meta,
+.date {
+  @extend %secundary-font;
+  // font-family: $secundary-font;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ss12 .sss {
   height: 40em;
 
-  &-title {
+  .sss-title {
     font-size: 4rem;
   }
 
-  &-excerpt { font-size: 24px }
+  .sss-excerpt { font-size: 24px }
 }
 
 .point {

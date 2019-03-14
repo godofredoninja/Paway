@@ -1,8 +1,8 @@
-<article class="story u-relative u-flexContentCenter">
+<article class="story sss u-relative u-flexContentCenter">
     {{!-- Featured Image --}}
-    <a class="story-image" href="{{url}}">
+    <a class="sss-image" href="{{url}}">
         {{#if feature_image}}
-        <img class="story-img u-image u-absolute0"
+        <img class="sss-img u-image u-absolute0"
             srcset="{{img_url feature_image size="s"}} 300w,
                     {{img_url feature_image size="m"}} 600w,
                     {{img_url feature_image size="l"}} 1000w,
@@ -16,18 +16,18 @@
         <div class="u-overlay u-absolute0 zindex1"></div>
     </a>
 
-    <div class="story-body u-relative zindex2">
+    <div class="sss-body u-relative zindex2">
         {{!-- date - title - excerpt --}}
         <a href="{{url}}">
             <div class="date"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time></div>
-            <h2 class="story-title">{{title}}</h2>
-            <p class="story-excerpt">{{excerpt words="25"}}</p>
+            <h2 class="sss-title">{{title}}</h2>
+            <p class="sss-excerpt">{{excerpt words="25"}}</p>
         </a>
         {{!-- author - tags - readingTime --}}
-        <div class="story-meta">
+        <div class="sss-meta">
             <span>{{t "By"}}</span>
             {{#primary_author}}<a href="{{url}}" rel="author">{{name}}</a>{{/primary_author}}
-            {{#if primary_tag}}{{#primary_tag}}<i class="point i-circle"></i><a href="{{url}}" class="story-tags">{{name}}</a>{{/primary_tag}}{{/if}}
+            {{#if primary_tag}}{{#primary_tag}}<i class="point i-circle"></i><a href="{{url}}" class="sss-tag">{{name}}</a>{{/primary_tag}}{{/if}}
             <i class="point i-circle"></i>
             <span class="readingTime">{{reading_time seconds=(t "< 1 min read") minute=(t "1 min read") minutes=(t "% min read")}}</span></1>
         </div>

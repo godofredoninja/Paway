@@ -1,6 +1,6 @@
 // 1. Colors
 // ==========================================================================
-$primary-text-color: #222;
+$primary-text-color: #505050;
 $secundary-text-color: #FF4F58;
 
 // social colors
@@ -26,16 +26,16 @@ $secundary-font: "Lato", Mercury SSm A,Mercury SSm B,Georgia,serif; // font for 
 
 $font-size-root:  16px;
 
-$font-size-h1:    2.375rem;
-$font-size-h2:    2.125rem;
-$font-size-h3:    1.875rem;
-$font-size-h4:    1.625rem;
-$font-size-h5:    1.5rem;
-$font-size-h6:    1.25rem;
+$font-size-h1:    3rem;
+$font-size-h2:    2.875rem;
+$font-size-h3:    2.125rem;
+$font-size-h4:    1.875rem;
+$font-size-h5:    1.625rem;
+$font-size-h6:    1.375rem;
 
 $headings-font-family:     $primary-font;
-$headings-font-weight:     700;
-$headings-line-height:     1.1;
+$headings-font-weight:     400;
+$headings-line-height:     1.5em;
 $headings-color: inherit;
 // Container
 // ==========================================================================
@@ -76,7 +76,7 @@ $md-and-down:   "only screen and (max-width : #{$md})";
 $lg-and-down:   "only screen and (max-width : #{$lg})";
 
 // Code Color
-$code-bg-color:   #f7f7f7;
-$font-size-code:  16px;
-$code-color:      #c7254e;
+$code-bg-color:   #f0f0f0;
+$font-size-code:  15px;
+$code-color:      #333;
 $pre-code-color:  #f8f8f2;
