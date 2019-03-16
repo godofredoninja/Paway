@@ -1,0 +1,22 @@
+<div class="pn col s12 m6">
+    <div class="pn-body u-relative u-flexContentCenter">
+        <a href="{{url}}">
+            {{#if feature_image}}
+            <img class="pn-img u-image u-absolute0"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w"
+                sizes="(max-width: 1000px) 400px, 700px"
+                src="{{img_url feature_image size="m"}}"
+                alt="{{title}}"
+            />
+            {{/if}}
+        </a>
+        <div class="u-overlay u-absolute0 zindex1"></div>
+
+        <div class="pn-header u-relative zindex2">
+            <div class="pn-s u-meta">{{mytitle}}</div>
+            <h2 class="pn-title"><a href="{{url}}">{{title}}</a></h2>
+        </div>
+    </div>
+</div>

@@ -19,12 +19,12 @@
     <div class="sss-body u-relative zindex2">
         {{!-- date - title - excerpt --}}
         <a href="{{url}}">
-            <div class="date"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time></div>
+            <div class="date u-meta"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time></div>
             <h2 class="sss-title">{{title}}</h2>
             <p class="sss-excerpt">{{excerpt words="25"}}</p>
         </a>
         {{!-- author - tags - readingTime --}}
-        <div class="sss-meta">
+        <div class="sss-meta u-meta">
             <span>{{t "By"}}</span>
             {{#primary_author}}<a href="{{url}}" rel="author">{{name}}</a>{{/primary_author}}
             {{#if primary_tag}}{{#primary_tag}}<i class="point i-circle"></i><a href="{{url}}" class="sss-tag">{{name}}</a>{{/primary_tag}}{{/if}}

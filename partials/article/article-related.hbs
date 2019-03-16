@@ -1,0 +1,25 @@
+{{!-- Article related --}}
+{{#get "posts" limit="3" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags" as |post_related|}}
+
+<div class="post-related">
+
+{{#if post_related}}
+
+
+    <div class="row">
+
+        {{#foreach post_related}}
+
+        <div class="col s12 m6 l4">
+            {{> "story/story-card"}}
+        </div>
+
+        {{/foreach}}
+
+    </div>
+
+
+{{/if}}
+
+</div>
+{{/get}}

@@ -4,6 +4,16 @@
   width: 100%;
 }
 
+.u-meta {
+  @extend %secundary-font;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
 .u-round { border-radius: 50% }
 
 // zindex
@@ -26,7 +36,7 @@
 
 //  Background
 .u-overlay {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .6);
   transition: all 0.3s ease;
 }
 // .u-bgGradient { background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 29%, rgba(0, 0, 0, .7) 81%) }

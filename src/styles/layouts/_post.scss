@@ -12,6 +12,8 @@
   }
 }
 
+// Post Content
+// ==========================================================================
 .post-body {
   @extend %flex;
   @extend %flex-direction-column;
@@ -78,6 +80,7 @@
 }
 
 // Post Tags
+// ==========================================================================
 .post-tags {
   &-link {
     @extend %secundary-font;
@@ -97,6 +100,7 @@
 }
 
 // Post Share
+// ==========================================================================
 .post-share {
   color: #000;
 
@@ -119,7 +123,8 @@
   &:hover { background-color: $color-text-3 }
 }
 
-// Author
+// Post Author
+// ==========================================================================
 .au {
   width: 100%;
   text-align: center;
@@ -168,6 +173,28 @@
       color: #151515;
       border-bottom: solid 1px #f1f1f1;
     }
+  }
+}
+
+// Post Next Prev
+// ==========================================================================
+.pn {
+  color: #fff;
+  // width: calc(100% / 2 - 30px);
+
+  &-body {
+    height: 400px;
+    text-align: center;
+  }
+
+  &-header { padding: 20px 10px; }
+
+  &-title {
+    @extend %primary-font;
+    //
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.5em;
   }
 }
 
