@@ -64,9 +64,8 @@ into the {body} of the default.hbs template --}}
 </article>
 
 {{!-- Prev and next post --}}
-<div class="container">
+{{!-- <div class="container">
     <div class="row" style="margin-bottom:30px">
-        {{!-- Previus and Next post - Partials/article/article-prev-next.hbs --}}
         {{#prev_post}}
             {{> "article/article-prev-next" mytitle="previous post"}}
         {{/prev_post}}
@@ -75,8 +74,12 @@ into the {body} of the default.hbs template --}}
             {{> "article/article-prev-next" mytitle="next post"}}
         {{/next_post}}
     </div>
-</div> {{!-- ./end prev next post ---}}
+</div>  --}}
+{{!-- ./end prev next post ---}}
+
+{{/post}}
+
+{{> "article/article-related"}}
 
 </div>
 
-{{/post}}

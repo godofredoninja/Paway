@@ -33,7 +33,7 @@
 
     &::before {
       content: "";
-      border-top: 2px solid #FF4F58;
+      border-top: 2px solid $color-text-3;
       display: block;
       margin: 18px auto 26px auto;
       width: 10%;
@@ -52,7 +52,7 @@
   &-meta {
     margin-top: 20px;
 
-    a:hover { color: $secundary-text-color }
+    a:hover { color: $color-text-3 }
   }
 }
 
