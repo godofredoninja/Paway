@@ -81,5 +81,9 @@ into the {body} of the default.hbs template --}}
 
 {{> "article/article-related"}}
 
+{{#post}}
+{{> "article/article-comments"}}
+{{/post}}
+
 </div>
 
