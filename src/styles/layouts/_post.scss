@@ -1,15 +1,21 @@
 .post {
   .sss { height: 40em }
   .sss-title { font-size: 4rem }
+
+  &-wrap {
+    width: 84%;
+    margin: 70px auto;
+  }
+
+  &-footer {
+    margin-top: 50px;
+  }
 }
 
 .post-body {
   @extend %flex;
   @extend %flex-direction-column;
   @extend %flex-align-items-center;
-
-  width: 84%;
-  margin: 70px auto;
 
   a {
     color: $secundary-text-color;
@@ -68,6 +74,100 @@
   .kg-card,
   .kg-embed-card {
     margin-bottom: 24px;
+  }
+}
+
+// Post Tags
+.post-tags {
+  &-link {
+    @extend %secundary-font;
+
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    height: 30px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    margin: 0 5px 5px 0;
+    padding: 0 18px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+}
+
+// Post Share
+.post-share {
+  color: #000;
+
+  &-link {
+    font-size: 18px;
+    border-radius: 50%;
+    margin-left: 5px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+}
+
+.post-tags-link,
+.post-share-link {
+  background: #000;
+  color: #fff;
+
+  &:hover { background-color: $color-text-3 }
+}
+
+// Author
+.au {
+  width: 100%;
+  text-align: center;
+  margin: 60px auto 30px;
+  padding: 50px 30px 30px 30px;
+  border-top: 1px solid #f1f1f1;
+
+  &-avatar {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+
+  &-name {
+    // @extend %primary-font;
+
+    color: #151515;
+    font-size: 2rem;
+  }
+
+  &-bio {
+    margin: 24px auto;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    max-width: 750px;
+  }
+
+  /* stylelint-disable-next-line */
+  &-meta li {
+    @extend %secundary-font;
+
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 1px;
+
+    &:not(:last-child)::after {
+      content: "/";
+      margin-left: 6px;
+      color: #999;
+    }
+
+    /* stylelint-disable-next-line */
+    a {
+      color: #151515;
+      border-bottom: solid 1px #f1f1f1;
+    }
   }
 }
 

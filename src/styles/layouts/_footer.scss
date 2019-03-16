@@ -99,9 +99,10 @@
   padding: 43px 0;
   border-top: 1px solid #262626;
   color: #adadad;
-  letter-spacing: 1px;
+  letter-spacing: .015em;
 
   a {
     color: #fff;
+    &:hover { color: $color-text-3 }
   }
 }

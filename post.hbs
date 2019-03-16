@@ -41,10 +41,26 @@ into the {body} of the default.hbs template --}}
 </header>
 
 <div class="container">
-    <div class="post-body">
-        {{content}}
+    <div class="post-wrap">
+        <div class="post-body">
+            {{content}}
+        </div>
+
+        {{!-- Post footer --}}
+        <footer class="post-footer">
+            <div class="u-flex u-flexCenter">
+                {{!-- Tags Cloud - Partials/article/article-tags.hbs --}}
+                {{> "article/article-tags"}}
+
+                {{!-- Share in Social Media - Partials/article/article-share.hbs --}}
+                {{> "article/article-share"}}
+            </div>
+            {{!-- Author info - Partials/article/article-author.hbs --}}
+            {{> "article/article-author"}}
+        </footer>
     </div>
 </div>
+
 
 
 </article>
