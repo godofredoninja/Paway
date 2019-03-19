@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "abd8b83bdf4200748b38"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "76672c0de312141a1d60"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2395,6 +2395,35 @@ document.addEventListener('DOMContentLoaded', function() {
   // Social Media
   if (typeof followSocialMedia !== 'undefined') { Object(__WEBPACK_IMPORTED_MODULE_2__app_app_social_media__["a" /* default */])(followSocialMedia) }
 
+  // Video Responsive
+  // const hasClass = (el, cls) => el.className && new RegExp(`(\\s|^)${cls}(\\s|$)`).test(el.className);
+  // const $body = document.querySelector('body');
+
+  /* Iframe SRC video */
+  var iframeVideo = [
+    'iframe[src*="player.vimeo.com"]',
+    'iframe[src*="dailymotion.com"]',
+    'iframe[src*="youtube.com"]',
+    'iframe[src*="youtube-nocookie.com"]',
+    'iframe[src*="vid.me"]',
+    'iframe[src*="kickstarter.com"][src*="video.html"]' ];
+
+  if (document.body.classList.contains('is-article')) {
+    // allMedia.map((key, value) => $(value).wrap('<aside class="video-responsive"></aside>'));
+
+    // const $postBody = document.querySelector('.post-body');
+
+    console.log(iframeVideo.join(','));
+
+    console.log(iframeVideo);
+
+    // const $allMedia = $('.post-body').find(iframeVideo.join(','));
+
+    // $allMedia.map((key, value) => {
+    //   console.log(value);
+    // });
+  }
+
   // Instagram Feed
   if (typeof instagramFeed === 'object' && instagramFeed !== null) {
     var url = "https://api.instagram.com/v1/users/" + (instagramFeed.userId) + "/media/recent/?access_token=" + (instagramFeed.token) + "&count=10&callback=?";
@@ -3193,27 +3222,24 @@ var displayInstagram = function (res, user) {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (links) {
   var urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
+  var templateSocialMedia = function (name, url) { return ("<a href=\"" + url + "\" title=\"Follow me in " + name + "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"godo-tracking\"><i class=\"i-" + name + "\"></i><span>" + name + "</span></a>"); };
 
-  var box = document.querySelectorAll('.social-media');
-
-  [].forEach.call(box, function (el) {
-
+  function createPasteElement(parent) {
     Object.entries(links).forEach(function (ref) {
       var name = ref[0];
       var url = ref[1];
 
       if (typeof url === 'string' && urlRegexp.test(url)) {
-        var template = "<a href=\"" + url + "\" title=\"Follow me in " + name + "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"godo-tracking\">\n          <i class=\"i-" + name + "\"></i>\n          <span>" + name + "</span>\n        </a>";
+        var template = templateSocialMedia(name, url);
 
         var li = document.createElement('li');
         li.innerHTML = template;
-        el.appendChild(li);
+        parent.appendChild(li);
       }
-
     });
+  }
 
-  });
-
+  [].forEach.call(document.querySelectorAll('.social-media'), function (el) { return createPasteElement(el); });
 });;
 
 

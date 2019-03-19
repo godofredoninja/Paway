@@ -173,6 +173,38 @@ table {
   }
 }
 
+// Video Responsive
+// ==========================================================================
+.video-responsive {
+  display: block;
+  height: 0;
+  margin-top: 30px;
+  overflow: hidden;
+  padding: 0 0 56.25%;
+  position: relative;
+  width: 100%;
+
+  iframe {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  video {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
 // Instagram Fedd
 // ==========================================================================
 .instagram {
