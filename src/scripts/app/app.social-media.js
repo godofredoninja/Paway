@@ -14,5 +14,5 @@ export default links => {
     });
   }
 
-  [].forEach.call(document.querySelectorAll('.social-media'), el => createPasteElement(el));
+  document.querySelectorAll('.social-media').forEach( el => createPasteElement(el));
 };
