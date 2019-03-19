@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Select all Iframe
-    const $allIframe = document.querySelectorAll(iframeVideo.join(','));
+    const $allIframe = document.getElementById('post-body').querySelectorAll(iframeVideo.join(','));
 
     if($allIframe.length) {
       // Run Iframe
