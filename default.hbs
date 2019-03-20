@@ -28,10 +28,13 @@
         {{{body}}}
     </div>
 
-    {{!-- Instagram Feed - - partials/widget/widget-instagram.hbs--}}
+    {{!-- Instagram Feed - partials/widget/widget-instagram.hbs--}}
     {{> "widget/widget-instagram"}}
 
-    {{!-- Site Fotoer - - partials/footer.hbs--}}
+    {{!-- Search - partials/widget/widget-search.hbs--}}
+    {{> "widget/widget-search"}}
+
+    {{!-- Site Fotoer - partials/footer.hbs--}}
     {{> "footer"}}
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
@@ -39,6 +42,10 @@
 
     {{!-- Main Scripts --}}
     <script src="{{asset "scripts/main.js"}}" defer></script>
+    {{!-- Search --}}
+    {{!-- Content APi --}}
+    <script src="https://unpkg.com/@tryghost/content-api@1.0.0/umd/content-api.min.js" defer></script>
+    <script src="{{asset "scripts/search.js"}}" defer></script>
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. --}}
     {{{block "scripts"}}}

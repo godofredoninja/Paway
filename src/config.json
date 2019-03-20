@@ -3,7 +3,8 @@
     "main": [
       "./scripts/main.js",
       "./styles/main.scss"
-    ]
+    ],
+    "search": "./scripts/search.js"
   },
   "publicPath": "",
   "devUrl": "http://localhost:2368",
