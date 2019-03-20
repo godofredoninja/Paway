@@ -118,6 +118,7 @@
   "dependencies": {
     "fuzzysort": "^1.1.4",
     "lazysizes": "^4.1.5",
+    "lightense-images": "^1.0.8",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.15.0",
     "theia-sticky-sidebar": "^1.7.0"

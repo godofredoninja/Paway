@@ -5341,6 +5341,11 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lightense-images@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/lightense-images/-/lightense-images-1.0.8.tgz#d5753a5e6e1c38009dcaf077c8766f797ac820dc"
+  integrity sha512-7MQjzl84wNWawAi74BU07oxjkttu6qI6JswX9e3CSy5tQLMl2I9TygA7CRM6DgbOltJxOBTOzGU4Z2MtUrAGKA==
+
 limiter@^1.0.5:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/limiter/-/limiter-1.1.4.tgz#87c9c3972d389fdb0ba67a45aadbc5d2f8413bc1"

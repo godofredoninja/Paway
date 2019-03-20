@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "691265ff2e30642d2116"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fae9567272464f454b28"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -722,7 +722,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(31)(__webpack_require__.s = 31);
+/******/ 	return hotCreateRequire(32)(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2369,7 +2369,8 @@ module.exports = g;
 /* 28 */,
 /* 29 */,
 /* 30 */,
-/* 31 */
+/* 31 */,
+/* 32 */
 /*!***********************************************************************!*\
   !*** multi ./build/util/../helpers/hmr-client.js ./scripts/search.js ***!
   \***********************************************************************/
@@ -2377,12 +2378,12 @@ module.exports = g;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/Smigol/projects/paway/src/build/util/../helpers/hmr-client.js */1);
-module.exports = __webpack_require__(/*! ./scripts/search.js */32);
+__webpack_require__(/*! /mnt/c/Users/Smigol/Projects/paway/src/build/util/../helpers/hmr-client.js */1);
+module.exports = __webpack_require__(/*! ./scripts/search.js */33);
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /*!***************************!*\
   !*** ./scripts/search.js ***!
   \***************************/
@@ -2392,7 +2393,7 @@ module.exports = __webpack_require__(/*! ./scripts/search.js */32);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_search__ = __webpack_require__(/*! ./app/app.search */ 33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_search__ = __webpack_require__(/*! ./app/app.search */ 34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_search___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_app_search__);
 /* global searchSettings */
 
@@ -2435,7 +2436,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /*!***********************************!*\
   !*** ./scripts/app/app.search.js ***!
   \***********************************/
@@ -2450,7 +2451,7 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 
 // import fuzzysort from 'fuzzysort';
-var fuzzysort = __webpack_require__(/*! fuzzysort */ 34);
+var fuzzysort = __webpack_require__(/*! fuzzysort */ 35);
 
 var GhostSearch = function GhostSearch(args) {
 
@@ -2698,7 +2699,7 @@ module.exports = GhostSearch;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /*!***********************************************************************************!*\
   !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/fuzzysort/fuzzysort.js ***!
   \***********************************************************************************/
@@ -3314,10 +3315,10 @@ return fuzzysortNew()
 
 // TODO: (performance) i have no idea how well optizmied the allowing typos algorithm is
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../timers-browserify/main.js */ 35).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../timers-browserify/main.js */ 36).setImmediate))
 
 /***/ }),
-/* 35 */
+/* 36 */
 /*!**************************************************************************************!*\
   !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/timers-browserify/main.js ***!
   \**************************************************************************************/
@@ -3378,7 +3379,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(/*! setimmediate */ 36);
+__webpack_require__(/*! setimmediate */ 37);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -3392,7 +3393,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 17)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /*!*****************************************************************************************!*\
   !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/setimmediate/setImmediate.js ***!
   \*****************************************************************************************/
@@ -3587,10 +3588,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 17), __webpack_require__(/*! ./../process/browser.js */ 37)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 17), __webpack_require__(/*! ./../process/browser.js */ 38)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /*!*******************************************************************************!*\
   !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/process/browser.js ***!
   \*******************************************************************************/

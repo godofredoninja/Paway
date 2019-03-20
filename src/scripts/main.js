@@ -2,6 +2,8 @@
 
 // import external dependencies
 import 'lazysizes';
+// Image Zoom
+import Lightense from 'lightense-images';
 
 // Impost App
 import instagram from './app/app.instagram';
@@ -40,6 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
+
+  /**
+   * Zoom Images
+   */
+  const $linkImage = document.querySelectorAll('.post-body a img');
+  // Add not class for not zoom image
+  $linkImage.forEach( el => el.classList.add('no-lightense'));
+
+  const lightenseArgs = {
+    // time: 300,
+    padding: 60,
+    offset: 30,
+    // keyboard: true,
+    cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
+    background: 'rgb(255, 255, 255)',
+    zIndex: 999,
+  }
+
+  // Zoom Image
+  new Lightense('.post-body img:not(.no-lightense)', lightenseArgs);
 
   // Gallery Image
   const images = document.querySelectorAll('.kg-gallery-image img');

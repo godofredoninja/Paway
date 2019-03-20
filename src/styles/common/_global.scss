@@ -27,6 +27,15 @@ body {
   line-height: 1.8em;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+
+  &.has-zoom-img {
+    .header {
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform .2s, opacity .2s, visibility 0s 2s;
+      visibility: hidden;
+    }
+  }
 }
 
 blockquote {
