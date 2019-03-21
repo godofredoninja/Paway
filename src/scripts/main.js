@@ -9,47 +9,27 @@ import Lightense from 'lightense-images';
 import instagram from './app/app.instagram';
 import socialMedia from './app/app.social-media';
 
-document.addEventListener('DOMContentLoaded', function() {
+(function(window, document) {
+  /* Variables */
+  const $body = document.body;
+  const $header = document.getElementById('header');
 
-  // Social Media
-  if (typeof followSocialMedia === 'object' && followSocialMedia !== null) socialMedia(followSocialMedia);
+  /* Variables Boolean */
+  let didScroll = false;
 
-  // Video Responsive
-  // const hasClass = (el, cls) => el.className && new RegExp(`(\\s|^)${cls}(\\s|$)`).test(el.className);
-  // const $body = document.querySelector('body');
+  /* Variables Object or Arrays */
 
-  if (document.body.classList.contains('is-article')) {
-    /* Iframe SRC video */
-    const iframeVideo = [
-      'iframe[src*="player.vimeo.com"]',
-      'iframe[src*="dailymotion.com"]',
-      'iframe[src*="youtube.com"]',
-      'iframe[src*="youtube-nocookie.com"]',
-      'iframe[src*="vid.me"]',
-      'iframe[src*="kickstarter.com"][src*="video.html"]',
-    ];
+  /* Iframe SRC video */
+  const iframeVideo = [
+    'iframe[src*="player.vimeo.com"]',
+    'iframe[src*="dailymotion.com"]',
+    'iframe[src*="youtube.com"]',
+    'iframe[src*="youtube-nocookie.com"]',
+    'iframe[src*="vid.me"]',
+    'iframe[src*="kickstarter.com"][src*="video.html"]',
+  ];
 
-    // Select all Iframe
-    const $allIframe = document.getElementById('post-body').querySelectorAll(iframeVideo.join(','));
-
-    if($allIframe.length) {
-      // Run Iframe
-      $allIframe.forEach( el => {
-        const parentForVideo = document.createElement('div');
-        parentForVideo.className = 'video-responsive';
-        el.parentNode.insertBefore(parentForVideo, el);
-        parentForVideo.appendChild(el);
-      });
-    }
-  }
-
-  /**
-   * Zoom Images
-   */
-  const $linkImage = document.querySelectorAll('.post-body a img');
-  // Add not class for not zoom image
-  $linkImage.forEach( el => el.classList.add('no-lightense'));
-
+  // Setting Image Zoom
   const lightenseArgs = {
     // time: 300,
     padding: 60,
@@ -60,26 +40,81 @@ document.addEventListener('DOMContentLoaded', function() {
     zIndex: 999,
   }
 
-  // Zoom Image
-  new Lightense('.post-body img:not(.no-lightense)', lightenseArgs);
+  /**
+   * Social Media
+   */
+  if (typeof followSocialMedia === 'object' && followSocialMedia !== null) {
+    socialMedia(followSocialMedia);
+  }
 
-  // Gallery Image
-  const images = document.querySelectorAll('.kg-gallery-image img');
-  images.forEach(function (image) {
-    const container = image.closest('.kg-gallery-image');
-    const width = image.attributes.width.value;
-    const height = image.attributes.height.value;
-    const ratio = width / height;
-    container.style.flex = ratio + ' 1 0%';
-  });
-
-  // Instagram Feed
+  /**
+   * Instagram Fedd
+   */
   if (typeof instagramFeed === 'object' && instagramFeed !== null) {
     const url = `https://api.instagram.com/v1/users/${instagramFeed.userId}/media/recent/?access_token=${instagramFeed.token}&count=10&callback=?`;
     const user = `<a href="https://www.instagram.com/${instagramFeed.userName}" class="instagram-btn" target="_blank" rel="noopener noreferrer"><i class="i-instagram"></i> ${instagramFeed.userName}</a>`;
 
-    if( window.innerWidth > 768 ){
+    if( window.innerWidth > 768 ) {
       instagram(url, user);
     }
   }
-});
+
+  // If is article
+  if ($body.classList.contains('is-article')) {
+    // Select all Iframe
+    const $imagesGallery = document.querySelectorAll('.kg-gallery-image img');
+    const $allIframe = document.getElementById('post-body').querySelectorAll(iframeVideo.join(','));
+    const $imageHasParentLink = document.querySelectorAll('.post-body a img');
+
+    // Add not class for not zoom image
+    $imageHasParentLink.forEach( el => el.classList.add('no-lightense'));
+    // Zoom Image
+    new Lightense('#post-body img:not(.no-lightense)', lightenseArgs);
+
+    // Video Responsive
+    if($allIframe.length) {
+      // Run Iframe
+      $allIframe.forEach( el => {
+        const parentForVideo = document.createElement('div');
+        parentForVideo.className = 'video-responsive';
+        el.parentNode.insertBefore(parentForVideo, el);
+        parentForVideo.appendChild(el);
+      });
+    }
+
+    // Gallery Image
+    $imagesGallery.forEach(function (image) {
+      const container = image.closest('.kg-gallery-image');
+      const width = image.attributes.width.value;
+      const height = image.attributes.height.value;
+      const ratio = width / height;
+      container.style.flex = ratio + ' 1 0%';
+    });
+  }
+
+  // Active Scroll
+  window.addEventListener('scroll', () => didScroll = true);
+
+  /**
+   * Add Shadow and Hide Shdow in .header
+   */
+   function hasScrolled () {
+    if ($body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+      $header.classList.add('has-shadow');
+    } else {
+      $header.classList.remove('has-shadow');
+    }
+   }
+
+  /**
+   * Functions that are activated when a scroll
+   * is performed in a time interval
+   */
+  setInterval(() => {
+    if (didScroll) {
+      hasScrolled();
+      didScroll = false;
+    }
+  }, 250);
+
+})(window, document);
