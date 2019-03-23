@@ -22,15 +22,7 @@
             js.src = 'https://'+disqusShortName+'.disqus.com/embed.js';
             js.async = true;
             js.setAttribute('data-timestamp', +new Date());
-
-            /* Comments Count */
-            var count = d.createElement(s);
-            count.src = 'https://'+disqusShortName+'.disqus.com/count.js';
-            count.id = 'dsq-count-scr';
-            count.async = true;
-
             (d.head || d.body).appendChild(js);
-            d.body.appendChild(count);
         } else {
             $boxComments.remove();
         }

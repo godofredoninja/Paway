@@ -241,7 +241,7 @@
 /******/ 				};
 /******/ 			});
 /******/ 			hotUpdate = {};
-/******/ 			var chunkId = 1;
+/******/ 			var chunkId = 2;
 /******/ 			{ // eslint-disable-line no-lone-blocks
 /******/ 				/*globals chunkId */
 /******/ 				hotEnsureUpdateChunk(chunkId);
@@ -722,7 +722,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(32)(__webpack_require__.s = 32);
+/******/ 	return hotCreateRequire(39)(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2370,1421 +2370,1150 @@ module.exports = g;
 /* 29 */,
 /* 30 */,
 /* 31 */,
-/* 32 */
-/*!***********************************************************************!*\
-  !*** multi ./build/util/../helpers/hmr-client.js ./scripts/search.js ***!
-  \***********************************************************************/
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */
+/*!**********************************************************************!*\
+  !*** multi ./build/util/../helpers/hmr-client.js ./scripts/prism.js ***!
+  \**********************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /mnt/c/Users/Smigol/Projects/paway/src/build/util/../helpers/hmr-client.js */1);
-module.exports = __webpack_require__(/*! ./scripts/search.js */33);
+module.exports = __webpack_require__(/*! ./scripts/prism.js */40);
 
 
 /***/ }),
-/* 33 */
-/*!***************************!*\
-  !*** ./scripts/search.js ***!
-  \***************************/
+/* 40 */
+/*!**************************!*\
+  !*** ./scripts/prism.js ***!
+  \**************************/
 /*! no exports provided */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_search__ = __webpack_require__(/*! ./app/app.search */ 34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_search___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_app_search__);
-/* global searchSettings */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs__ = __webpack_require__(/*! prismjs */ 41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prismjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs_plugins_autoloader_prism_autoloader__ = __webpack_require__(/*! prismjs/plugins/autoloader/prism-autoloader */ 42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs_plugins_autoloader_prism_autoloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prismjs_plugins_autoloader_prism_autoloader__);
+Prism.plugins.autoloader.languages_path = siteUrl + "/assets/scripts/components/"; // eslint-disable-line
+// $('.post-inner').find('pre').addClass('line-numbers');
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Not active
-  if (typeof searchSettings === 'undefined') { return; }
 
-  var $openSearch = document.getElementById('search-open');
-  var $closeSearch = document.getElementById('search-close');
-  var $search = document.getElementById('search');
-
-  var mySearchSettings = {
-    input: '#search-input',
-    results: '#search-results',
-  };
-
-  Object.assign(mySearchSettings, searchSettings);
-
-  // Remove class u-hide
-  $openSearch.classList.remove('u-hide');
-
-  /* Open search */
-  $openSearch.addEventListener('click', function (e) {
-    $search.classList.remove('u-hide');
-    document.body.classList.add('is-search');
-    e.preventDefault();
-  });
-
-  /* Close Serach */
-  $closeSearch.addEventListener('click', function (e) {
-    $search.classList.add('u-hide');
-    document.body.classList.remove('is-search');
-    e.preventDefault();
-  });
-
-  // Search
-  new __WEBPACK_IMPORTED_MODULE_0__app_app_search___default.a(mySearchSettings);
-});
 
 
 /***/ }),
-/* 34 */
-/*!***********************************!*\
-  !*** ./scripts/app/app.search.js ***!
-  \***********************************/
+/* 41 */
+/*!*****************************************************************************!*\
+  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/prismjs/prism.js ***!
+  \*****************************************************************************/
 /*! dynamic exports provided */
-/*! exports used: default */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* global GhostContentAPI */
+/* WEBPACK VAR INJECTION */(function(global) {
+/* **********************************************
+     Begin prism-core.js
+********************************************** */
+
+var _self = (typeof window !== 'undefined')
+	? window   // if in browser
+	: (
+		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+		? self // if in worker
+		: {}   // if in node js
+	);
 
 /**
- * Thanks => https://github.com/HauntedThemes/ghost-search
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ * MIT license http://www.opensource.org/licenses/mit-license.php/
+ * @author Lea Verou http://lea.verou.me
  */
 
-// import fuzzysort from 'fuzzysort';
-var fuzzysort = __webpack_require__(/*! fuzzysort */ 35);
+var Prism = (function(){
 
-var GhostSearch = function GhostSearch(args) {
+// Private helper vars
+var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+var uniqueId = 0;
 
-  this.check = false;
+var _ = _self.Prism = {
+	manual: _self.Prism && _self.Prism.manual,
+	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
+	util: {
+		encode: function (tokens) {
+			if (tokens instanceof Token) {
+				return new Token(tokens.type, _.util.encode(tokens.content), tokens.alias);
+			} else if (_.util.type(tokens) === 'Array') {
+				return tokens.map(_.util.encode);
+			} else {
+				return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+			}
+		},
 
-  var defaults = {
-    host: '',
-    key: '',
-    version: 'v2',
-    input: '#ghost-search-field',
-    results: '#ghost-search-results',
-    button: '',
-    defaultValue: '',
-    template: function (result) {
-      var url = [location.protocol, '//', location.host].join('');
-      return '<a href="' + url + '/' + result.slug + '/">' + result.title + '</a>';
-    },
-    trigger: 'focus',
-    options: {
-      keys: [
-        'title' ],
-      limit: 10,
-      threshold: -3500,
-      allowTypo: false,
-    },
-    api: {
-      resource: 'posts',
-      parameters: {
-        limit: 'all',
-        fields: ['title', 'slug'],
-        filter: '',
-        include: '',
-        order: '',
-        formats: '',
-        page: '',
-      },
-    },
-    on: {
-      beforeDisplay: function () { },
-      afterDisplay: function (results) { }, //eslint-disable-line
-      beforeFetch: function () { },
-      afterFetch: function (results) { }, //eslint-disable-line
-    },
-  }
+		type: function (o) {
+			return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
+		},
 
-  var merged = this.mergeDeep(defaults, args);
-  Object.assign(this, merged);
-  this.init();
+		objId: function (obj) {
+			if (!obj['__id']) {
+				Object.defineProperty(obj, '__id', { value: ++uniqueId });
+			}
+			return obj['__id'];
+		},
+
+		// Deep clone a language definition (e.g. to extend it)
+		clone: function (o, visited) {
+			var type = _.util.type(o);
+			visited = visited || {};
+
+			switch (type) {
+				case 'Object':
+					if (visited[_.util.objId(o)]) {
+						return visited[_.util.objId(o)];
+					}
+					var clone = {};
+					visited[_.util.objId(o)] = clone;
+
+					for (var key in o) {
+						if (o.hasOwnProperty(key)) {
+							clone[key] = _.util.clone(o[key], visited);
+						}
+					}
+
+					return clone;
+
+				case 'Array':
+					if (visited[_.util.objId(o)]) {
+						return visited[_.util.objId(o)];
+					}
+					var clone = [];
+					visited[_.util.objId(o)] = clone;
+
+					o.forEach(function (v, i) {
+						clone[i] = _.util.clone(v, visited);
+					});
+
+					return clone;
+			}
+
+			return o;
+		}
+	},
+
+	languages: {
+		extend: function (id, redef) {
+			var lang = _.util.clone(_.languages[id]);
+
+			for (var key in redef) {
+				lang[key] = redef[key];
+			}
+
+			return lang;
+		},
+
+		/**
+		 * Insert a token before another token in a language literal
+		 * As this needs to recreate the object (we cannot actually insert before keys in object literals),
+		 * we cannot just provide an object, we need anobject and a key.
+		 * @param inside The key (or language id) of the parent
+		 * @param before The key to insert before. If not provided, the function appends instead.
+		 * @param insert Object with the key/value pairs to insert
+		 * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
+		 */
+		insertBefore: function (inside, before, insert, root) {
+			root = root || _.languages;
+			var grammar = root[inside];
+
+			if (arguments.length == 2) {
+				insert = arguments[1];
+
+				for (var newToken in insert) {
+					if (insert.hasOwnProperty(newToken)) {
+						grammar[newToken] = insert[newToken];
+					}
+				}
+
+				return grammar;
+			}
+
+			var ret = {};
+
+			for (var token in grammar) {
+
+				if (grammar.hasOwnProperty(token)) {
+
+					if (token == before) {
+
+						for (var newToken in insert) {
+
+							if (insert.hasOwnProperty(newToken)) {
+								ret[newToken] = insert[newToken];
+							}
+						}
+					}
+
+					ret[token] = grammar[token];
+				}
+			}
+
+			// Update references in other language definitions
+			_.languages.DFS(_.languages, function(key, value) {
+				if (value === root[inside] && key != inside) {
+					this[key] = ret;
+				}
+			});
+
+			return root[inside] = ret;
+		},
+
+		// Traverse a language definition with Depth First Search
+		DFS: function(o, callback, type, visited) {
+			visited = visited || {};
+			for (var i in o) {
+				if (o.hasOwnProperty(i)) {
+					callback.call(o, i, o[i], type || i);
+
+					if (_.util.type(o[i]) === 'Object' && !visited[_.util.objId(o[i])]) {
+						visited[_.util.objId(o[i])] = true;
+						_.languages.DFS(o[i], callback, null, visited);
+					}
+					else if (_.util.type(o[i]) === 'Array' && !visited[_.util.objId(o[i])]) {
+						visited[_.util.objId(o[i])] = true;
+						_.languages.DFS(o[i], callback, i, visited);
+					}
+				}
+			}
+		}
+	},
+	plugins: {},
+
+	highlightAll: function(async, callback) {
+		_.highlightAllUnder(document, async, callback);
+	},
+
+	highlightAllUnder: function(container, async, callback) {
+		var env = {
+			callback: callback,
+			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+		};
+
+		_.hooks.run("before-highlightall", env);
+
+		var elements = env.elements || container.querySelectorAll(env.selector);
+
+		for (var i=0, element; element = elements[i++];) {
+			_.highlightElement(element, async === true, env.callback);
+		}
+	},
+
+	highlightElement: function(element, async, callback) {
+		// Find language
+		var language, grammar, parent = element;
+
+		while (parent && !lang.test(parent.className)) {
+			parent = parent.parentNode;
+		}
+
+		if (parent) {
+			language = (parent.className.match(lang) || [,''])[1].toLowerCase();
+			grammar = _.languages[language];
+		}
+
+		// Set language on the element, if not present
+		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+		if (element.parentNode) {
+			// Set language on the parent, for styling
+			parent = element.parentNode;
+
+			if (/pre/i.test(parent.nodeName)) {
+				parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+			}
+		}
+
+		var code = element.textContent;
+
+		var env = {
+			element: element,
+			language: language,
+			grammar: grammar,
+			code: code
+		};
+
+		_.hooks.run('before-sanity-check', env);
+
+		if (!env.code || !env.grammar) {
+			if (env.code) {
+				_.hooks.run('before-highlight', env);
+				env.element.textContent = env.code;
+				_.hooks.run('after-highlight', env);
+			}
+			_.hooks.run('complete', env);
+			return;
+		}
+
+		_.hooks.run('before-highlight', env);
+
+		if (async && _self.Worker) {
+			var worker = new Worker(_.filename);
+
+			worker.onmessage = function(evt) {
+				env.highlightedCode = evt.data;
+
+				_.hooks.run('before-insert', env);
+
+				env.element.innerHTML = env.highlightedCode;
+
+				callback && callback.call(env.element);
+				_.hooks.run('after-highlight', env);
+				_.hooks.run('complete', env);
+			};
+
+			worker.postMessage(JSON.stringify({
+				language: env.language,
+				code: env.code,
+				immediateClose: true
+			}));
+		}
+		else {
+			env.highlightedCode = _.highlight(env.code, env.grammar, env.language);
+
+			_.hooks.run('before-insert', env);
+
+			env.element.innerHTML = env.highlightedCode;
+
+			callback && callback.call(element);
+
+			_.hooks.run('after-highlight', env);
+			_.hooks.run('complete', env);
+		}
+	},
+
+	highlight: function (text, grammar, language) {
+		var env = {
+			code: text,
+			grammar: grammar,
+			language: language
+		};
+		_.hooks.run('before-tokenize', env);
+		env.tokens = _.tokenize(env.code, env.grammar);
+		_.hooks.run('after-tokenize', env);
+		return Token.stringify(_.util.encode(env.tokens), env.language);
+	},
+
+	matchGrammar: function (text, strarr, grammar, index, startPos, oneshot, target) {
+		var Token = _.Token;
+
+		for (var token in grammar) {
+			if(!grammar.hasOwnProperty(token) || !grammar[token]) {
+				continue;
+			}
+
+			if (token == target) {
+				return;
+			}
+
+			var patterns = grammar[token];
+			patterns = (_.util.type(patterns) === "Array") ? patterns : [patterns];
+
+			for (var j = 0; j < patterns.length; ++j) {
+				var pattern = patterns[j],
+					inside = pattern.inside,
+					lookbehind = !!pattern.lookbehind,
+					greedy = !!pattern.greedy,
+					lookbehindLength = 0,
+					alias = pattern.alias;
+
+				if (greedy && !pattern.pattern.global) {
+					// Without the global flag, lastIndex won't work
+					var flags = pattern.pattern.toString().match(/[imuy]*$/)[0];
+					pattern.pattern = RegExp(pattern.pattern.source, flags + "g");
+				}
+
+				pattern = pattern.pattern || pattern;
+
+				// Don’t cache length as it changes during the loop
+				for (var i = index, pos = startPos; i < strarr.length; pos += strarr[i].length, ++i) {
+
+					var str = strarr[i];
+
+					if (strarr.length > text.length) {
+						// Something went terribly wrong, ABORT, ABORT!
+						return;
+					}
+
+					if (str instanceof Token) {
+						continue;
+					}
+
+					if (greedy && i != strarr.length - 1) {
+						pattern.lastIndex = pos;
+						var match = pattern.exec(text);
+						if (!match) {
+							break;
+						}
+
+						var from = match.index + (lookbehind ? match[1].length : 0),
+						    to = match.index + match[0].length,
+						    k = i,
+						    p = pos;
+
+						for (var len = strarr.length; k < len && (p < to || (!strarr[k].type && !strarr[k - 1].greedy)); ++k) {
+							p += strarr[k].length;
+							// Move the index i to the element in strarr that is closest to from
+							if (from >= p) {
+								++i;
+								pos = p;
+							}
+						}
+
+						// If strarr[i] is a Token, then the match starts inside another Token, which is invalid
+						if (strarr[i] instanceof Token) {
+							continue;
+						}
+
+						// Number of tokens to delete and replace with the new match
+						delNum = k - i;
+						str = text.slice(pos, p);
+						match.index -= pos;
+					} else {
+						pattern.lastIndex = 0;
+
+						var match = pattern.exec(str),
+							delNum = 1;
+					}
+
+					if (!match) {
+						if (oneshot) {
+							break;
+						}
+
+						continue;
+					}
+
+					if(lookbehind) {
+						lookbehindLength = match[1] ? match[1].length : 0;
+					}
+
+					var from = match.index + lookbehindLength,
+					    match = match[0].slice(lookbehindLength),
+					    to = from + match.length,
+					    before = str.slice(0, from),
+					    after = str.slice(to);
+
+					var args = [i, delNum];
+
+					if (before) {
+						++i;
+						pos += before.length;
+						args.push(before);
+					}
+
+					var wrapped = new Token(token, inside? _.tokenize(match, inside) : match, alias, match, greedy);
+
+					args.push(wrapped);
+
+					if (after) {
+						args.push(after);
+					}
+
+					Array.prototype.splice.apply(strarr, args);
+
+					if (delNum != 1)
+						_.matchGrammar(text, strarr, grammar, i, pos, true, token);
+
+					if (oneshot)
+						break;
+				}
+			}
+		}
+	},
+
+	tokenize: function(text, grammar, language) {
+		var strarr = [text];
+
+		var rest = grammar.rest;
+
+		if (rest) {
+			for (var token in rest) {
+				grammar[token] = rest[token];
+			}
+
+			delete grammar.rest;
+		}
+
+		_.matchGrammar(text, strarr, grammar, 0, 0, false);
+
+		return strarr;
+	},
+
+	hooks: {
+		all: {},
+
+		add: function (name, callback) {
+			var hooks = _.hooks.all;
+
+			hooks[name] = hooks[name] || [];
+
+			hooks[name].push(callback);
+		},
+
+		run: function (name, env) {
+			var callbacks = _.hooks.all[name];
+
+			if (!callbacks || !callbacks.length) {
+				return;
+			}
+
+			for (var i=0, callback; callback = callbacks[i++];) {
+				callback(env);
+			}
+		}
+	}
+};
+
+var Token = _.Token = function(type, content, alias, matchedStr, greedy) {
+	this.type = type;
+	this.content = content;
+	this.alias = alias;
+	// Copy of the full string this token was created from
+	this.length = (matchedStr || "").length|0;
+	this.greedy = !!greedy;
+};
+
+Token.stringify = function(o, language, parent) {
+	if (typeof o == 'string') {
+		return o;
+	}
+
+	if (_.util.type(o) === 'Array') {
+		return o.map(function(element) {
+			return Token.stringify(element, language, o);
+		}).join('');
+	}
+
+	var env = {
+		type: o.type,
+		content: Token.stringify(o.content, language, parent),
+		tag: 'span',
+		classes: ['token', o.type],
+		attributes: {},
+		language: language,
+		parent: parent
+	};
+
+	if (o.alias) {
+		var aliases = _.util.type(o.alias) === 'Array' ? o.alias : [o.alias];
+		Array.prototype.push.apply(env.classes, aliases);
+	}
+
+	_.hooks.run('wrap', env);
+
+	var attributes = Object.keys(env.attributes).map(function(name) {
+		return name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+	}).join(' ');
+
+	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + (attributes ? ' ' + attributes : '') + '>' + env.content + '</' + env.tag + '>';
 
 };
 
-GhostSearch.prototype.mergeDeep = function mergeDeep (target, source) {
-    var this$1 = this;
-
-  if ((target && typeof target === 'object' && !Array.isArray(target) && target !== null) && (source && typeof source === 'object' && !Array.isArray(source) && source !== null)) {
-    Object.keys(source).forEach(function (key) {
-      if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key]) && source[key] !== null) {
-        if (!target[key]) { Object.assign(target, ( obj = {}, obj[key] = {}, obj ));
-            var obj; }
-        this$1.mergeDeep(target[key], source[key]);
-      } else {
-        Object.assign(target, ( obj$1 = {}, obj$1[key] = source[key], obj$1 ));
-          var obj$1;
-      }
-    });
-  }
-  return target;
-};
-
-GhostSearch.prototype.fetch = function fetch () {
-    var this$1 = this;
-
-
-  this.on.beforeFetch();
-
-  var ghostAPI = new GhostContentAPI({
-    host: this.host,
-    key: this.key,
-    version: this.version,
-  });
-
-
-  var browse = {}
-  var parameters = this.api.parameters;
-
-  for (var key in parameters) {
-    if (parameters[key] != '') {
-      browse[key] = parameters[key]
-    }
-  }
-
-  // browse.limit = 'all';
-
-  ghostAPI[this.api.resource]
-    .browse(browse)
-    .then(function (data) {
-      this$1.search(data);
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
-};
-
-GhostSearch.prototype.createElementFromHTML = function createElementFromHTML (htmlString) {
-  var div = document.createElement('div');
-  div.innerHTML = htmlString.trim();
-  return div.firstChild;
-};
-
-GhostSearch.prototype.displayResults = function displayResults (data) {
-    var this$1 = this;
-
-
-  if (document.querySelectorAll(this.results)[0].firstChild !== null && document.querySelectorAll(this.results)[0].firstChild !== '') {
-    while (document.querySelectorAll(this.results)[0].firstChild) {
-      document.querySelectorAll(this$1.results)[0].removeChild(document.querySelectorAll(this$1.results)[0].firstChild);
-    }
-  }
-
-  var inputValue = document.querySelectorAll(this.input)[0].value;
-  if (this.defaultValue != '') {
-    inputValue = this.defaultValue;
-  }
-  var results = fuzzysort.go(inputValue, data, {
-    keys: this.options.keys,
-    limit: this.options.limit,
-    allowTypo: this.options.allowTypo,
-    threshold: this.options.threshold,
-  });
-  for (var key in results) {
-    if (key < results.length) {
-      document.querySelectorAll(this$1.results)[0].appendChild(this$1.createElementFromHTML(this$1.template(results[key].obj)));
-    }
-  }
-
-  this.on.afterDisplay(results)
-  this.defaultValue = '';
-
-};
-
-GhostSearch.prototype.search = function search (data) {
-    var this$1 = this;
-
-
-  this.on.afterFetch(data);
-  this.check = true;
-
-  if (this.defaultValue != '') {
-    this.on.beforeDisplay()
-    this.displayResults(data)
-  }
-
-  if (this.button != '') {
-    var button = document.querySelectorAll(this.button)[0];
-    if (button.tagName == 'INPUT' && button.type == 'submit') {
-      button.closest('form').addEventListener('submit', function (e) {
-        e.preventDefault()
-      });
-    }
-    button.addEventListener('click', function (e) {
-      e.preventDefault()
-      this$1.on.beforeDisplay()
-      this$1.displayResults(data)
-    })
-  } else {
-    document.querySelectorAll(this.input)[0].addEventListener('keyup', function () {
-      this$1.on.beforeDisplay()
-      this$1.displayResults(data)
-    })
-  }
-
-};
-
-GhostSearch.prototype.checkArgs = function checkArgs () {
-  if (!document.querySelectorAll(this.input).length) {
-    console.log('Input not found.');
-    return false;
-  }
-  if (!document.querySelectorAll(this.results).length) {
-    console.log('Results not found.');
-    return false;
-  }
-  if (this.button != '') {
-    if (!document.querySelectorAll(this.button).length) {
-      console.log('Button not found.');
-      return false;
-    }
-  }
-  if (this.host == '') {
-    console.log('Content API Client Library host missing. Please set the host. Must not end in a trailing slash.');
-    return false;
-  }
-  if (this.key == '') {
-    console.log('Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.');
-    return false;
-  }
-  return true;
-};
-
-GhostSearch.prototype.validate = function validate () {
-
-  if (!this.checkArgs()) {
-    return false;
-  }
-
-  return true;
-
-};
-
-GhostSearch.prototype.init = function init () {
-    var this$1 = this;
-
-
-  if (!this.validate()) {
-    return;
-  }
-
-  if (this.defaultValue != '') {
-    document.querySelectorAll(this.input)[0].value = this.defaultValue;
-    window.onload = function () {
-      if (!this$1.check) {
-        this$1.fetch()
-      }
-    }
-  }
-
-  if (this.trigger == 'focus') {
-    document.querySelectorAll(this.input)[0].addEventListener('focus', function () {
-      if (!this$1.check) {
-        this$1.fetch()
-      }
-    })
-  } else if (this.trigger == 'load') {
-    window.onload = function () {
-      if (!this$1.check) {
-        this$1.fetch()
-      }
-    }
-  }
-
-};
-
-/* Export Class */
-module.exports = GhostSearch;
-
-
-/***/ }),
-/* 35 */
-/*!***********************************************************************************!*\
-  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/fuzzysort/fuzzysort.js ***!
-  \***********************************************************************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(setImmediate) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
-WHAT: SublimeText-like Fuzzy Search
-
-USAGE:
-  fuzzysort.single('fs', 'Fuzzy Search') // {score: -16}
-  fuzzysort.single('test', 'test') // {score: 0}
-  fuzzysort.single('doesnt exist', 'target') // null
-
-  fuzzysort.go('mr', ['Monitor.cpp', 'MeshRenderer.cpp'])
-  // [{score: -18, target: "MeshRenderer.cpp"}, {score: -6009, target: "Monitor.cpp"}]
-
-  fuzzysort.highlight(fuzzysort.single('fs', 'Fuzzy Search'), '<b>', '</b>')
-  // <b>F</b>uzzy <b>S</b>earch
-*/
-
-// UMD (Universal Module Definition) for fuzzysort
-;(function(root, UMD) {
-  if(true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (UMD),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-  else if(typeof module === 'object' && module.exports) module.exports = UMD()
-  else root.fuzzysort = UMD()
-})(this, function UMD() { function fuzzysortNew(instanceOptions) {
-
-  var fuzzysort = {
-
-    single: function(search, target, options) {
-      if(!search) return null
-      if(!isObj(search)) search = fuzzysort.getPreparedSearch(search)
-
-      if(!target) return null
-      if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-      var allowTypo = options && options.allowTypo!==undefined ? options.allowTypo
-        : instanceOptions && instanceOptions.allowTypo!==undefined ? instanceOptions.allowTypo
-        : true
-      var algorithm = allowTypo ? fuzzysort.algorithm : fuzzysort.algorithmNoTypo
-      return algorithm(search, target, search[0])
-      // var threshold = options && options.threshold || instanceOptions && instanceOptions.threshold || -9007199254740991
-      // var result = algorithm(search, target, search[0])
-      // if(result === null) return null
-      // if(result.score < threshold) return null
-      // return result
-    },
-
-    go: function(search, targets, options) {
-      if(!search) return noResults
-      search = fuzzysort.prepareSearch(search)
-      var searchLowerCode = search[0]
-
-      var threshold = options && options.threshold || instanceOptions && instanceOptions.threshold || -9007199254740991
-      var limit = options && options.limit || instanceOptions && instanceOptions.limit || 9007199254740991
-      var allowTypo = options && options.allowTypo!==undefined ? options.allowTypo
-        : instanceOptions && instanceOptions.allowTypo!==undefined ? instanceOptions.allowTypo
-        : true
-      var algorithm = allowTypo ? fuzzysort.algorithm : fuzzysort.algorithmNoTypo
-      var resultsLen = 0; var limitedCount = 0
-      var targetsLen = targets.length
-
-      // This code is copy/pasted 3 times for performance reasons [options.keys, options.key, no keys]
-
-      // options.keys
-      if(options && options.keys) {
-        var scoreFn = options.scoreFn || defaultScoreFn
-        var keys = options.keys
-        var keysLen = keys.length
-        for(var i = targetsLen - 1; i >= 0; --i) { var obj = targets[i]
-          var objResults = new Array(keysLen)
-          for (var keyI = keysLen - 1; keyI >= 0; --keyI) {
-            var key = keys[keyI]
-            var target = getValue(obj, key)
-            if(!target) { objResults[keyI] = null; continue }
-            if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-            objResults[keyI] = algorithm(search, target, searchLowerCode)
-          }
-          objResults.obj = obj // before scoreFn so scoreFn can use it
-          var score = scoreFn(objResults)
-          if(score === null) continue
-          if(score < threshold) continue
-          objResults.score = score
-          if(resultsLen < limit) { q.add(objResults); ++resultsLen }
-          else {
-            ++limitedCount
-            if(score > q.peek().score) q.replaceTop(objResults)
-          }
-        }
-
-      // options.key
-      } else if(options && options.key) {
-        var key = options.key
-        for(var i = targetsLen - 1; i >= 0; --i) { var obj = targets[i]
-          var target = getValue(obj, key)
-          if(!target) continue
-          if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-          var result = algorithm(search, target, searchLowerCode)
-          if(result === null) continue
-          if(result.score < threshold) continue
-
-          // have to clone result so duplicate targets from different obj can each reference the correct obj
-          result = {target:result.target, _targetLowerCodes:null, _nextBeginningIndexes:null, score:result.score, indexes:result.indexes, obj:obj} // hidden
-
-          if(resultsLen < limit) { q.add(result); ++resultsLen }
-          else {
-            ++limitedCount
-            if(result.score > q.peek().score) q.replaceTop(result)
-          }
-        }
-
-      // no keys
-      } else {
-        for(var i = targetsLen - 1; i >= 0; --i) { var target = targets[i]
-          if(!target) continue
-          if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-          var result = algorithm(search, target, searchLowerCode)
-          if(result === null) continue
-          if(result.score < threshold) continue
-          if(resultsLen < limit) { q.add(result); ++resultsLen }
-          else {
-            ++limitedCount
-            if(result.score > q.peek().score) q.replaceTop(result)
-          }
-        }
-      }
-
-      if(resultsLen === 0) return noResults
-      var results = new Array(resultsLen)
-      for(var i = resultsLen - 1; i >= 0; --i) results[i] = q.poll()
-      results.total = resultsLen + limitedCount
-      return results
-    },
-
-    goAsync: function(search, targets, options) {
-      var canceled = false
-      var p = new Promise(function(resolve, reject) {
-        if(!search) return resolve(noResults)
-        search = fuzzysort.prepareSearch(search)
-        var searchLowerCode = search[0]
-
-        var q = fastpriorityqueue()
-        var iCurrent = targets.length - 1
-        var threshold = options && options.threshold || instanceOptions && instanceOptions.threshold || -9007199254740991
-        var limit = options && options.limit || instanceOptions && instanceOptions.limit || 9007199254740991
-        var allowTypo = options && options.allowTypo!==undefined ? options.allowTypo
-          : instanceOptions && instanceOptions.allowTypo!==undefined ? instanceOptions.allowTypo
-          : true
-        var algorithm = allowTypo ? fuzzysort.algorithm : fuzzysort.algorithmNoTypo
-        var resultsLen = 0; var limitedCount = 0
-        function step() {
-          if(canceled) return reject('canceled')
-
-          var startMs = Date.now()
-
-          // This code is copy/pasted 3 times for performance reasons [options.keys, options.key, no keys]
-
-          // options.keys
-          if(options && options.keys) {
-            var scoreFn = options.scoreFn || defaultScoreFn
-            var keys = options.keys
-            var keysLen = keys.length
-            for(; iCurrent >= 0; --iCurrent) { var obj = targets[iCurrent]
-              var objResults = new Array(keysLen)
-              for (var keyI = keysLen - 1; keyI >= 0; --keyI) {
-                var key = keys[keyI]
-                var target = getValue(obj, key)
-                if(!target) { objResults[keyI] = null; continue }
-                if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-                objResults[keyI] = algorithm(search, target, searchLowerCode)
-              }
-              objResults.obj = obj // before scoreFn so scoreFn can use it
-              var score = scoreFn(objResults)
-              if(score === null) continue
-              if(score < threshold) continue
-              objResults.score = score
-              if(resultsLen < limit) { q.add(objResults); ++resultsLen }
-              else {
-                ++limitedCount
-                if(score > q.peek().score) q.replaceTop(objResults)
-              }
-
-              if(iCurrent%1000/*itemsPerCheck*/ === 0) {
-                if(Date.now() - startMs >= 10/*asyncInterval*/) {
-                  isNode?setImmediate(step):setTimeout(step)
-                  return
-                }
-              }
-            }
-
-          // options.key
-          } else if(options && options.key) {
-            var key = options.key
-            for(; iCurrent >= 0; --iCurrent) { var obj = targets[iCurrent]
-              var target = getValue(obj, key)
-              if(!target) continue
-              if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-              var result = algorithm(search, target, searchLowerCode)
-              if(result === null) continue
-              if(result.score < threshold) continue
-
-              // have to clone result so duplicate targets from different obj can each reference the correct obj
-              result = {target:result.target, _targetLowerCodes:null, _nextBeginningIndexes:null, score:result.score, indexes:result.indexes, obj:obj} // hidden
-
-              if(resultsLen < limit) { q.add(result); ++resultsLen }
-              else {
-                ++limitedCount
-                if(result.score > q.peek().score) q.replaceTop(result)
-              }
-
-              if(iCurrent%1000/*itemsPerCheck*/ === 0) {
-                if(Date.now() - startMs >= 10/*asyncInterval*/) {
-                  isNode?setImmediate(step):setTimeout(step)
-                  return
-                }
-              }
-            }
-
-          // no keys
-          } else {
-            for(; iCurrent >= 0; --iCurrent) { var target = targets[iCurrent]
-              if(!target) continue
-              if(!isObj(target)) target = fuzzysort.getPrepared(target)
-
-              var result = algorithm(search, target, searchLowerCode)
-              if(result === null) continue
-              if(result.score < threshold) continue
-              if(resultsLen < limit) { q.add(result); ++resultsLen }
-              else {
-                ++limitedCount
-                if(result.score > q.peek().score) q.replaceTop(result)
-              }
-
-              if(iCurrent%1000/*itemsPerCheck*/ === 0) {
-                if(Date.now() - startMs >= 10/*asyncInterval*/) {
-                  isNode?setImmediate(step):setTimeout(step)
-                  return
-                }
-              }
-            }
-          }
-
-          if(resultsLen === 0) return resolve(noResults)
-          var results = new Array(resultsLen)
-          for(var i = resultsLen - 1; i >= 0; --i) results[i] = q.poll()
-          results.total = resultsLen + limitedCount
-          resolve(results)
-        }
-
-        isNode?setImmediate(step):step()
-      })
-      p.cancel = function() { canceled = true }
-      return p
-    },
-
-    highlight: function(result, hOpen, hClose) {
-      if(result === null) return null
-      if(hOpen === undefined) hOpen = '<b>'
-      if(hClose === undefined) hClose = '</b>'
-      var highlighted = ''
-      var matchesIndex = 0
-      var opened = false
-      var target = result.target
-      var targetLen = target.length
-      var matchesBest = result.indexes
-      for(var i = 0; i < targetLen; ++i) { var char = target[i]
-        if(matchesBest[matchesIndex] === i) {
-          ++matchesIndex
-          if(!opened) { opened = true
-            highlighted += hOpen
-          }
-
-          if(matchesIndex === matchesBest.length) {
-            highlighted += char + hClose + target.substr(i+1)
-            break
-          }
-        } else {
-          if(opened) { opened = false
-            highlighted += hClose
-          }
-        }
-        highlighted += char
-      }
-
-      return highlighted
-    },
-
-    prepare: function(target) {
-      if(!target) return
-      return {target:target, _targetLowerCodes:fuzzysort.prepareLowerCodes(target), _nextBeginningIndexes:null, score:null, indexes:null, obj:null} // hidden
-    },
-    prepareSlow: function(target) {
-      if(!target) return
-      return {target:target, _targetLowerCodes:fuzzysort.prepareLowerCodes(target), _nextBeginningIndexes:fuzzysort.prepareNextBeginningIndexes(target), score:null, indexes:null, obj:null} // hidden
-    },
-    prepareSearch: function(search) {
-      if(!search) return
-      return fuzzysort.prepareLowerCodes(search)
-    },
-
-
-
-    // Below this point is only internal code
-    // Below this point is only internal code
-    // Below this point is only internal code
-    // Below this point is only internal code
-
-
-
-    getPrepared: function(target) {
-      if(target.length > 999) return fuzzysort.prepare(target) // don't cache huge targets
-      var targetPrepared = preparedCache.get(target)
-      if(targetPrepared !== undefined) return targetPrepared
-      targetPrepared = fuzzysort.prepare(target)
-      preparedCache.set(target, targetPrepared)
-      return targetPrepared
-    },
-    getPreparedSearch: function(search) {
-      if(search.length > 999) return fuzzysort.prepareSearch(search) // don't cache huge searches
-      var searchPrepared = preparedSearchCache.get(search)
-      if(searchPrepared !== undefined) return searchPrepared
-      searchPrepared = fuzzysort.prepareSearch(search)
-      preparedSearchCache.set(search, searchPrepared)
-      return searchPrepared
-    },
-
-    algorithm: function(searchLowerCodes, prepared, searchLowerCode) {
-      var targetLowerCodes = prepared._targetLowerCodes
-      var searchLen = searchLowerCodes.length
-      var targetLen = targetLowerCodes.length
-      var searchI = 0 // where we at
-      var targetI = 0 // where you at
-      var typoSimpleI = 0
-      var matchesSimpleLen = 0
-
-      // very basic fuzzy match; to remove non-matching targets ASAP!
-      // walk through target. find sequential matches.
-      // if all chars aren't found then exit
-      for(;;) {
-        var isMatch = searchLowerCode === targetLowerCodes[targetI]
-        if(isMatch) {
-          matchesSimple[matchesSimpleLen++] = targetI
-          ++searchI; if(searchI === searchLen) break
-          searchLowerCode = searchLowerCodes[typoSimpleI===0?searchI : (typoSimpleI===searchI?searchI+1 : (typoSimpleI===searchI-1?searchI-1 : searchI))]
-        }
-
-        ++targetI; if(targetI >= targetLen) { // Failed to find searchI
-          // Check for typo or exit
-          // we go as far as possible before trying to transpose
-          // then we transpose backwards until we reach the beginning
-          for(;;) {
-            if(searchI <= 1) return null // not allowed to transpose first char
-            if(typoSimpleI === 0) { // we haven't tried to transpose yet
-              --searchI
-              var searchLowerCodeNew = searchLowerCodes[searchI]
-              if(searchLowerCode === searchLowerCodeNew) continue // doesn't make sense to transpose a repeat char
-              typoSimpleI = searchI
-            } else {
-              if(typoSimpleI === 1) return null // reached the end of the line for transposing
-              --typoSimpleI
-              searchI = typoSimpleI
-              searchLowerCode = searchLowerCodes[searchI + 1]
-              var searchLowerCodeNew = searchLowerCodes[searchI]
-              if(searchLowerCode === searchLowerCodeNew) continue // doesn't make sense to transpose a repeat char
-            }
-            matchesSimpleLen = searchI
-            targetI = matchesSimple[matchesSimpleLen - 1] + 1
-            break
-          }
-        }
-      }
-
-      var searchI = 0
-      var typoStrictI = 0
-      var successStrict = false
-      var matchesStrictLen = 0
-
-      var nextBeginningIndexes = prepared._nextBeginningIndexes
-      if(nextBeginningIndexes === null) nextBeginningIndexes = prepared._nextBeginningIndexes = fuzzysort.prepareNextBeginningIndexes(prepared.target)
-      var firstPossibleI = targetI = matchesSimple[0]===0 ? 0 : nextBeginningIndexes[matchesSimple[0]-1]
-
-      // Our target string successfully matched all characters in sequence!
-      // Let's try a more advanced and strict test to improve the score
-      // only count it as a match if it's consecutive or a beginning character!
-      if(targetI !== targetLen) for(;;) {
-        if(targetI >= targetLen) {
-          // We failed to find a good spot for this search char, go back to the previous search char and force it forward
-          if(searchI <= 0) { // We failed to push chars forward for a better match
-            // transpose, starting from the beginning
-            ++typoStrictI; if(typoStrictI > searchLen-2) break
-            if(searchLowerCodes[typoStrictI] === searchLowerCodes[typoStrictI+1]) continue // doesn't make sense to transpose a repeat char
-            targetI = firstPossibleI
-            continue
-          }
-
-          --searchI
-          var lastMatch = matchesStrict[--matchesStrictLen]
-          targetI = nextBeginningIndexes[lastMatch]
-
-        } else {
-          var isMatch = searchLowerCodes[typoStrictI===0?searchI : (typoStrictI===searchI?searchI+1 : (typoStrictI===searchI-1?searchI-1 : searchI))] === targetLowerCodes[targetI]
-          if(isMatch) {
-            matchesStrict[matchesStrictLen++] = targetI
-            ++searchI; if(searchI === searchLen) { successStrict = true; break }
-            ++targetI
-          } else {
-            targetI = nextBeginningIndexes[targetI]
-          }
-        }
-      }
-
-      { // tally up the score & keep track of matches for highlighting later
-        if(successStrict) { var matchesBest = matchesStrict; var matchesBestLen = matchesStrictLen }
-        else { var matchesBest = matchesSimple; var matchesBestLen = matchesSimpleLen }
-        var score = 0
-        var lastTargetI = -1
-        for(var i = 0; i < searchLen; ++i) { var targetI = matchesBest[i]
-          // score only goes down if they're not consecutive
-          if(lastTargetI !== targetI - 1) score -= targetI
-          lastTargetI = targetI
-        }
-        if(!successStrict) {
-          score *= 1000
-          if(typoSimpleI !== 0) score += -20/*typoPenalty*/
-        } else {
-          if(typoStrictI !== 0) score += -20/*typoPenalty*/
-        }
-        score -= targetLen - searchLen
-        prepared.score = score
-        prepared.indexes = new Array(matchesBestLen); for(var i = matchesBestLen - 1; i >= 0; --i) prepared.indexes[i] = matchesBest[i]
-
-        return prepared
-      }
-    },
-
-    algorithmNoTypo: function(searchLowerCodes, prepared, searchLowerCode) {
-      var targetLowerCodes = prepared._targetLowerCodes
-      var searchLen = searchLowerCodes.length
-      var targetLen = targetLowerCodes.length
-      var searchI = 0 // where we at
-      var targetI = 0 // where you at
-      var matchesSimpleLen = 0
-
-      // very basic fuzzy match; to remove non-matching targets ASAP!
-      // walk through target. find sequential matches.
-      // if all chars aren't found then exit
-      for(;;) {
-        var isMatch = searchLowerCode === targetLowerCodes[targetI]
-        if(isMatch) {
-          matchesSimple[matchesSimpleLen++] = targetI
-          ++searchI; if(searchI === searchLen) break
-          searchLowerCode = searchLowerCodes[searchI]
-        }
-        ++targetI; if(targetI >= targetLen) return null // Failed to find searchI
-      }
-
-      var searchI = 0
-      var successStrict = false
-      var matchesStrictLen = 0
-
-      var nextBeginningIndexes = prepared._nextBeginningIndexes
-      if(nextBeginningIndexes === null) nextBeginningIndexes = prepared._nextBeginningIndexes = fuzzysort.prepareNextBeginningIndexes(prepared.target)
-      var firstPossibleI = targetI = matchesSimple[0]===0 ? 0 : nextBeginningIndexes[matchesSimple[0]-1]
-
-      // Our target string successfully matched all characters in sequence!
-      // Let's try a more advanced and strict test to improve the score
-      // only count it as a match if it's consecutive or a beginning character!
-      if(targetI !== targetLen) for(;;) {
-        if(targetI >= targetLen) {
-          // We failed to find a good spot for this search char, go back to the previous search char and force it forward
-          if(searchI <= 0) break // We failed to push chars forward for a better match
-
-          --searchI
-          var lastMatch = matchesStrict[--matchesStrictLen]
-          targetI = nextBeginningIndexes[lastMatch]
-
-        } else {
-          var isMatch = searchLowerCodes[searchI] === targetLowerCodes[targetI]
-          if(isMatch) {
-            matchesStrict[matchesStrictLen++] = targetI
-            ++searchI; if(searchI === searchLen) { successStrict = true; break }
-            ++targetI
-          } else {
-            targetI = nextBeginningIndexes[targetI]
-          }
-        }
-      }
-
-      { // tally up the score & keep track of matches for highlighting later
-        if(successStrict) { var matchesBest = matchesStrict; var matchesBestLen = matchesStrictLen }
-        else { var matchesBest = matchesSimple; var matchesBestLen = matchesSimpleLen }
-        var score = 0
-        var lastTargetI = -1
-        for(var i = 0; i < searchLen; ++i) { var targetI = matchesBest[i]
-          // score only goes down if they're not consecutive
-          if(lastTargetI !== targetI - 1) score -= targetI
-          lastTargetI = targetI
-        }
-        if(!successStrict) score *= 1000
-        score -= targetLen - searchLen
-        prepared.score = score
-        prepared.indexes = new Array(matchesBestLen); for(var i = matchesBestLen - 1; i >= 0; --i) prepared.indexes[i] = matchesBest[i]
-
-        return prepared
-      }
-    },
-
-    prepareLowerCodes: function(str) {
-      var strLen = str.length
-      var lowerCodes = [] // new Array(strLen)    sparse array is too slow
-      var lower = str.toLowerCase()
-      for(var i = 0; i < strLen; ++i) lowerCodes[i] = lower.charCodeAt(i)
-      return lowerCodes
-    },
-    prepareBeginningIndexes: function(target) {
-      var targetLen = target.length
-      var beginningIndexes = []; var beginningIndexesLen = 0
-      var wasUpper = false
-      var wasAlphanum = false
-      for(var i = 0; i < targetLen; ++i) {
-        var targetCode = target.charCodeAt(i)
-        var isUpper = targetCode>=65&&targetCode<=90
-        var isAlphanum = isUpper || targetCode>=97&&targetCode<=122 || targetCode>=48&&targetCode<=57
-        var isBeginning = isUpper && !wasUpper || !wasAlphanum || !isAlphanum
-        wasUpper = isUpper
-        wasAlphanum = isAlphanum
-        if(isBeginning) beginningIndexes[beginningIndexesLen++] = i
-      }
-      return beginningIndexes
-    },
-    prepareNextBeginningIndexes: function(target) {
-      var targetLen = target.length
-      var beginningIndexes = fuzzysort.prepareBeginningIndexes(target)
-      var nextBeginningIndexes = [] // new Array(targetLen)     sparse array is too slow
-      var lastIsBeginning = beginningIndexes[0]
-      var lastIsBeginningI = 0
-      for(var i = 0; i < targetLen; ++i) {
-        if(lastIsBeginning > i) {
-          nextBeginningIndexes[i] = lastIsBeginning
-        } else {
-          lastIsBeginning = beginningIndexes[++lastIsBeginningI]
-          nextBeginningIndexes[i] = lastIsBeginning===undefined ? targetLen : lastIsBeginning
-        }
-      }
-      return nextBeginningIndexes
-    },
-
-    cleanup: cleanup,
-    new: fuzzysortNew,
-  }
-  return fuzzysort
-} // fuzzysortNew
-
-// This stuff is outside fuzzysortNew, because it's shared with instances of fuzzysort.new()
-var isNode = "function" !== 'undefined' && typeof window === 'undefined'
-// var MAX_INT = Number.MAX_SAFE_INTEGER
-// var MIN_INT = Number.MIN_VALUE
-var preparedCache = new Map()
-var preparedSearchCache = new Map()
-var noResults = []; noResults.total = 0
-var matchesSimple = []; var matchesStrict = []
-function cleanup() { preparedCache.clear(); preparedSearchCache.clear(); matchesSimple = []; matchesStrict = [] }
-function defaultScoreFn(a) {
-  var max = -9007199254740991
-  for (var i = a.length - 1; i >= 0; --i) {
-    var result = a[i]; if(result === null) continue
-    var score = result.score
-    if(score > max) max = score
-  }
-  if(max === -9007199254740991) return null
-  return max
+if (!_self.document) {
+	if (!_self.addEventListener) {
+		// in Node.js
+		return _self.Prism;
+	}
+
+	if (!_.disableWorkerMessageHandler) {
+		// In worker
+		_self.addEventListener('message', function (evt) {
+			var message = JSON.parse(evt.data),
+				lang = message.language,
+				code = message.code,
+				immediateClose = message.immediateClose;
+
+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
+			if (immediateClose) {
+				_self.close();
+			}
+		}, false);
+	}
+
+	return _self.Prism;
 }
 
-// prop = 'key'              2.5ms optimized for this case, seems to be about as fast as direct obj[prop]
-// prop = 'key1.key2'        10ms
-// prop = ['key1', 'key2']   27ms
-function getValue(obj, prop) {
-  var tmp = obj[prop]; if(tmp !== undefined) return tmp
-  var segs = prop
-  if(!Array.isArray(prop)) segs = prop.split('.')
-  var len = segs.length
-  var i = -1
-  while (obj && (++i < len)) obj = obj[segs[i]]
-  return obj
+//Get current script and highlight
+var script = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
+
+if (script) {
+	_.filename = script.src;
+
+	if (!_.manual && !script.hasAttribute('data-manual')) {
+		if(document.readyState !== "loading") {
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(_.highlightAll);
+			} else {
+				window.setTimeout(_.highlightAll, 16);
+			}
+		}
+		else {
+			document.addEventListener('DOMContentLoaded', _.highlightAll);
+		}
+	}
 }
 
-function isObj(x) { return typeof x === 'object' } // faster as a function
+return _self.Prism;
 
-// Hacked version of https://github.com/lemire/FastPriorityQueue.js
-var fastpriorityqueue=function(){var r=[],o=0,e={};function n(){for(var e=0,n=r[e],c=1;c<o;){var f=c+1;e=c,f<o&&r[f].score<r[c].score&&(e=f),r[e-1>>1]=r[e],c=1+(e<<1)}for(var a=e-1>>1;e>0&&n.score<r[a].score;a=(e=a)-1>>1)r[e]=r[a];r[e]=n}return e.add=function(e){var n=o;r[o++]=e;for(var c=n-1>>1;n>0&&e.score<r[c].score;c=(n=c)-1>>1)r[n]=r[c];r[n]=e},e.poll=function(){if(0!==o){var e=r[0];return r[0]=r[--o],n(),e}},e.peek=function(e){if(0!==o)return r[0]},e.replaceTop=function(o){r[0]=o,n()},e};
-var q = fastpriorityqueue() // reuse this, except for async, it needs to make its own
+})();
 
-return fuzzysortNew()
-}) // UMD
-
-// TODO: (performance) wasm version!?
-
-// TODO: (performance) layout memory in an optimal way to go fast by avoiding cache misses
-
-// TODO: (performance) preparedCache is a memory leak
-
-// TODO: (like sublime) backslash === forwardslash
-
-// TODO: (performance) i have no idea how well optizmied the allowing typos algorithm is
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../timers-browserify/main.js */ 36).setImmediate))
-
-/***/ }),
-/* 36 */
-/*!**************************************************************************************!*\
-  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/timers-browserify/main.js ***!
-  \**************************************************************************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
-            (typeof self !== "undefined" && self) ||
-            window;
-var apply = Function.prototype.apply;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
-};
-exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
-};
-exports.clearTimeout =
-exports.clearInterval = function(timeout) {
-  if (timeout) {
-    timeout.close();
-  }
-};
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = Prism;
 }
-Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-Timeout.prototype.close = function() {
-  this._clearFn.call(scope, this._id);
+
+// hack for components to work correctly in node.js
+if (typeof global !== 'undefined') {
+	global.Prism = Prism;
+}
+
+
+/* **********************************************
+     Begin prism-markup.js
+********************************************** */
+
+Prism.languages.markup = {
+	'comment': /<!--[\s\S]*?-->/,
+	'prolog': /<\?[\s\S]+?\?>/,
+	'doctype': /<!DOCTYPE[\s\S]+?>/i,
+	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+		greedy: true,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/i,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'attr-value': {
+				pattern: /=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+)/i,
+				inside: {
+					'punctuation': [
+						/^=/,
+						{
+							pattern: /(^|[^\\])["']/,
+							lookbehind: true
+						}
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': /&#?[\da-z]{1,8};/i
 };
 
-// Does not start the time, just sets up the members needed.
-exports.enroll = function(item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function(env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Prism.languages.xml = Prism.languages.markup;
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+
+/* **********************************************
+     Begin prism-css.js
+********************************************** */
+
+Prism.languages.css = {
+	'comment': /\/\*[\s\S]*?\*\//,
+	'atrule': {
+		pattern: /@[\w-]+?.*?(?:;|(?=\s*\{))/i,
+		inside: {
+			'rule': /@[\w-]+/
+			// See rest below
+		}
+	},
+	'url': /url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+	'selector': /[^{}\s][^{};]*?(?=\s*\{)/,
+	'string': {
+		pattern: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+	'important': /\B!important\b/i,
+	'function': /[-a-z0-9]+(?=\()/i,
+	'punctuation': /[(){};:]/
 };
 
-exports.unenroll = function(item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
+Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+if (Prism.languages.markup) {
+	Prism.languages.insertBefore('markup', 'tag', {
+		'style': {
+			pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
+			lookbehind: true,
+			inside: Prism.languages.css,
+			alias: 'language-css',
+			greedy: true
+		}
+	});
+
+	Prism.languages.insertBefore('inside', 'attr-value', {
+		'style-attr': {
+			pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+			inside: {
+				'attr-name': {
+					pattern: /^\s*style/i,
+					inside: Prism.languages.markup.tag.inside
+				},
+				'punctuation': /^\s*=\s*['"]|['"]\s*$/,
+				'attr-value': {
+					pattern: /.+/i,
+					inside: Prism.languages.css
+				}
+			},
+			alias: 'language-css'
+		}
+	}, Prism.languages.markup.tag);
+}
+
+/* **********************************************
+     Begin prism-clike.js
+********************************************** */
+
+Prism.languages.clike = {
+	'comment': [
+		{
+			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true,
+			greedy: true
+		}
+	],
+	'string': {
+		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'class-name': {
+		pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i,
+		lookbehind: true,
+		inside: {
+			punctuation: /[.\\]/
+		}
+	},
+	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+	'boolean': /\b(?:true|false)\b/,
+	'function': /[a-z0-9_]+(?=\()/i,
+	'number': /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
+	'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
+	'punctuation': /[{}[\];(),.:]/
 };
 
-exports._unrefActive = exports.active = function(item) {
-  clearTimeout(item._idleTimeoutId);
 
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout)
-        item._onTimeout();
-    }, msecs);
-  }
-};
+/* **********************************************
+     Begin prism-javascript.js
+********************************************** */
 
-// setimmediate attaches itself to the global object
-__webpack_require__(/*! setimmediate */ 37);
-// On some exotic environments, it's not clear which object `setimmediate` was
-// able to install onto.  Search each possibility in the same order as the
-// `setimmediate` library.
-exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
-                       (typeof global !== "undefined" && global.setImmediate) ||
-                       (this && this.setImmediate);
-exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
-                         (typeof global !== "undefined" && global.clearImmediate) ||
-                         (this && this.clearImmediate);
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'keyword': /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
+	'number': /\b(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|NaN|Infinity)\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,
+	'operator': /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
+});
 
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s])\s*)\/(\[[^\]\r\n]+]|\\.|[^/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})\]]))/,
+		lookbehind: true,
+		greedy: true
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i,
+		alias: 'function'
+	},
+	'constant': /\b[A-Z][A-Z\d_]*\b/
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|\${[^}]+}|[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'interpolation': {
+				pattern: /\${[^}]+}/,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\${|}$/,
+						alias: 'punctuation'
+					},
+					rest: null // See below
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	}
+});
+Prism.languages.javascript['template-string'].inside['interpolation'].inside.rest = Prism.languages.javascript;
+
+if (Prism.languages.markup) {
+	Prism.languages.insertBefore('markup', 'tag', {
+		'script': {
+			pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
+			lookbehind: true,
+			inside: Prism.languages.javascript,
+			alias: 'language-javascript',
+			greedy: true
+		}
+	});
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/* **********************************************
+     Begin prism-file-highlight.js
+********************************************** */
+
+(function () {
+	if (typeof self === 'undefined' || !self.Prism || !self.document || !document.querySelector) {
+		return;
+	}
+
+	self.Prism.fileHighlight = function() {
+
+		var Extensions = {
+			'js': 'javascript',
+			'py': 'python',
+			'rb': 'ruby',
+			'ps1': 'powershell',
+			'psm1': 'powershell',
+			'sh': 'bash',
+			'bat': 'batch',
+			'h': 'c',
+			'tex': 'latex'
+		};
+
+		Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+			var src = pre.getAttribute('data-src');
+
+			var language, parent = pre;
+			var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+			while (parent && !lang.test(parent.className)) {
+				parent = parent.parentNode;
+			}
+
+			if (parent) {
+				language = (pre.className.match(lang) || [, ''])[1];
+			}
+
+			if (!language) {
+				var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+				language = Extensions[extension] || extension;
+			}
+
+			var code = document.createElement('code');
+			code.className = 'language-' + language;
+
+			pre.textContent = '';
+
+			code.textContent = 'Loading…';
+
+			pre.appendChild(code);
+
+			var xhr = new XMLHttpRequest();
+
+			xhr.open('GET', src, true);
+
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+
+					if (xhr.status < 400 && xhr.responseText) {
+						code.textContent = xhr.responseText;
+
+						Prism.highlightElement(code);
+					}
+					else if (xhr.status >= 400) {
+						code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+					}
+					else {
+						code.textContent = '✖ Error: File does not exist or is empty';
+					}
+				}
+			};
+
+			xhr.send(null);
+		});
+
+		if (Prism.plugins.toolbar) {
+			Prism.plugins.toolbar.registerButton('download-file', function (env) {
+				var pre = env.element.parentNode;
+				if (!pre || !/pre/i.test(pre.nodeName) || !pre.hasAttribute('data-src') || !pre.hasAttribute('data-download-link')) {
+					return;
+				}
+				var src = pre.getAttribute('data-src');
+				var a = document.createElement('a');
+				a.textContent = pre.getAttribute('data-download-link-label') || 'Download';
+				a.setAttribute('download', '');
+				a.href = src;
+				return a;
+			});
+		}
+
+	};
+
+	document.addEventListener('DOMContentLoaded', self.Prism.fileHighlight);
+
+})();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 15)))
 
 /***/ }),
-/* 37 */
-/*!*****************************************************************************************!*\
-  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/setimmediate/setImmediate.js ***!
-  \*****************************************************************************************/
+/* 42 */
+/*!***********************************************************************************************************!*\
+  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/prismjs/plugins/autoloader/prism-autoloader.js ***!
+  \***********************************************************************************************************/
 /*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
-    "use strict";
-
-    if (global.setImmediate) {
-        return;
-    }
-
-    var nextHandle = 1; // Spec says greater than zero
-    var tasksByHandle = {};
-    var currentlyRunningATask = false;
-    var doc = global.document;
-    var registerImmediate;
-
-    function setImmediate(callback) {
-      // Callback can either be a function or a string
-      if (typeof callback !== "function") {
-        callback = new Function("" + callback);
-      }
-      // Copy function arguments
-      var args = new Array(arguments.length - 1);
-      for (var i = 0; i < args.length; i++) {
-          args[i] = arguments[i + 1];
-      }
-      // Store and register the task
-      var task = { callback: callback, args: args };
-      tasksByHandle[nextHandle] = task;
-      registerImmediate(nextHandle);
-      return nextHandle++;
-    }
-
-    function clearImmediate(handle) {
-        delete tasksByHandle[handle];
-    }
-
-    function run(task) {
-        var callback = task.callback;
-        var args = task.args;
-        switch (args.length) {
-        case 0:
-            callback();
-            break;
-        case 1:
-            callback(args[0]);
-            break;
-        case 2:
-            callback(args[0], args[1]);
-            break;
-        case 3:
-            callback(args[0], args[1], args[2]);
-            break;
-        default:
-            callback.apply(undefined, args);
-            break;
-        }
-    }
-
-    function runIfPresent(handle) {
-        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-        // So if we're currently running a task, we'll need to delay this invocation.
-        if (currentlyRunningATask) {
-            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-            // "too much recursion" error.
-            setTimeout(runIfPresent, 0, handle);
-        } else {
-            var task = tasksByHandle[handle];
-            if (task) {
-                currentlyRunningATask = true;
-                try {
-                    run(task);
-                } finally {
-                    clearImmediate(handle);
-                    currentlyRunningATask = false;
-                }
-            }
-        }
-    }
-
-    function installNextTickImplementation() {
-        registerImmediate = function(handle) {
-            process.nextTick(function () { runIfPresent(handle); });
-        };
-    }
-
-    function canUsePostMessage() {
-        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
-        // where `global.postMessage` means something completely different and can't be used for this purpose.
-        if (global.postMessage && !global.importScripts) {
-            var postMessageIsAsynchronous = true;
-            var oldOnMessage = global.onmessage;
-            global.onmessage = function() {
-                postMessageIsAsynchronous = false;
-            };
-            global.postMessage("", "*");
-            global.onmessage = oldOnMessage;
-            return postMessageIsAsynchronous;
-        }
-    }
-
-    function installPostMessageImplementation() {
-        // Installs an event handler on `global` for the `message` event: see
-        // * https://developer.mozilla.org/en/DOM/window.postMessage
-        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
-
-        var messagePrefix = "setImmediate$" + Math.random() + "$";
-        var onGlobalMessage = function(event) {
-            if (event.source === global &&
-                typeof event.data === "string" &&
-                event.data.indexOf(messagePrefix) === 0) {
-                runIfPresent(+event.data.slice(messagePrefix.length));
-            }
-        };
-
-        if (global.addEventListener) {
-            global.addEventListener("message", onGlobalMessage, false);
-        } else {
-            global.attachEvent("onmessage", onGlobalMessage);
-        }
-
-        registerImmediate = function(handle) {
-            global.postMessage(messagePrefix + handle, "*");
-        };
-    }
-
-    function installMessageChannelImplementation() {
-        var channel = new MessageChannel();
-        channel.port1.onmessage = function(event) {
-            var handle = event.data;
-            runIfPresent(handle);
-        };
-
-        registerImmediate = function(handle) {
-            channel.port2.postMessage(handle);
-        };
-    }
-
-    function installReadyStateChangeImplementation() {
-        var html = doc.documentElement;
-        registerImmediate = function(handle) {
-            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-            var script = doc.createElement("script");
-            script.onreadystatechange = function () {
-                runIfPresent(handle);
-                script.onreadystatechange = null;
-                html.removeChild(script);
-                script = null;
-            };
-            html.appendChild(script);
-        };
-    }
-
-    function installSetTimeoutImplementation() {
-        registerImmediate = function(handle) {
-            setTimeout(runIfPresent, 0, handle);
-        };
-    }
-
-    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
-    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
-    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
-
-    // Don't get fooled by e.g. browserify environments.
-    if ({}.toString.call(global.process) === "[object process]") {
-        // For Node.js before 0.9
-        installNextTickImplementation();
-
-    } else if (canUsePostMessage()) {
-        // For non-IE10 modern browsers
-        installPostMessageImplementation();
-
-    } else if (global.MessageChannel) {
-        // For web workers, where supported
-        installMessageChannelImplementation();
-
-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
-        // For IE 6–8
-        installReadyStateChangeImplementation();
-
-    } else {
-        // For older browsers
-        installSetTimeoutImplementation();
-    }
-
-    attachTo.setImmediate = setImmediate;
-    attachTo.clearImmediate = clearImmediate;
-}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 15), __webpack_require__(/*! ./../process/browser.js */ 38)))
-
-/***/ }),
-/* 38 */
-/*!*******************************************************************************!*\
-  !*** /mnt/c/Users/Smigol/Projects/simply-dev/node_modules/process/browser.js ***!
-  \*******************************************************************************/
-/*! dynamic exports provided */
-/*! all exports used */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
 (function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
+	if (typeof self === 'undefined' || !self.Prism || !self.document || !document.createElement) {
+		return;
+	}
 
+	// The dependencies map is built automatically with gulp
+	var lang_dependencies = /*languages_placeholder[*/{"javascript":"clike","actionscript":"javascript","arduino":"cpp","aspnet":["markup","csharp"],"bison":"c","c":"clike","csharp":"clike","cpp":"c","coffeescript":"javascript","crystal":"ruby","css-extras":"css","d":"clike","dart":"clike","django":"markup","erb":["ruby","markup-templating"],"fsharp":"clike","flow":"javascript","glsl":"clike","go":"clike","groovy":"clike","haml":"ruby","handlebars":"markup-templating","haxe":"clike","java":"clike","jolie":"clike","kotlin":"clike","less":"css","markdown":"markup","markup-templating":"markup","n4js":"javascript","nginx":"clike","objectivec":"c","opencl":"cpp","parser":"markup","php":["clike","markup-templating"],"php-extras":"php","plsql":"sql","processing":"clike","protobuf":"clike","pug":"javascript","qore":"clike","jsx":["markup","javascript"],"tsx":["jsx","typescript"],"reason":"clike","ruby":"clike","sass":"css","scss":"css","scala":"java","smarty":"markup-templating","soy":"markup-templating","swift":"clike","tap":"yaml","textile":"markup","tt2":["clike","markup-templating"],"twig":"markup","typescript":"javascript","vbnet":"basic","velocity":"markup","wiki":"markup","xeora":"markup","xquery":"markup"}/*]*/;
 
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
+	var lang_data = {};
 
+	var ignored_language = 'none';
 
+	var script = document.getElementsByTagName('script');
+	script = script[script.length - 1];
+	var languages_path = 'components/';
+	if(script.hasAttribute('data-autoloader-path')) {
+		var path = script.getAttribute('data-autoloader-path').trim();
+		if(path.length > 0 && !/^[a-z]+:\/\//i.test(script.src)) {
+			languages_path = path.replace(/\/?$/, '/');
+		}
+	} else if (/[\w-]+\.js$/.test(script.src)) {
+		languages_path = script.src.replace(/[\w-]+\.js$/, 'components/');
+	}
+	var config = Prism.plugins.autoloader = {
+		languages_path: languages_path,
+		use_minified: true
+	};
 
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
+	/**
+	 * Lazy loads an external script
+	 * @param {string} src
+	 * @param {function=} success
+	 * @param {function=} error
+	 */
+	var script = function (src, success, error) {
+		var s = document.createElement('script');
+		s.src = src;
+		s.async = true;
+		s.onload = function() {
+			document.body.removeChild(s);
+			success && success();
+		};
+		s.onerror = function() {
+			document.body.removeChild(s);
+			error && error();
+		};
+		document.body.appendChild(s);
+	};
 
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
+	/**
+	 * Returns the path to a grammar, using the language_path and use_minified config keys.
+	 * @param {string} lang
+	 * @returns {string}
+	 */
+	var getLanguagePath = function (lang) {
+		return config.languages_path +
+			'prism-' + lang
+			+ (config.use_minified ? '.min' : '') + '.js'
+	};
 
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
+	/**
+	 * Tries to load a grammar and
+	 * highlight again the given element once loaded.
+	 * @param {string} lang
+	 * @param {HTMLElement} elt
+	 */
+	var registerElement = function (lang, elt) {
+		var data = lang_data[lang];
+		if (!data) {
+			data = lang_data[lang] = {};
+		}
 
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
+		// Look for additional dependencies defined on the <code> or <pre> tags
+		var deps = elt.getAttribute('data-dependencies');
+		if (!deps && elt.parentNode && elt.parentNode.tagName.toLowerCase() === 'pre') {
+			deps = elt.parentNode.getAttribute('data-dependencies');
+		}
 
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
+		if (deps) {
+			deps = deps.split(/\s*,\s*/g);
+		} else {
+			deps = [];
+		}
 
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
+		loadLanguages(deps, function () {
+			loadLanguage(lang, function () {
+				Prism.highlightElement(elt);
+			});
+		});
+	};
 
-function noop() {}
+	/**
+	 * Sequentially loads an array of grammars.
+	 * @param {string[]|string} langs
+	 * @param {function=} success
+	 * @param {function=} error
+	 */
+	var loadLanguages = function (langs, success, error) {
+		if (typeof langs === 'string') {
+			langs = [langs];
+		}
+		var i = 0;
+		var l = langs.length;
+		var f = function () {
+			if (i < l) {
+				loadLanguage(langs[i], function () {
+					i++;
+					f();
+				}, function () {
+					error && error(langs[i]);
+				});
+			} else if (i === l) {
+				success && success(langs);
+			}
+		};
+		f();
+	};
 
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
+	/**
+	 * Load a grammar with its dependencies
+	 * @param {string} lang
+	 * @param {function=} success
+	 * @param {function=} error
+	 */
+	var loadLanguage = function (lang, success, error) {
+		var load = function () {
+			var force = false;
+			// Do we want to force reload the grammar?
+			if (lang.indexOf('!') >= 0) {
+				force = true;
+				lang = lang.replace('!', '');
+			}
 
-process.listeners = function (name) { return [] }
+			var data = lang_data[lang];
+			if (!data) {
+				data = lang_data[lang] = {};
+			}
+			if (success) {
+				if (!data.success_callbacks) {
+					data.success_callbacks = [];
+				}
+				data.success_callbacks.push(success);
+			}
+			if (error) {
+				if (!data.error_callbacks) {
+					data.error_callbacks = [];
+				}
+				data.error_callbacks.push(error);
+			}
 
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
+			if (!force && Prism.languages[lang]) {
+				languageSuccess(lang);
+			} else if (!force && data.error) {
+				languageError(lang);
+			} else if (force || !data.loading) {
+				data.loading = true;
+				var src = getLanguagePath(lang);
+				script(src, function () {
+					data.loading = false;
+					languageSuccess(lang);
 
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
+				}, function () {
+					data.loading = false;
+					data.error = true;
+					languageError(lang);
+				});
+			}
+		};
+		var dependencies = lang_dependencies[lang];
+		if(dependencies && dependencies.length) {
+			loadLanguages(dependencies, load);
+		} else {
+			load();
+		}
+	};
 
+	/**
+	 * Runs all success callbacks for this language.
+	 * @param {string} lang
+	 */
+	var languageSuccess = function (lang) {
+		if (lang_data[lang] && lang_data[lang].success_callbacks && lang_data[lang].success_callbacks.length) {
+			lang_data[lang].success_callbacks.forEach(function (f) {
+				f(lang);
+			});
+		}
+	};
+
+	/**
+	 * Runs all error callbacks for this language.
+	 * @param {string} lang
+	 */
+	var languageError = function (lang) {
+		if (lang_data[lang] && lang_data[lang].error_callbacks && lang_data[lang].error_callbacks.length) {
+			lang_data[lang].error_callbacks.forEach(function (f) {
+				f(lang);
+			});
+		}
+	};
+
+	Prism.hooks.add('complete', function (env) {
+		if (env.element && env.language && !env.grammar) {
+			if (env.language !== ignored_language) {
+				registerElement(env.language, env.element);
+			}
+		}
+	});
+
+}());
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=search.js.map
+//# sourceMappingURL=prism.js.map

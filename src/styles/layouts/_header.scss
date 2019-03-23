@@ -60,9 +60,12 @@
     color: $header-color;
     display: block;
     position: relative;
-
-    &:hover {
-      color: $header-color-hover;
-    }
   }
+}
+
+.footer-social a:hover,
+.search-toggle:hover,
+.navbar ul > li > a:hover,
+.social-media a :hover {
+  color: $header-color-hover;
 }

@@ -4,7 +4,8 @@
       "./scripts/main.js",
       "./styles/main.scss"
     ],
-    "search": "./scripts/search.js"
+    "search": "./scripts/search.js",
+    "prism": "./scripts/prism.js"
   },
   "publicPath": "",
   "devUrl": "http://localhost:2368",

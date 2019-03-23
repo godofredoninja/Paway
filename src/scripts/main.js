@@ -1,4 +1,4 @@
-/* global instagramFeed followSocialMedia */
+/* global instagramFeed followSocialMedia siteUrl */
 
 // import external dependencies
 import 'lazysizes';
@@ -90,6 +90,17 @@ import socialMedia from './app/app.social-media';
       const ratio = width / height;
       container.style.flex = ratio + ' 1 0%';
     });
+
+    // PrismJS code syntax
+    const $prismPre = document.getElementById('post-body').querySelectorAll('code[class*="language-"]');
+    if ($prismPre.length) {
+
+      let prismScript = document.createElement('script');
+      prismScript.src = `${siteUrl}/assets/scripts/prism.js`;
+      prismScript.defer = true;
+
+      $body.appendChild(prismScript);
+    }
   }
 
   // Active Scroll
