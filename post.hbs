@@ -28,7 +28,7 @@ into the {body} of the default.hbs template --}}
             {{!-- date - title - excerpt --}}
             <div class="date u-meta"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time></div>
             <h1 class="sss-title">{{title}}</h1>
-            <p class="sss-excerpt">{{excerpt words="25"}}</p>
+            {{#if custom_excerpt}}<p class="sss-excerpt">{{custom_excerpt}}</p>{{/if}}
 
             {{!-- author - tags - readingTime --}}
             <div class="sss-meta u-meta">

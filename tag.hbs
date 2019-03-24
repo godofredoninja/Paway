@@ -1,0 +1,21 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<div class="u-margin-0-15">
+    <section class="feed-entry-content container">
+        <div class="feed-entry-wrap">
+            <div class="row">
+                {{#foreach posts}}
+                    <div class="col s12 {{#has number="4,5,9,10"}}m6 gg6{{else}}m4{{/has}}">
+                        {{!-- markup for each stories - partials/story/story-card.hbs --}}
+                        {{> "test" }}
+                    </div>
+                {{/foreach}}
+            </div>
+        </div>
+    </section>
+
+    {{!-- Pagination - partials/pagination.hbs --}}
+    {{"pagination"}}
+</div>

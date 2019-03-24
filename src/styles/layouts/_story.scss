@@ -3,6 +3,14 @@
 
   // Hover
   &:hover .u-overlay { background-color: rgba(0, 0, 0, .4) }
+
+  .sss-excerpt {
+    max-height: 5.6em;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+  }
 }
 
 .sss {
@@ -24,12 +32,15 @@
   }
 
   // Exerpt
+  /* stylelint-disable-next-line */
   &-excerpt {
+    @extend %secundary-font;
+
     font-size: 1.25rem;
-    font-style: italic;
+    // font-style: italic;
     font-weight: 400;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 600px;
     position: relative;
 
     &::before {
@@ -74,11 +85,38 @@
     font-size: 4rem;
   }
 
-  .sss-excerpt { font-size: 24px }
+  // .sss-excerpt { font-size: 24px }
 }
 
 .point {
   font-size: 5px;
   padding: 0 5px;
   vertical-align: middle;
+}
+
+// New Style of Post
+.ttt {
+  height: 600px;
+  margin-bottom: 30px;
+
+  .u-meta { color: #fff }
+  .point { color: rgba(255, 255, 255, 0.7) }
+
+  &-img {
+    filter: brightness(80%);
+    transition: all 0.3s ease;
+  }
+
+  &-body {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 60px 20px 30px 20px;
+  }
+}
+
+.gg6 .ttt {
+  height: 900px;
 }
