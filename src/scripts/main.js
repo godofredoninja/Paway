@@ -40,6 +40,11 @@ import socialMedia from './app/app.social-media';
     zIndex: 999,
   }
 
+  // Toggle Menu
+  const toggleMenu = () => $body.classList.toggle('has-sidenav');
+  document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+  document.getElementById('sidenav-close').addEventListener('click', toggleMenu);
+
   /**
    * Social Media
    */

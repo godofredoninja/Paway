@@ -12,7 +12,7 @@
 
     {{!-- Styles'n'Scripts --}}
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700|Playfair+Display:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700|Playfair+Display:400,400i,700,700i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}" />
 
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
@@ -22,6 +22,9 @@
 <body class="{{body_class}} {{#is "post"}}is-article{{/is}}">
     {{!-- Site Header - partials/header.hbs --}}
     {{> "header"}}
+
+    {{!-- Sidenav - partials/sidenav.hbs --}}
+    {{> "sidenav"}}
 
     <div class="site-wrapper">
         {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}

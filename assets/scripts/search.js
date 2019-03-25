@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e0825c90de397264f9a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6eafe1688e8fd1fcec8d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2378,7 +2378,7 @@ module.exports = g;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/Smigol/Projects/paway/src/build/util/../helpers/hmr-client.js */1);
+__webpack_require__(/*! /mnt/c/Users/Smigol/projects/paway/src/build/util/../helpers/hmr-client.js */1);
 module.exports = __webpack_require__(/*! ./scripts/search.js */33);
 
 

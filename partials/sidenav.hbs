@@ -1,0 +1,24 @@
+<div class="sidenav">
+    {{!-- Close --}}
+    <div id="sidenav-close" class="sidenav-close u-pointer u-absolute i-close"></div>
+    {{!-- Site Name --}}
+    <div class="sidenav-title logo-txt">{{@site.title}}</div>
+    {{!-- Site Description --}}
+    {{#if @site.description}}<div class="sidenav-des">{{@site.description}}</div>{{/if}}
+    {{!-- navigation --}}
+    <div class="sidenav-nav u-hide-after-lg">{{navigation}}</div>
+
+    {{!-- Featured Post Featured Article --}}
+    {{#get "posts" limit="3" filter="featured:true" as |sidenav_featured_post|}}
+        {{#if sidenav_featured_post}}
+            <div class="sfp u-hide-before-lg">
+                {{#foreach sidenav_featured_post}}
+                    {{> "story/story-featured-sidenav"}}
+                {{/foreach}}
+            </div>
+        {{/if}}
+    {{/get}}
+
+    {{!-- social Media --}}
+    <div class="sidenav-social">{{> "widget/witget-social-media"}}</div>
+</div>
