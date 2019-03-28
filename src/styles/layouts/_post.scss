@@ -20,10 +20,10 @@
   @extend %flex-align-items-center;
 
   a {
-    color: $secundary-text-color;
+    color: #999;
     border-bottom: 1px solid #999;
 
-    &:hover { border: none }
+    &:hover { border: none; color: #b2b2b2 }
   }
 
   h1, h2, h3, h4, h5, h6, p,
