@@ -1,0 +1,22 @@
+{{#get "posts" limit="5" filter="tags:[{{post.tags}}]+id:-{{post.id}}"}}
+    <div class="related u-container">
+        <div class="related-title"><span>{{t "Related Articles"}}</span></div>
+
+        {{#foreach posts}}
+        <div class="story">
+
+            {{!-- featured image --}}
+            {{#if feature_image}}
+                <figure class="story-image">
+                    <a href="{{url absolute="true"}}amp">
+                        <amp-img src="{{img_url feature_image size="s" absolute="true"}}" width="130" height="80" layout="responsive" alt="{{title}}"></amp-img>
+                    </a>
+                </figure>
+                <h3><a href="{{url absolute="true"}}amp">{{title}}</a></h3>
+            {{/if}}
+
+        </div>
+        {{/foreach}}
+
+    </div>
+{{/get}}
