@@ -101,6 +101,8 @@ li.nav-current > a,
     &:first-child { transform: translate(0, -6px); }
     &:last-child { transform: translate(0, 6px); }
   }
+
+  &:hover span { background-color: $header-color-hover }
 }
 
 @media #{$xl-and-up} {
@@ -109,4 +111,5 @@ li.nav-current > a,
 
 @media #{$lg-and-down} {
   .header-right { flex: 1 1 auto }
+  .menu-toggle { margin-right: -15px; }
 }

@@ -3,11 +3,12 @@
 
   background-color: #000;
   color: #fff;
+  padding: 0 15px;
   text-align: center;
 }
 
 .subscribe {
-  width: 50%;
+  max-width: 700px;
   margin: 70px auto 0;
 
   &-title {
@@ -15,7 +16,9 @@
 
     font-style: italic;
     font-weight: 400;
-    font-size: 2.25rem
+    font-size: 2.25rem;
+
+    @media #{$md-and-down} { font-size: 2rem }
   }
 
   // Subscribe
@@ -38,7 +41,7 @@
     height: 50px;
     letter-spacing: 0;
     line-height: 1.5em;
-    padding: 10px 160px 10px 24px;
+    padding: 10px 10px 10px 24px;
     text-decoration: none;
     text-transform: none;
     width: 100%;
@@ -73,11 +76,11 @@
   margin: 70px auto 0;
 
   .social-media {
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
 
     li {
-      margin-right: 70px;
+      margin: 5px 30px;
       font-size: 20px;
 
       &:last-child {
