@@ -1,15 +1,12 @@
-<section class="feed-entry-content">
+<section class="feed-entry-content container u-marginTop30">
     <div class="feed-entry-wrap">
-        <div class="row no-space">
+        <div class="row">
             {{#foreach posts}}
-                <div class="col s12 {{#has number="1,7"}}m12 ss12{{else}}{{#has number="2,3,8,9"}}m6 ss6{{else}}m4{{/has}}{{/has}}">
-                    {{!-- markup for each stories - partials/story/story-card.hbs --}}
-                    {{> "story/story-card" }}
+                <div class="col s12 m6 l4">
+                    {{!-- markup for each stories - partials/story/story-card-loop.hbs --}}
+                    {{> "story/story-card-large"}}
                 </div>
             {{/foreach}}
         </div>
     </div>
 </section>
-
-{{!-- Pagination - partials/pagination.hbs --}}
-{{"pagination"}}

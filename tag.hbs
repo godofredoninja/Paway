@@ -3,19 +3,17 @@
 into the {body} of the default.hbs template --}}
 
 <div class="u-margin-0-15">
-    <section class="feed-entry-content container">
-        <div class="feed-entry-wrap">
-            <div class="row">
-                {{#foreach posts}}
-                    <div class="col s12 {{#has number="4,5,9,10"}}m6 gg6{{else}}m4{{/has}}">
-                        {{!-- markup for each stories - partials/story/story-card.hbs --}}
-                        {{> "test" }}
-                    </div>
-                {{/foreach}}
-            </div>
-        </div>
-    </section>
+    {{!-- Tag --}}
+    {{#tag}}
+    <header class="pp-header container u-marginTop30">
+        <div class="pp-subtitle">{{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}} {{t "in"}}</div>
+        <h1 class="pp-title">{{name}}</h1>
+    </header>
+    {{/tag}}
 
-    {{!-- Pagination - partials/pagination.hbs --}}
+    {{!-- All Story - partials/loop.hbs --}}
+    {{> "loop"}}
+
+    {{!-- Pagination --}}
     {{"pagination"}}
 </div>

@@ -1,0 +1,19 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<div class="u-margin-0-15">
+    {{!-- Tag --}}
+    {{#author}}
+    <header class="pp-header container u-marginTop30">
+        <div class="pp-subtitle">{{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}} {{t "By"}}</div>
+        <h1 class="pp-title">{{t "Author:"}} {{name}}</h1>
+    </header>
+    {{/author}}
+
+    {{!-- All Story - partials/loop.hbs --}}
+    {{> "loop"}}
+
+    {{!-- Pagination --}}
+    {{"pagination"}}
+</div>

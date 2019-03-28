@@ -16,10 +16,13 @@
 .sss {
   color: #fff;
   text-align: center;
-  background-color: hsla(0, 0%, 0%, 0.7);
+  background-color: #1a1a1a;
 
   &-body {
     padding: 10px 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   // Title
@@ -78,16 +81,6 @@
 //   color: rgba(255, 255, 255, 0.7);
 // }
 
-.ss12 .sss {
-  height: 40em;
-
-  .sss-title {
-    font-size: 4rem;
-  }
-
-  // .sss-excerpt { font-size: 24px }
-}
-
 .point {
   font-size: 5px;
   padding: 0 5px;
@@ -96,15 +89,22 @@
 
 // New Style of Post
 .ttt {
-  height: 600px;
+  // height: 600px;
+  min-height: 400px;
   margin-bottom: 30px;
 
-  .u-meta { color: #fff }
-  .point { color: rgba(255, 255, 255, 0.7) }
+  @media #{$md-and-up} { height: 500px; }
+
+  // @media #{$lg-and-up} { height: 600px; }
+
+  // .u-meta { color: #fff }
+  // .point { color: rgba(255, 255, 255, 0.7) }
+
+  &:hover img { filter: brightness(90%) }
 
   &-img {
-    filter: brightness(80%);
-    transition: all 0.3s ease;
+    filter: brightness(70%);
+    transition: filter .3s;
   }
 
   &-body {
@@ -117,6 +117,14 @@
   }
 }
 
-.gg6 .ttt {
-  height: 900px;
+@media #{$lg-and-up} {
+  .ttt { height: 600px }
+
+  .ss12 .sss {
+    height: 40em;
+
+    .sss-title {
+      font-size: 4rem;
+    }
+  }
 }

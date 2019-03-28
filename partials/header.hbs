@@ -1,4 +1,4 @@
-<header id="header" class="header">
+<header {{^is "tag,author"}}id="header"{{/is}} class="header {{#is "tag,author"}}has-shadow{{/is}}">
     <nav class="header-wrap u-flex u-margin-0-15">
         {{!-- Logo --}}
         <div class="logo u-flex0 u-flexCenter">
