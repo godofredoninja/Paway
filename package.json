@@ -1,6 +1,6 @@
 {
   "name": "paway",
-  "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
+  "description": "Personal blogging theme for Ghost. Beautiful, minimal and responsive.",
   "demo": "https://godofredo.ninja",
   "version": "0.0.1",
   "engines": {
@@ -22,21 +22,24 @@
     "categories": [
       "Minimal",
       "Blog",
-      "Magazine"
+      "Magazine",
+      "photographer",
+      "travel"
     ]
   },
   "keywords": [
     "ghost",
     "theme",
+    "photographer",
     "godofredo",
     "ghost-theme"
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/godofredoninja/Paway.git"
   },
-  "bugs": "",
-  "contributors": "",
+  "bugs": "https://github.com/godofredoninja/Paway/issues",
+  "contributors": "https://github.com/godofredoninja/Paway/network/dependencies",
   "config": {
     "posts_per_page": 12,
     "image_sizes": {
