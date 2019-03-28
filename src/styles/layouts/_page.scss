@@ -1,0 +1,24 @@
+.page {
+  margin-bottom: 64px;
+
+  &-header {
+    height: 380px;
+  }
+
+  &-title {
+    color: #fff;
+    border-bottom: solid 2px $color-text-3;
+    font-weight: 700;
+    // font-size: 3rem;
+  }
+
+  &-img {
+    filter: brightness(80%)
+  }
+
+  &.not-img {
+    .page-header { height: auto; margin: 4.375rem auto }
+
+    .page-title { color: #000 }
+  }
+}
