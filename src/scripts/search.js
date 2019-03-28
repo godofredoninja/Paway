@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const $openSearch = document.getElementById('search-open');
   const $closeSearch = document.getElementById('search-close');
-  const $search = document.getElementById('search');
+  // const $search = document.getElementById('search');
 
   const mySearchSettings = {
     input: '#search-input',
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Open search */
   $openSearch.addEventListener('click', e =>  {
-    $search.classList.remove('u-hide');
+    // $search.classList.remove('u-hide');
     document.body.classList.add('is-search');
     e.preventDefault();
   });
 
   /* Close Serach */
   $closeSearch.addEventListener('click', e =>  {
-    $search.classList.add('u-hide');
+    // $search.classList.add('u-hide');
     document.body.classList.remove('is-search');
     e.preventDefault();
   });

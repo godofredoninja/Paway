@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f5599c0d0ec87ce09460"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e66e64391acb492ac9bf"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2404,7 +2404,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var $openSearch = document.getElementById('search-open');
   var $closeSearch = document.getElementById('search-close');
-  var $search = document.getElementById('search');
+  // const $search = document.getElementById('search');
 
   var mySearchSettings = {
     input: '#search-input',
@@ -2418,14 +2418,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* Open search */
   $openSearch.addEventListener('click', function (e) {
-    $search.classList.remove('u-hide');
+    // $search.classList.remove('u-hide');
     document.body.classList.add('is-search');
     e.preventDefault();
   });
 
   /* Close Serach */
   $closeSearch.addEventListener('click', function (e) {
-    $search.classList.add('u-hide');
+    // $search.classList.add('u-hide');
     document.body.classList.remove('is-search');
     e.preventDefault();
   });
