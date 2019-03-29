@@ -128,7 +128,10 @@ import socialMedia from './app/app.social-media';
    */
   setInterval(() => {
     if (didScroll) {
-      hasScrolled();
+      if ($header !== null) {
+        hasScrolled();
+      }
+
       didScroll = false;
     }
   }, 250);
