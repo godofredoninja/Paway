@@ -126,6 +126,11 @@ i {
   vertical-align: middle;
 }
 
+button,
+input {
+  outline: 0;
+}
+
 // Table
 table {
   border-collapse: collapse;

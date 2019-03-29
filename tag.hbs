@@ -6,7 +6,7 @@ into the {body} of the default.hbs template --}}
     {{!-- Tag --}}
     {{#tag}}
     <header class="pp-header container u-marginTop30">
-        <div class="pp-subtitle">{{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}} {{t "in"}}</div>
+        <div class="pp-subtitle">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
         <h1 class="pp-title">{{name}}</h1>
     </header>
     {{/tag}}

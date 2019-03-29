@@ -108,7 +108,7 @@ li.nav-current > a,
 }
 
 @media #{$xl-and-up} {
-  .header-right, .logo { width: 20% }
+  .header-right, .logo { width: 300px }
 }
 
 @media #{$lg-and-down} {
