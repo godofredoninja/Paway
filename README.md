@@ -1,16 +1,24 @@
 # Paway free theme for [Ghost](https://github.com/tryghost/ghost/)
 
 [![Ghost version](https://img.shields.io/badge/Ghost-2.x-brightgreen.svg)](https://github.com/TryGhost/Ghost)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y7UB5Q8GVN3HN&source=url)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/godofredoninja)
 
 > For fancy people, Photographers and Travel Lovers
 
 Paway theme is for photo blog writers and for those who like to share their stories in a simple and elegant way. The theme has a clean and modern design, using all the browser screen space.
 It is suitable for any kind of blog: personal, fashion, food, travel, photography.
 
-## 🙏 Please, help me with a small donation [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y7UB5Q8GVN3HN&source=url) or [PayPal](https://www.paypal.me/godofredoninja). It'll help motivate me to update the theme with many improvements
+## Please help me. I met a girl on the Internet and we are a couple, now I want to travel to her country.  The money will be used for travel expenses
 
-[![donate](./assets/images/donate.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y7UB5Q8GVN3HN&source=url)
+### The campaign is being launched on [https://www.gofundme.com/](https://www.gofundme.com/manage/por-favor-ayudame-quiero-conocer-a-worapitcha/). Here is the link where you can learn more about my story
+
+[Help me. I want to travel and meet Worapitcha](https://www.gofundme.com/manage/por-favor-ayudame-quiero-conocer-a-worapitcha)
+
+### You can also help me with donations in [PayPal](https://www.paypal.me/godofredoninja). If you don't have Paypal you can do it through [this link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJBVP2C9HTCSY&source=url)
+
+### Please, I tell you with my heart, help me
+
+[![donate](./assets/images/donate.gif)](https://www.paypal.me/godofredoninja)
 
 ---
 
@@ -37,7 +45,7 @@ It is suitable for any kind of blog: personal, fashion, food, travel, photograph
 ## Table of Contents
 
 - [Ghost Settings](#ghost-settings)
-- [Paway Settings](#mapache-settings)
+- [Paway Settings](#paway-settings)
   - [Social Media](#social-media)
   - [Instagram](#instagram)
   - [Comments](#comments)
@@ -83,6 +91,7 @@ Add the Social Links only for the services you want to appear in the header sect
   };
 </script>
 ```
+
 ### Instagram
 
 I get the last 10 images then show 6 randomly It will only be shown in the footer
