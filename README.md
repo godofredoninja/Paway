@@ -8,15 +8,7 @@
 Paway theme is for photo blog writers and for those who like to share their stories in a simple and elegant way. The theme has a clean and modern design, using all the browser screen space.
 It is suitable for any kind of blog: personal, fashion, food, travel, photography.
 
-## Please help me. I need to raise $10,000. I met a girl on the Internet and we are a couple, now I want to travel to her country.  The money will be used for travel expenses
-
-### The campaign is being launched on [gofundme.com](https://www.gofundme.com/por-favor-ayudame-quiero-conocer-a-worapitcha/). Here is the link where you can learn more about my story
-
-[Help me. I want to travel and meet Worapitcha](https://www.gofundme.com/por-favor-ayudame-quiero-conocer-a-worapitcha/)
-
-### You can also help me with donations in [PayPal](https://www.paypal.me/godofredoninja). If you don't have Paypal you can do it through [this link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJBVP2C9HTCSY&source=url)
-
-### Please, I tell you with my heart, help me
+## 🙏 Please, help me with a small donation [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJBVP2C9HTCSY&source=url) or [PayPal](https://www.paypal.me/godofredoninja). It'll help motivate me to update the theme with many improvements
 
 [![donate](./assets/images/donate.gif)](https://www.paypal.me/godofredoninja)
 
