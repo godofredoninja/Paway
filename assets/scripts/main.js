@@ -1,5 +1,1082 @@
-/*!
- * paway v0.0.2
- * Copyright 2019 GodoFredo <hello@godofredo.ninja> (https://github.com/godofredoninja/Paway.git)
- * Licensed under GPLv3
- */!function i(o,s,l){function c(t,e){if(!s[t]){if(!o[t]){var r="function"==typeof require&&require;if(!e&&r)return r(t,!0);if(u)return u(t,!0);var a=new Error("Cannot find module '"+t+"'");throw a.code="MODULE_NOT_FOUND",a}var n=s[t]={exports:{}};o[t][0].call(n.exports,function(e){return c(o[t][1][e]||e)},n,n.exports,i,o,s,l)}return s[t].exports}for(var u="function"==typeof require&&require,e=0;e<l.length;e++)c(l[e]);return c}({1:[function(e,t,r){t.exports=function(e){if(Array.isArray(e))return e}},{}],2:[function(e,t,r){t.exports=function(e){return e&&e.__esModule?e:{default:e}}},{}],3:[function(e,t,r){t.exports=function(e,t){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e)){var r=[],a=!0,n=!1,i=void 0;try{for(var o,s=e[Symbol.iterator]();!(a=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);a=!0);}catch(e){n=!0,i=e}finally{try{a||null==s.return||s.return()}finally{if(n)throw i}}return r}}},{}],4:[function(e,t,r){t.exports=function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}},{}],5:[function(e,t,r){var a=e("./arrayWithHoles"),n=e("./iterableToArrayLimit"),i=e("./nonIterableRest");t.exports=function(e,t){return a(e)||n(e,t)||i()}},{"./arrayWithHoles":1,"./iterableToArrayLimit":3,"./nonIterableRest":4}],6:[function(e,t,r){function a(e){return"function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?t.exports=a=function(e){return typeof e}:t.exports=a=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a(e)}t.exports=a},{}],7:[function(e,t,r){var a,n;a="undefined"!=typeof window?window:{},n=function(c,R,u){"use strict";var W,I;if(function(){var e;var t={lazyClass:"lazyload",loadedClass:"lazyloaded",loadingClass:"lazyloading",preloadClass:"lazypreload",errorClass:"lazyerror",autosizesClass:"lazyautosizes",srcAttr:"data-src",srcsetAttr:"data-srcset",sizesAttr:"data-sizes",minSize:40,customMedia:{},init:true,expFactor:1.5,hFac:.8,loadMode:2,loadHidden:true,ricTimeout:0,throttleDelay:125};I=c.lazySizesConfig||c.lazysizesConfig||{};for(e in t){if(!(e in I)){I[e]=t[e]}}}(),!R||!R.getElementsByClassName){return{init:function(){},cfg:I,noSupport:true}}var O=R.documentElement,a=c.HTMLPictureElement,j="addEventListener",D="getAttribute",H=c[j].bind(c),P=c.setTimeout,$=c.requestAnimationFrame||P,s=c.requestIdleCallback,U=/^picture$/i,n=["load","error","lazyincluded","_lazyloaded"],r={},G=Array.prototype.forEach,J=function(e,t){if(!r[t]){r[t]=new RegExp("(\\s|^)"+t+"(\\s|$)")}return r[t].test(e[D]("class")||"")&&r[t]},K=function(e,t){if(!J(e,t)){e.setAttribute("class",(e[D]("class")||"").trim()+" "+t)}},Q=function(e,t){var r;if(r=J(e,t)){e.setAttribute("class",(e[D]("class")||"").replace(r," "))}},V=function(t,r,e){var a=e?j:"removeEventListener";if(e){V(t,r)}n.forEach(function(e){t[a](e,r)})},X=function(e,t,r,a,n){var i=R.createEvent("Event");if(!r){r={}}r.instance=W;i.initEvent(t,!a,!n);i.detail=r;e.dispatchEvent(i);return i},Y=function(e,t){var r;if(!a&&(r=c.picturefill||I.pf)){if(t&&t.src&&!e[D]("srcset")){e.setAttribute("srcset",t.src)}r({reevaluate:true,elements:[e]})}else if(t&&t.src){e.src=t.src}},Z=function(e,t){return(getComputedStyle(e,null)||{})[t]},o=function(e,t,r){r=r||e.offsetWidth;while(r<I.minSize&&t&&!e._lazysizesWidth){r=t.offsetWidth;t=t.parentNode}return r},ee=function(){var r,a;var t=[];var n=[];var i=t;var o=function(){var e=i;i=t.length?n:t;r=true;a=false;while(e.length){e.shift()()}r=false};var e=function(e,t){if(r&&!t){e.apply(this,arguments)}else{i.push(e);if(!a){a=true;(R.hidden?P:$)(o)}}};e._lsFlush=o;return e}(),te=function(r,e){return e?function(){ee(r)}:function(){var e=this;var t=arguments;ee(function(){r.apply(e,t)})}},re=function(e){var r;var a=0;var n=I.throttleDelay;var i=I.ricTimeout;var t=function(){r=false;a=u.now();e()};var o=s&&i>49?function(){s(t,{timeout:i});if(i!==I.ricTimeout){i=I.ricTimeout}}:te(function(){P(t)},true);return function(e){var t;if(e=e===true){i=33}if(r){return}r=true;t=n-(u.now()-a);if(t<0){t=0}if(e||t<9){o()}else{P(o,t)}}},ae=function(e){var t,r;var a=99;var n=function(){t=null;e()};var i=function(){var e=u.now()-r;if(e<a){P(i,a-e)}else{(s||n)(n)}};return function(){r=u.now();if(!t){t=P(i,a)}}},e=function(){var m,v,f,p,e;var y,h,g,b,z,E,C;var i=/^img$/i;var d=/^iframe$/i;var w="onscroll"in c&&!/(gle|ing)bot/.test(navigator.userAgent);var A=0;var _=0;var S=0;var M=-1;var x=function(e){S--;if(!e||S<0||!e.target){S=0}};var L=function(e){if(C==null){C=Z(R.body,"visibility")=="hidden"}return C||!(Z(e.parentNode,"visibility")=="hidden"&&Z(e,"visibility")=="hidden")};var N=function(e,t){var r;var a=e;var n=L(e);g-=t;E+=t;b-=t;z+=t;while(n&&(a=a.offsetParent)&&a!=R.body&&a!=O){n=(Z(a,"opacity")||1)>0;if(n&&Z(a,"overflow")!="visible"){r=a.getBoundingClientRect();n=z>r.left&&b<r.right&&E>r.top-1&&g<r.bottom+1}}return n};var t=function(){var e,t,r,a,n,i,o,s,l,c,u,f;var d=W.elements;if((p=I.loadMode)&&S<8&&(e=d.length)){t=0;M++;for(;t<e;t++){if(!d[t]||d[t]._lazyRace){continue}if(!w||W.prematureUnveil&&W.prematureUnveil(d[t])){B(d[t]);continue}if(!(s=d[t][D]("data-expand"))||!(i=s*1)){i=_}if(!c){c=!I.expand||I.expand<1?O.clientHeight>500&&O.clientWidth>500?500:370:I.expand;W._defEx=c;u=c*I.expFactor;f=I.hFac;C=null;if(_<u&&S<1&&M>2&&p>2&&!R.hidden){_=u;M=0}else if(p>1&&M>1&&S<6){_=c}else{_=A}}if(l!==i){y=innerWidth+i*f;h=innerHeight+i;o=i*-1;l=i}r=d[t].getBoundingClientRect();if((E=r.bottom)>=o&&(g=r.top)<=h&&(z=r.right)>=o*f&&(b=r.left)<=y&&(E||z||b||g)&&(I.loadHidden||L(d[t]))&&(v&&S<3&&!s&&(p<3||M<4)||N(d[t],i))){B(d[t]);n=true;if(S>9){break}}else if(!n&&v&&!a&&S<4&&M<4&&p>2&&(m[0]||I.preloadAfterLoad)&&(m[0]||!s&&(E||z||b||g||d[t][D](I.sizesAttr)!="auto"))){a=m[0]||d[t]}}if(a&&!n){B(a)}}};var r=re(t);var k=function(e){var t=e.target;if(t._lazyCache){delete t._lazyCache;return}x(e);K(t,I.loadedClass);Q(t,I.loadingClass);V(t,q);X(t,"lazyloaded")};var a=te(k);var q=function(e){a({target:e.target})};var T=function(t,r){try{t.contentWindow.location.replace(r)}catch(e){t.src=r}};var F=function(e){var t;var r=e[D](I.srcsetAttr);if(t=I.customMedia[e[D]("data-media")||e[D]("media")]){e.setAttribute("media",t)}if(r){e.setAttribute("srcset",r)}};var o=te(function(t,e,r,a,n){var i,o,s,l,c,u;if(!(c=X(t,"lazybeforeunveil",e)).defaultPrevented){if(a){if(r){K(t,I.autosizesClass)}else{t.setAttribute("sizes",a)}}o=t[D](I.srcsetAttr);i=t[D](I.srcAttr);if(n){s=t.parentNode;l=s&&U.test(s.nodeName||"")}u=e.firesLoad||"src"in t&&(o||i||l);c={target:t};K(t,I.loadingClass);if(u){clearTimeout(f);f=P(x,2500);V(t,q,true)}if(l){G.call(s.getElementsByTagName("source"),F)}if(o){t.setAttribute("srcset",o)}else if(i&&!l){if(d.test(t.nodeName)){T(t,i)}else{t.src=i}}if(n&&(o||l)){Y(t,{src:i})}}if(t._lazyRace){delete t._lazyRace}Q(t,I.lazyClass);ee(function(){var e=t.complete&&t.naturalWidth>1;if(!u||e){if(e){K(t,"ls-is-cached")}k(c);t._lazyCache=true;P(function(){if("_lazyCache"in t){delete t._lazyCache}},9)}if(t.loading=="lazy"){S--}},true)});var B=function(e){if(e._lazyRace){return}var t;var r=i.test(e.nodeName);var a=r&&(e[D](I.sizesAttr)||e[D]("sizes"));var n=a=="auto";if((n||!v)&&r&&(e[D]("src")||e.srcset)&&!e.complete&&!J(e,I.errorClass)&&J(e,I.lazyClass)){return}t=X(e,"lazyunveilread").detail;if(n){ne.updateElem(e,true,e.offsetWidth)}e._lazyRace=true;S++;o(e,t,n,a,r)};var n=ae(function(){I.loadMode=3;r()});var s=function(){if(I.loadMode==3){I.loadMode=2}n()};var l=function(){if(v){return}if(u.now()-e<999){P(l,999);return}v=true;I.loadMode=3;r();H("scroll",s,true)};return{_:function(){e=u.now();W.elements=R.getElementsByClassName(I.lazyClass);m=R.getElementsByClassName(I.lazyClass+" "+I.preloadClass);H("scroll",r,true);H("resize",r,true);H("pageshow",function(e){if(e.persisted){var t=R.querySelectorAll("."+I.loadingClass);if(t.length&&t.forEach){$(function(){t.forEach(function(e){if(e.complete){B(e)}})})}}});if(c.MutationObserver){new MutationObserver(r).observe(O,{childList:true,subtree:true,attributes:true})}else{O[j]("DOMNodeInserted",r,true);O[j]("DOMAttrModified",r,true);setInterval(r,999)}H("hashchange",r,true);["focus","mouseover","click","load","transitionend","animationend"].forEach(function(e){R[j](e,r,true)});if(/d$|^c/.test(R.readyState)){l()}else{H("load",l);R[j]("DOMContentLoaded",r);P(l,2e4)}if(W.elements.length){t();ee._lsFlush()}else{r()}},checkElems:r,unveil:B,_aLSL:s}}(),ne=function(){var r;var i=te(function(e,t,r,a){var n,i,o;e._lazysizesWidth=a;a+="px";e.setAttribute("sizes",a);if(U.test(t.nodeName||"")){n=t.getElementsByTagName("source");for(i=0,o=n.length;i<o;i++){n[i].setAttribute("sizes",a)}}if(!r.detail.dataAttr){Y(e,r.detail)}});var a=function(e,t,r){var a;var n=e.parentNode;if(n){r=o(e,n,r);a=X(e,"lazybeforesizes",{width:r,dataAttr:!!t});if(!a.defaultPrevented){r=a.detail.width;if(r&&r!==e._lazysizesWidth){i(e,n,a,r)}}}};var e=function(){var e;var t=r.length;if(t){e=0;for(;e<t;e++){a(r[e])}}};var t=ae(e);return{_:function(){r=R.getElementsByClassName(I.autosizesClass);H("resize",t)},checkElems:t,updateElem:a}}(),t=function(){if(!t.i&&R.getElementsByClassName){t.i=true;ne._();e._()}};return P(function(){I.init&&t()}),W={cfg:I,autoSizer:ne,loader:e,init:t,uP:Y,aC:K,rC:Q,hC:J,fire:X,gW:o,rAF:ee}}(a,a.document,Date),a.lazySizes=n,"object"==typeof t&&t.exports&&(t.exports=n)},{}],8:[function(e,t,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.default=void 0;function a(e,t){var r=e.data.map(function(e){return[Math.random(),e]}).sort(function(e,t){return e[0]-t[0]}).map(function(e){return e[1]}).slice(0,6);document.querySelector(".instagram").classList.remove("u-hide");var a=document.querySelector(".instagram-wrap");document.querySelector(".instagram-name").innerHTML=t,r.map(function(e){var t,r='<div class="instagram-col col s6 m4 l2">\n  <a href="'.concat((t=e).link,'" class="instagram-img u-relative u-block" target="_blank" rel="noopener noreferrer">\n    <img class="u-absolute u-image u-block lazyload" data-src="').concat(t.images.standard_resolution.url,'"/>\n  </a>\n</div>');a.innerHTML+=r})}r.default=function(e,t){fetch(e).then(function(e){return e.json()}).then(function(e){return a(e,t)}).catch(function(){return document.querySelector(".instagram").remove()})}},{}],9:[function(e,t,r){"use strict";var a=e("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(r,"__esModule",{value:!0}),r.default=void 0;var c=a(e("@babel/runtime/helpers/slicedToArray"));r.default=function(e){var l=/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/;function t(s){Object.entries(e).forEach(function(e){var t,r=(0,c.default)(e,2),a=r[0],n=r[1];if("string"==typeof n&&l.test(n)){var i=(t=a,'<a href="'.concat(n,'" title="Follow me in ').concat(t,'" target="_blank" rel="noopener noreferrer"><i class="i-').concat(t,'"></i><span>').concat(t,"</span></a>")),o=document.createElement("li");o.innerHTML=i,s.appendChild(o)}})}document.querySelectorAll(".social-media").forEach(function(e){return t(e)})}},{"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/slicedToArray":5}],10:[function(e,t,r){"use strict";var a=e("@babel/runtime/helpers/interopRequireDefault"),f=a(e("@babel/runtime/helpers/typeof"));e("lazysizes");var d=a(e("./app/app.instagram")),m=a(e("./app/app.social-media"));!function(e,r){function t(){return a.classList.toggle("has-sidenav")}var a=r.body,n=r.getElementById("header"),i=!1;if(r.getElementById("menu-toggle").addEventListener("click",t),r.getElementById("sidenav-close").addEventListener("click",t),"object"===("undefined"==typeof followSocialMedia?"undefined":(0,f.default)(followSocialMedia))&&null!==followSocialMedia&&(0,m.default)(followSocialMedia),"object"===("undefined"==typeof instagramFeed?"undefined":(0,f.default)(instagramFeed))&&null!==instagramFeed){var o="https://api.instagram.com/v1/users/".concat(instagramFeed.userId,"/media/recent/?access_token=").concat(instagramFeed.token,"&count=10&callback=?"),s='<a href="https://www.instagram.com/'.concat(instagramFeed.userName,'" class="instagram-btn" target="_blank" rel="noopener noreferrer"><i class="i-instagram"></i> ').concat(instagramFeed.userName,"</a>");768<e.innerWidth&&(0,d.default)(o,s)}if(a.classList.contains("is-article")){var l=r.querySelectorAll(".kg-gallery-image img"),c=r.getElementById("post-body").querySelectorAll(['iframe[src*="player.vimeo.com"]','iframe[src*="dailymotion.com"]','iframe[src*="youtube.com"]','iframe[src*="youtube-nocookie.com"]','iframe[src*="vid.me"]','iframe[src*="kickstarter.com"][src*="video.html"]'].join(","));if(r.querySelectorAll(".post-body a img").forEach(function(e){return e.classList.add("no-lightense")}),new Lightense("#post-body img:not(.no-lightense)",lightenseArgs),c.length&&c.forEach(function(e){var t=r.createElement("div");t.className="video-responsive",e.parentNode.insertBefore(t,e),t.appendChild(e)}),l.forEach(function(e){var t=e.closest(".kg-gallery-image"),r=e.attributes.width.value/e.attributes.height.value;t.style.flex=r+" 1 0%"}),r.getElementById("post-body").querySelectorAll('code[class*="language-"]').length){var u=r.createElement("script");u.src="".concat(siteUrl,"/assets/scripts/prism.js"),u.defer=!0,a.appendChild(u)}}e.addEventListener("scroll",function(){return i=!0}),setInterval(function(){i&&(null!==n&&(60<a.scrollTop||60<r.documentElement.scrollTop?n.classList.add("has-shadow"):n.classList.remove("has-shadow")),i=!1)},250)}(window,document)},{"./app/app.instagram":8,"./app/app.social-media":9,"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/typeof":6,lazysizes:7}]},{},[10]);
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+},{}],2:[function(require,module,exports){
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+},{}],3:[function(require,module,exports){
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+},{}],4:[function(require,module,exports){
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+module.exports = _nonIterableRest;
+},{}],5:[function(require,module,exports){
+var arrayWithHoles = require("./arrayWithHoles");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit");
+
+var nonIterableRest = require("./nonIterableRest");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+},{"./arrayWithHoles":1,"./iterableToArrayLimit":3,"./nonIterableRest":4}],6:[function(require,module,exports){
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+},{}],7:[function(require,module,exports){
+(function(window, factory) {
+	var lazySizes = factory(window, window.document, Date);
+	window.lazySizes = lazySizes;
+	if(typeof module == 'object' && module.exports){
+		module.exports = lazySizes;
+	}
+}(typeof window != 'undefined' ?
+      window : {}, function l(window, document, Date) { // Pass in the windoe Date function also for SSR because the Date class can be lost
+	'use strict';
+	/*jshint eqnull:true */
+
+	var lazysizes, lazySizesCfg;
+
+	(function(){
+		var prop;
+
+		var lazySizesDefaults = {
+			lazyClass: 'lazyload',
+			loadedClass: 'lazyloaded',
+			loadingClass: 'lazyloading',
+			preloadClass: 'lazypreload',
+			errorClass: 'lazyerror',
+			//strictClass: 'lazystrict',
+			autosizesClass: 'lazyautosizes',
+			srcAttr: 'data-src',
+			srcsetAttr: 'data-srcset',
+			sizesAttr: 'data-sizes',
+			//preloadAfterLoad: false,
+			minSize: 40,
+			customMedia: {},
+			init: true,
+			expFactor: 1.5,
+			hFac: 0.8,
+			loadMode: 2,
+			loadHidden: true,
+			ricTimeout: 0,
+			throttleDelay: 125,
+		};
+
+		lazySizesCfg = window.lazySizesConfig || window.lazysizesConfig || {};
+
+		for(prop in lazySizesDefaults){
+			if(!(prop in lazySizesCfg)){
+				lazySizesCfg[prop] = lazySizesDefaults[prop];
+			}
+		}
+	})();
+
+	if (!document || !document.getElementsByClassName) {
+		return {
+			init: function () {},
+			cfg: lazySizesCfg,
+			noSupport: true,
+		};
+	}
+
+	var docElem = document.documentElement;
+
+	var supportPicture = window.HTMLPictureElement;
+
+	var _addEventListener = 'addEventListener';
+
+	var _getAttribute = 'getAttribute';
+
+	/**
+	 * Update to bind to window because 'this' becomes null during SSR
+	 * builds.
+	 */
+	var addEventListener = window[_addEventListener].bind(window);
+
+	var setTimeout = window.setTimeout;
+
+	var requestAnimationFrame = window.requestAnimationFrame || setTimeout;
+
+	var requestIdleCallback = window.requestIdleCallback;
+
+	var regPicture = /^picture$/i;
+
+	var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
+
+	var regClassCache = {};
+
+	var forEach = Array.prototype.forEach;
+
+	var hasClass = function(ele, cls) {
+		if(!regClassCache[cls]){
+			regClassCache[cls] = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		}
+		return regClassCache[cls].test(ele[_getAttribute]('class') || '') && regClassCache[cls];
+	};
+
+	var addClass = function(ele, cls) {
+		if (!hasClass(ele, cls)){
+			ele.setAttribute('class', (ele[_getAttribute]('class') || '').trim() + ' ' + cls);
+		}
+	};
+
+	var removeClass = function(ele, cls) {
+		var reg;
+		if ((reg = hasClass(ele,cls))) {
+			ele.setAttribute('class', (ele[_getAttribute]('class') || '').replace(reg, ' '));
+		}
+	};
+
+	var addRemoveLoadEvents = function(dom, fn, add){
+		var action = add ? _addEventListener : 'removeEventListener';
+		if(add){
+			addRemoveLoadEvents(dom, fn);
+		}
+		loadEvents.forEach(function(evt){
+			dom[action](evt, fn);
+		});
+	};
+
+	var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
+		var event = document.createEvent('Event');
+
+		if(!detail){
+			detail = {};
+		}
+
+		detail.instance = lazysizes;
+
+		event.initEvent(name, !noBubbles, !noCancelable);
+
+		event.detail = detail;
+
+		elem.dispatchEvent(event);
+		return event;
+	};
+
+	var updatePolyfill = function (el, full){
+		var polyfill;
+		if( !supportPicture && ( polyfill = (window.picturefill || lazySizesCfg.pf) ) ){
+			if(full && full.src && !el[_getAttribute]('srcset')){
+				el.setAttribute('srcset', full.src);
+			}
+			polyfill({reevaluate: true, elements: [el]});
+		} else if(full && full.src){
+			el.src = full.src;
+		}
+	};
+
+	var getCSS = function (elem, style){
+		return (getComputedStyle(elem, null) || {})[style];
+	};
+
+	var getWidth = function(elem, parent, width){
+		width = width || elem.offsetWidth;
+
+		while(width < lazySizesCfg.minSize && parent && !elem._lazysizesWidth){
+			width =  parent.offsetWidth;
+			parent = parent.parentNode;
+		}
+
+		return width;
+	};
+
+	var rAF = (function(){
+		var running, waiting;
+		var firstFns = [];
+		var secondFns = [];
+		var fns = firstFns;
+
+		var run = function(){
+			var runFns = fns;
+
+			fns = firstFns.length ? secondFns : firstFns;
+
+			running = true;
+			waiting = false;
+
+			while(runFns.length){
+				runFns.shift()();
+			}
+
+			running = false;
+		};
+
+		var rafBatch = function(fn, queue){
+			if(running && !queue){
+				fn.apply(this, arguments);
+			} else {
+				fns.push(fn);
+
+				if(!waiting){
+					waiting = true;
+					(document.hidden ? setTimeout : requestAnimationFrame)(run);
+				}
+			}
+		};
+
+		rafBatch._lsFlush = run;
+
+		return rafBatch;
+	})();
+
+	var rAFIt = function(fn, simple){
+		return simple ?
+			function() {
+				rAF(fn);
+			} :
+			function(){
+				var that = this;
+				var args = arguments;
+				rAF(function(){
+					fn.apply(that, args);
+				});
+			}
+		;
+	};
+
+	var throttle = function(fn){
+		var running;
+		var lastTime = 0;
+		var gDelay = lazySizesCfg.throttleDelay;
+		var rICTimeout = lazySizesCfg.ricTimeout;
+		var run = function(){
+			running = false;
+			lastTime = Date.now();
+			fn();
+		};
+		var idleCallback = requestIdleCallback && rICTimeout > 49 ?
+			function(){
+				requestIdleCallback(run, {timeout: rICTimeout});
+
+				if(rICTimeout !== lazySizesCfg.ricTimeout){
+					rICTimeout = lazySizesCfg.ricTimeout;
+				}
+			} :
+			rAFIt(function(){
+				setTimeout(run);
+			}, true)
+		;
+
+		return function(isPriority){
+			var delay;
+
+			if((isPriority = isPriority === true)){
+				rICTimeout = 33;
+			}
+
+			if(running){
+				return;
+			}
+
+			running =  true;
+
+			delay = gDelay - (Date.now() - lastTime);
+
+			if(delay < 0){
+				delay = 0;
+			}
+
+			if(isPriority || delay < 9){
+				idleCallback();
+			} else {
+				setTimeout(idleCallback, delay);
+			}
+		};
+	};
+
+	//based on http://modernjavascript.blogspot.de/2013/08/building-better-debounce.html
+	var debounce = function(func) {
+		var timeout, timestamp;
+		var wait = 99;
+		var run = function(){
+			timeout = null;
+			func();
+		};
+		var later = function() {
+			var last = Date.now() - timestamp;
+
+			if (last < wait) {
+				setTimeout(later, wait - last);
+			} else {
+				(requestIdleCallback || run)(run);
+			}
+		};
+
+		return function() {
+			timestamp = Date.now();
+
+			if (!timeout) {
+				timeout = setTimeout(later, wait);
+			}
+		};
+	};
+
+	var loader = (function(){
+		var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
+
+		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom, isBodyHidden;
+
+		var regImg = /^img$/i;
+		var regIframe = /^iframe$/i;
+
+		var supportScroll = ('onscroll' in window) && !(/(gle|ing)bot/.test(navigator.userAgent));
+
+		var shrinkExpand = 0;
+		var currentExpand = 0;
+
+		var isLoading = 0;
+		var lowRuns = -1;
+
+		var resetPreloading = function(e){
+			isLoading--;
+			if(!e || isLoading < 0 || !e.target){
+				isLoading = 0;
+			}
+		};
+
+		var isVisible = function (elem) {
+			if (isBodyHidden == null) {
+				isBodyHidden = getCSS(document.body, 'visibility') == 'hidden';
+			}
+
+			return isBodyHidden || !(getCSS(elem.parentNode, 'visibility') == 'hidden' && getCSS(elem, 'visibility') == 'hidden');
+		};
+
+		var isNestedVisible = function(elem, elemExpand){
+			var outerRect;
+			var parent = elem;
+			var visible = isVisible(elem);
+
+			eLtop -= elemExpand;
+			eLbottom += elemExpand;
+			eLleft -= elemExpand;
+			eLright += elemExpand;
+
+			while(visible && (parent = parent.offsetParent) && parent != document.body && parent != docElem){
+				visible = ((getCSS(parent, 'opacity') || 1) > 0);
+
+				if(visible && getCSS(parent, 'overflow') != 'visible'){
+					outerRect = parent.getBoundingClientRect();
+					visible = eLright > outerRect.left &&
+						eLleft < outerRect.right &&
+						eLbottom > outerRect.top - 1 &&
+						eLtop < outerRect.bottom + 1
+					;
+				}
+			}
+
+			return visible;
+		};
+
+		var checkElements = function() {
+			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal,
+				beforeExpandVal, defaultExpand, preloadExpand, hFac;
+			var lazyloadElems = lazysizes.elements;
+
+			if((loadMode = lazySizesCfg.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
+
+				i = 0;
+
+				lowRuns++;
+
+				for(; i < eLlen; i++){
+
+					if(!lazyloadElems[i] || lazyloadElems[i]._lazyRace){continue;}
+
+					if(!supportScroll || (lazysizes.prematureUnveil && lazysizes.prematureUnveil(lazyloadElems[i]))){unveilElement(lazyloadElems[i]);continue;}
+
+					if(!(elemExpandVal = lazyloadElems[i][_getAttribute]('data-expand')) || !(elemExpand = elemExpandVal * 1)){
+						elemExpand = currentExpand;
+					}
+
+					if (!defaultExpand) {
+						defaultExpand = (!lazySizesCfg.expand || lazySizesCfg.expand < 1) ?
+							docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370 :
+							lazySizesCfg.expand;
+
+						lazysizes._defEx = defaultExpand;
+
+						preloadExpand = defaultExpand * lazySizesCfg.expFactor;
+						hFac = lazySizesCfg.hFac;
+						isBodyHidden = null;
+
+						if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden){
+							currentExpand = preloadExpand;
+							lowRuns = 0;
+						} else if(loadMode > 1 && lowRuns > 1 && isLoading < 6){
+							currentExpand = defaultExpand;
+						} else {
+							currentExpand = shrinkExpand;
+						}
+					}
+
+					if(beforeExpandVal !== elemExpand){
+						eLvW = innerWidth + (elemExpand * hFac);
+						elvH = innerHeight + elemExpand;
+						elemNegativeExpand = elemExpand * -1;
+						beforeExpandVal = elemExpand;
+					}
+
+					rect = lazyloadElems[i].getBoundingClientRect();
+
+					if ((eLbottom = rect.bottom) >= elemNegativeExpand &&
+						(eLtop = rect.top) <= elvH &&
+						(eLright = rect.right) >= elemNegativeExpand * hFac &&
+						(eLleft = rect.left) <= eLvW &&
+						(eLbottom || eLright || eLleft || eLtop) &&
+						(lazySizesCfg.loadHidden || isVisible(lazyloadElems[i])) &&
+						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
+						unveilElement(lazyloadElems[i]);
+						loadedSomething = true;
+						if(isLoading > 9){break;}
+					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
+						isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
+						(preloadElems[0] || lazySizesCfg.preloadAfterLoad) &&
+						(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i][_getAttribute](lazySizesCfg.sizesAttr) != 'auto')))){
+						autoLoadElem = preloadElems[0] || lazyloadElems[i];
+					}
+				}
+
+				if(autoLoadElem && !loadedSomething){
+					unveilElement(autoLoadElem);
+				}
+			}
+		};
+
+		var throttledCheckElements = throttle(checkElements);
+
+		var switchLoadingClass = function(e){
+			var elem = e.target;
+
+			if (elem._lazyCache) {
+				delete elem._lazyCache;
+				return;
+			}
+
+			resetPreloading(e);
+			addClass(elem, lazySizesCfg.loadedClass);
+			removeClass(elem, lazySizesCfg.loadingClass);
+			addRemoveLoadEvents(elem, rafSwitchLoadingClass);
+			triggerEvent(elem, 'lazyloaded');
+		};
+		var rafedSwitchLoadingClass = rAFIt(switchLoadingClass);
+		var rafSwitchLoadingClass = function(e){
+			rafedSwitchLoadingClass({target: e.target});
+		};
+
+		var changeIframeSrc = function(elem, src){
+			try {
+				elem.contentWindow.location.replace(src);
+			} catch(e){
+				elem.src = src;
+			}
+		};
+
+		var handleSources = function(source){
+			var customMedia;
+
+			var sourceSrcset = source[_getAttribute](lazySizesCfg.srcsetAttr);
+
+			if( (customMedia = lazySizesCfg.customMedia[source[_getAttribute]('data-media') || source[_getAttribute]('media')]) ){
+				source.setAttribute('media', customMedia);
+			}
+
+			if(sourceSrcset){
+				source.setAttribute('srcset', sourceSrcset);
+			}
+		};
+
+		var lazyUnveil = rAFIt(function (elem, detail, isAuto, sizes, isImg){
+			var src, srcset, parent, isPicture, event, firesLoad;
+
+			if(!(event = triggerEvent(elem, 'lazybeforeunveil', detail)).defaultPrevented){
+
+				if(sizes){
+					if(isAuto){
+						addClass(elem, lazySizesCfg.autosizesClass);
+					} else {
+						elem.setAttribute('sizes', sizes);
+					}
+				}
+
+				srcset = elem[_getAttribute](lazySizesCfg.srcsetAttr);
+				src = elem[_getAttribute](lazySizesCfg.srcAttr);
+
+				if(isImg) {
+					parent = elem.parentNode;
+					isPicture = parent && regPicture.test(parent.nodeName || '');
+				}
+
+				firesLoad = detail.firesLoad || (('src' in elem) && (srcset || src || isPicture));
+
+				event = {target: elem};
+
+				addClass(elem, lazySizesCfg.loadingClass);
+
+				if(firesLoad){
+					clearTimeout(resetPreloadingTimer);
+					resetPreloadingTimer = setTimeout(resetPreloading, 2500);
+					addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
+				}
+
+				if(isPicture){
+					forEach.call(parent.getElementsByTagName('source'), handleSources);
+				}
+
+				if(srcset){
+					elem.setAttribute('srcset', srcset);
+				} else if(src && !isPicture){
+					if(regIframe.test(elem.nodeName)){
+						changeIframeSrc(elem, src);
+					} else {
+						elem.src = src;
+					}
+				}
+
+				if(isImg && (srcset || isPicture)){
+					updatePolyfill(elem, {src: src});
+				}
+			}
+
+			if(elem._lazyRace){
+				delete elem._lazyRace;
+			}
+			removeClass(elem, lazySizesCfg.lazyClass);
+
+			rAF(function(){
+				// Part of this can be removed as soon as this fix is older: https://bugs.chromium.org/p/chromium/issues/detail?id=7731 (2015)
+				var isLoaded = elem.complete && elem.naturalWidth > 1;
+
+				if( !firesLoad || isLoaded){
+					if (isLoaded) {
+						addClass(elem, 'ls-is-cached');
+					}
+					switchLoadingClass(event);
+					elem._lazyCache = true;
+					setTimeout(function(){
+						if ('_lazyCache' in elem) {
+							delete elem._lazyCache;
+						}
+					}, 9);
+				}
+				if (elem.loading == 'lazy') {
+					isLoading--;
+				}
+			}, true);
+		});
+
+		var unveilElement = function (elem){
+			if (elem._lazyRace) {return;}
+			var detail;
+
+			var isImg = regImg.test(elem.nodeName);
+
+			//allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
+			var sizes = isImg && (elem[_getAttribute](lazySizesCfg.sizesAttr) || elem[_getAttribute]('sizes'));
+			var isAuto = sizes == 'auto';
+
+			if( (isAuto || !isCompleted) && isImg && (elem[_getAttribute]('src') || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesCfg.errorClass) && hasClass(elem, lazySizesCfg.lazyClass)){return;}
+
+			detail = triggerEvent(elem, 'lazyunveilread').detail;
+
+			if(isAuto){
+				 autoSizer.updateElem(elem, true, elem.offsetWidth);
+			}
+
+			elem._lazyRace = true;
+			isLoading++;
+
+			lazyUnveil(elem, detail, isAuto, sizes, isImg);
+		};
+
+		var afterScroll = debounce(function(){
+			lazySizesCfg.loadMode = 3;
+			throttledCheckElements();
+		});
+
+		var altLoadmodeScrollListner = function(){
+			if(lazySizesCfg.loadMode == 3){
+				lazySizesCfg.loadMode = 2;
+			}
+			afterScroll();
+		};
+
+		var onload = function(){
+			if(isCompleted){return;}
+			if(Date.now() - started < 999){
+				setTimeout(onload, 999);
+				return;
+			}
+
+
+			isCompleted = true;
+
+			lazySizesCfg.loadMode = 3;
+
+			throttledCheckElements();
+
+			addEventListener('scroll', altLoadmodeScrollListner, true);
+		};
+
+		return {
+			_: function(){
+				started = Date.now();
+
+				lazysizes.elements = document.getElementsByClassName(lazySizesCfg.lazyClass);
+				preloadElems = document.getElementsByClassName(lazySizesCfg.lazyClass + ' ' + lazySizesCfg.preloadClass);
+
+				addEventListener('scroll', throttledCheckElements, true);
+
+				addEventListener('resize', throttledCheckElements, true);
+
+				addEventListener('pageshow', function (e) {
+					if (e.persisted) {
+						var loadingElements = document.querySelectorAll('.' + lazySizesCfg.loadingClass);
+
+						if (loadingElements.length && loadingElements.forEach) {
+							requestAnimationFrame(function () {
+								loadingElements.forEach( function (img) {
+									if (img.complete) {
+										unveilElement(img);
+									}
+								});
+							});
+						}
+					}
+				});
+
+				if(window.MutationObserver){
+					new MutationObserver( throttledCheckElements ).observe( docElem, {childList: true, subtree: true, attributes: true} );
+				} else {
+					docElem[_addEventListener]('DOMNodeInserted', throttledCheckElements, true);
+					docElem[_addEventListener]('DOMAttrModified', throttledCheckElements, true);
+					setInterval(throttledCheckElements, 999);
+				}
+
+				addEventListener('hashchange', throttledCheckElements, true);
+
+				//, 'fullscreenchange'
+				['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend'].forEach(function(name){
+					document[_addEventListener](name, throttledCheckElements, true);
+				});
+
+				if((/d$|^c/.test(document.readyState))){
+					onload();
+				} else {
+					addEventListener('load', onload);
+					document[_addEventListener]('DOMContentLoaded', throttledCheckElements);
+					setTimeout(onload, 20000);
+				}
+
+				if(lazysizes.elements.length){
+					checkElements();
+					rAF._lsFlush();
+				} else {
+					throttledCheckElements();
+				}
+			},
+			checkElems: throttledCheckElements,
+			unveil: unveilElement,
+			_aLSL: altLoadmodeScrollListner,
+		};
+	})();
+
+
+	var autoSizer = (function(){
+		var autosizesElems;
+
+		var sizeElement = rAFIt(function(elem, parent, event, width){
+			var sources, i, len;
+			elem._lazysizesWidth = width;
+			width += 'px';
+
+			elem.setAttribute('sizes', width);
+
+			if(regPicture.test(parent.nodeName || '')){
+				sources = parent.getElementsByTagName('source');
+				for(i = 0, len = sources.length; i < len; i++){
+					sources[i].setAttribute('sizes', width);
+				}
+			}
+
+			if(!event.detail.dataAttr){
+				updatePolyfill(elem, event.detail);
+			}
+		});
+		var getSizeElement = function (elem, dataAttr, width){
+			var event;
+			var parent = elem.parentNode;
+
+			if(parent){
+				width = getWidth(elem, parent, width);
+				event = triggerEvent(elem, 'lazybeforesizes', {width: width, dataAttr: !!dataAttr});
+
+				if(!event.defaultPrevented){
+					width = event.detail.width;
+
+					if(width && width !== elem._lazysizesWidth){
+						sizeElement(elem, parent, event, width);
+					}
+				}
+			}
+		};
+
+		var updateElementsSizes = function(){
+			var i;
+			var len = autosizesElems.length;
+			if(len){
+				i = 0;
+
+				for(; i < len; i++){
+					getSizeElement(autosizesElems[i]);
+				}
+			}
+		};
+
+		var debouncedUpdateElementsSizes = debounce(updateElementsSizes);
+
+		return {
+			_: function(){
+				autosizesElems = document.getElementsByClassName(lazySizesCfg.autosizesClass);
+				addEventListener('resize', debouncedUpdateElementsSizes);
+			},
+			checkElems: debouncedUpdateElementsSizes,
+			updateElem: getSizeElement
+		};
+	})();
+
+	var init = function(){
+		if(!init.i && document.getElementsByClassName){
+			init.i = true;
+			autoSizer._();
+			loader._();
+		}
+	};
+
+	setTimeout(function(){
+		if(lazySizesCfg.init){
+			init();
+		}
+	});
+
+	lazysizes = {
+		cfg: lazySizesCfg,
+		autoSizer: autoSizer,
+		loader: loader,
+		init: init,
+		uP: updatePolyfill,
+		aC: addClass,
+		rC: removeClass,
+		hC: hasClass,
+		fire: triggerEvent,
+		gW: getWidth,
+		rAF: rAF,
+	};
+
+	return lazysizes;
+}
+));
+
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+// user id => 1397790551
+// token => 1397790551.1aa422d.37dca7d33ba34544941e111aa03e85c7
+// user nname => GodoFredoNinja
+// http://instagram.com/oauth/authorize/?client_id=YOURCLIENTIDHERE&redirect_uri=HTTP://YOURREDIRECTURLHERE.COM&response_type=token
+
+/* Template for images */
+var templateInstagram = function templateInstagram(data) {
+  return "<div class=\"instagram-col col s6 m4 l2\">\n  <a href=\"".concat(data.link, "\" class=\"instagram-img u-relative u-block\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <img class=\"u-absolute u-image u-block lazyload\" data-src=\"").concat(data.images.standard_resolution.url, "\"/>\n  </a>\n</div>");
+}; // Shuffle Array
+
+
+var shuffleInstagram = function shuffleInstagram(arr) {
+  return arr.map(function (a) {
+    return [Math.random(), a];
+  }).sort(function (a, b) {
+    return a[0] - b[0];
+  }).map(function (a) {
+    return a[1];
+  });
+}; // Display Instagram Images
+
+
+var displayInstagram = function displayInstagram(res, user) {
+  var shuffle = shuffleInstagram(res.data);
+  var sf = shuffle.slice(0, 6);
+  document.querySelector('.instagram').classList.remove('u-hide');
+  var box = document.querySelector('.instagram-wrap');
+  document.querySelector('.instagram-name').innerHTML = user; // document.querySelector('.instagram-name').appendChild(user);
+
+  sf.map(function (img) {
+    var images = templateInstagram(img);
+    box.innerHTML += images;
+  });
+};
+
+var _default = function _default(url, user) {
+  // $.get(url).done(function (data){
+  //   console.log('posts', data.data);
+  // }).fail(function (err){
+  //   console.log(err);
+  // });
+  fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (resource) {
+    return displayInstagram(resource, user);
+  })["catch"](function () {
+    return document.querySelector('.instagram').remove();
+  }); // .catch(error => console.log(error))
+};
+
+exports["default"] = _default;
+
+},{}],9:[function(require,module,exports){
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _default = function _default(links) {
+  var urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
+
+  var templateSocialMedia = function templateSocialMedia(name, url) {
+    return "<a href=\"".concat(url, "\" title=\"Follow me in ").concat(name, "\" target=\"_blank\" rel=\"noopener noreferrer\"><i class=\"i-").concat(name, "\"></i><span>").concat(name, "</span></a>");
+  };
+
+  function createPasteElement(parent) {
+    Object.entries(links).forEach(function (_ref) {
+      var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
+          name = _ref2[0],
+          url = _ref2[1];
+
+      if (typeof url === 'string' && urlRegexp.test(url)) {
+        var template = templateSocialMedia(name, url);
+        var li = document.createElement('li');
+        li.innerHTML = template;
+        parent.appendChild(li);
+      }
+    });
+  }
+
+  document.querySelectorAll('.social-media').forEach(function (el) {
+    return createPasteElement(el);
+  });
+};
+
+exports["default"] = _default;
+
+},{"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/slicedToArray":5}],10:[function(require,module,exports){
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+
+require("lazysizes");
+
+var _app = _interopRequireDefault(require("./app/app.instagram"));
+
+var _app2 = _interopRequireDefault(require("./app/app.social-media"));
+
+/* global instagramFeed followSocialMedia siteUrl */
+// import external dependencies
+// Image Zoom
+// import Lightense from 'lightense-images';
+// Impost App
+(function (window, document) {
+  /* Variables */
+  var $body = document.body;
+  var $header = document.getElementById('header');
+  /* Variables Boolean */
+
+  var didScroll = false;
+  /* Variables Object or Arrays */
+
+  /* Iframe SRC video */
+
+  var iframeVideo = ['iframe[src*="player.vimeo.com"]', 'iframe[src*="dailymotion.com"]', 'iframe[src*="youtube.com"]', 'iframe[src*="youtube-nocookie.com"]', 'iframe[src*="vid.me"]', 'iframe[src*="kickstarter.com"][src*="video.html"]']; // Setting Image Zoom
+  // const lightenseArgs = {
+  //   // time: 300,
+  //   padding: 60,
+  //   offset: 30,
+  //   // keyboard: true,
+  //   cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
+  //   background: 'rgb(255, 255, 255)',
+  //   zIndex: 999,
+  // }
+  // Toggle Menu
+
+  var toggleMenu = function toggleMenu() {
+    return $body.classList.toggle('has-sidenav');
+  };
+
+  document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+  document.getElementById('sidenav-close').addEventListener('click', toggleMenu);
+  /**
+   * Social Media
+   */
+
+  if ((typeof followSocialMedia === "undefined" ? "undefined" : (0, _typeof2["default"])(followSocialMedia)) === 'object' && followSocialMedia !== null) {
+    (0, _app2["default"])(followSocialMedia);
+  }
+  /**
+   * Instagram Fedd
+   */
+
+
+  if ((typeof instagramFeed === "undefined" ? "undefined" : (0, _typeof2["default"])(instagramFeed)) === 'object' && instagramFeed !== null) {
+    var url = "https://api.instagram.com/v1/users/".concat(instagramFeed.userId, "/media/recent/?access_token=").concat(instagramFeed.token, "&count=10&callback=?");
+    var user = "<a href=\"https://www.instagram.com/".concat(instagramFeed.userName, "\" class=\"instagram-btn\" target=\"_blank\" rel=\"noopener noreferrer\"><i class=\"i-instagram\"></i> ").concat(instagramFeed.userName, "</a>");
+
+    if (window.innerWidth > 768) {
+      (0, _app["default"])(url, user);
+    }
+  } // If is article
+
+
+  if ($body.classList.contains('is-article')) {
+    // Select all Iframe
+    var $imagesGallery = document.querySelectorAll('.kg-gallery-image img');
+    var $allIframe = document.getElementById('post-body').querySelectorAll(iframeVideo.join(','));
+    var $imageHasParentLink = document.querySelectorAll('.post-body a img'); // Add not class for not zoom image
+
+    $imageHasParentLink.forEach(function (el) {
+      return el.classList.add('no-lightense');
+    }); // Zoom Image
+
+    new Lightense('#post-body img:not(.no-lightense)', lightenseArgs); // Video Responsive
+
+    if ($allIframe.length) {
+      // Run Iframe
+      $allIframe.forEach(function (el) {
+        var parentForVideo = document.createElement('div');
+        parentForVideo.className = 'video-responsive';
+        el.parentNode.insertBefore(parentForVideo, el);
+        parentForVideo.appendChild(el);
+      });
+    } // Gallery Image
+
+
+    $imagesGallery.forEach(function (image) {
+      var container = image.closest('.kg-gallery-image');
+      var width = image.attributes.width.value;
+      var height = image.attributes.height.value;
+      var ratio = width / height;
+      container.style.flex = ratio + ' 1 0%';
+    }); // PrismJS code syntax
+
+    var $prismPre = document.getElementById('post-body').querySelectorAll('code[class*="language-"]');
+
+    if ($prismPre.length) {
+      var prismScript = document.createElement('script');
+      prismScript.src = "".concat(siteUrl, "/assets/scripts/prism.js");
+      prismScript.defer = true;
+      $body.appendChild(prismScript);
+    }
+  } // Active Scroll
+
+
+  window.addEventListener('scroll', function () {
+    return didScroll = true;
+  });
+  /**
+   * Add Shadow and Hide Shdow in .header
+   */
+
+  function hasScrolled() {
+    if ($body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+      $header.classList.add('has-shadow');
+    } else {
+      $header.classList.remove('has-shadow');
+    }
+  }
+  /**
+   * Functions that are activated when a scroll
+   * is performed in a time interval
+   */
+
+
+  setInterval(function () {
+    if (didScroll) {
+      if ($header !== null) {
+        hasScrolled();
+      }
+
+      didScroll = false;
+    }
+  }, 250);
+})(window, document);
+
+},{"./app/app.instagram":8,"./app/app.social-media":9,"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/typeof":6,"lazysizes":7}]},{},[10])
+
+//# sourceMappingURL=map/main.js.map
