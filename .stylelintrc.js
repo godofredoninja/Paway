@@ -7,7 +7,7 @@ module.exports = {
     'color-hex-case': null,
     'selector-list-comma-newline-after': null,
     'declaration-block-single-line-max-declarations': 3,
-    'string-quotes': 'double',
+    // 'string-quotes': 'double',
     'at-rule-no-unknown': [
       true,
       {

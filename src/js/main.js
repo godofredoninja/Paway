@@ -3,7 +3,7 @@
 // import external dependencies
 import 'lazysizes';
 // Image Zoom
-import Lightense from 'lightense-images';
+// import Lightense from 'lightense-images';
 
 // Impost App
 import instagram from './app/app.instagram';
@@ -30,15 +30,15 @@ import socialMedia from './app/app.social-media';
   ];
 
   // Setting Image Zoom
-  const lightenseArgs = {
-    // time: 300,
-    padding: 60,
-    offset: 30,
-    // keyboard: true,
-    cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
-    background: 'rgb(255, 255, 255)',
-    zIndex: 999,
-  }
+  // const lightenseArgs = {
+  //   // time: 300,
+  //   padding: 60,
+  //   offset: 30,
+  //   // keyboard: true,
+  //   cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
+  //   background: 'rgb(255, 255, 255)',
+  //   zIndex: 999,
+  // }
 
   // Toggle Menu
   const toggleMenu = () => $body.classList.toggle('has-sidenav');
