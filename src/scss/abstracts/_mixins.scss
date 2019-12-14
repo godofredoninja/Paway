@@ -1,18 +1,3 @@
-%fonts-icons {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'paway' !important; //stylelint-disable-line
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: inherit;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 %u-absolute0 {
   bottom: 0;
   left: 0;
@@ -22,6 +7,7 @@
 }
 
 //  Fonts
+%font-header { font-family: $font-header }
 %primary-font { font-family: $primary-font }
 %secundary-font { font-family: $secundary-font }
 

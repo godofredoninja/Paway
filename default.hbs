@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="{{@site.lang}}">
 <head>
     {{!-- Document Settings --}}
     <meta charset="utf-8" />
@@ -10,9 +10,10 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{!-- Styles'n'Scripts --}}
+    {{!-- fonts --}}
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700|Playfair+Display:400,400i,700,700i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
     {{!-- <style>{{> "styles"}}</style> --}}
 
@@ -40,6 +41,9 @@
 
     {{!-- Site Fotoer - partials/footer.hbs--}}
     {{> "footer"}}
+
+    {{!-- icons --}}
+    {{> "icons/icons"}}
 
     {{!-- Site URL --}}
     <script>var siteUrl = '{{@site.url}}';</script>

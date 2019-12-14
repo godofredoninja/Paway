@@ -1,45 +1,41 @@
+// Header
+// --------------------------------------------------
 .header {
+  @extend %font-header;
+
   background: #fff;
   color: #151515;
   position: sticky;
   top: 0;
   z-index: 10;
-  // border-bottom: 1px solid #f1f1f1;
 
   &.has-shadow {
     border-bottom: 1px solid #f1f1f1;
     // box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
   }
 
-  &-wrap {
-    height: $header-height;
+  &-wrap { height: $header-height }
+
+  &-right > ul > li {
+    margin: 0 7px;
   }
 }
 
 // Logo
+// --------------------------------------------------
 .logo {
   &-txt {
     font-size: 36px;
     font-weight: 700;
-    color: #151515;
+    color: #000;
     line-height: 1;
   }
 
   &-img { max-height: 40px; }
 }
 
-// Social media
-.search-toggle,
-.social-media > li {
-  font-size: 18px;
-  margin: 0 7px;
-}
-
-.header .social-media span { display: none }
-
-.social-media > li { display: inline-block }
-
-// Nav
+// bavbar ( Navigation )
+// --------------------------------------------------
 
 .navbar ul {
   @extend %flex;
@@ -58,13 +54,13 @@
     }
 
     li {
-      @extend %secundary-font;
+      // @extend %secundary-font;
 
-      margin: 0 14px;
+      margin: 0 10px;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }
@@ -74,44 +70,21 @@ li.nav-current > a,
 .sidenav-nav ul a,
 .footer-social a:hover,
 .search-toggle:hover,
+.menu-toggle:hover,
 .navbar ul > li > a:hover,
 .social-media a :hover {
   color: $header-color-hover;
 }
 
-// Menu
-// Menu - Toggle
-.menu-toggle {
-  height: 48px;
-  // margin-right: -$container-gutter-width;
-  position: relative;
-  transition: transform .4s;
-  width: 48px;
+// Social Media
+// --------------------------------------------------
+.header .social-media span { display: none }
 
-  /* stylelint-disable-next-line */
-  span {
-    background-color: #000;
-    display: block;
-    height: 2px;
-    left: 14px;
-    margin-top: -1px;
-    position: absolute;
-    top: 50%;
-    transition: .4s;
-    width: 20px;
-
-    &:first-child { transform: translate(0, -6px); }
-    &:last-child { transform: translate(0, 6px); }
-  }
-
-  &:hover span { background-color: $header-color-hover }
-}
-
-@media #{$xl-and-up} {
-  .header-right, .logo { width: 300px }
-}
+// @media #{$xl-and-up} {
+//   .header-right, .logo { width: 300px }
+// }
 
 @media #{$lg-and-down} {
   .header-right { flex: 1 1 auto }
-  .menu-toggle { margin-right: -15px; }
+  .header .social-media { display: none; }
 }
