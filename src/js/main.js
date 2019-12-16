@@ -28,16 +28,11 @@ import socialMedia from './app/app.social-media'
     socialMedia(followSocialMedia)
   }
 
-  /**
-   * Instagram Fedd
-   */
-  if (typeof instagramFeed === 'object' && instagramFeed !== null) {
-    const url = `https://api.instagram.com/v1/users/${instagramFeed.userId}/media/recent/?access_token=${instagramFeed.token}&count=10&callback=?`
-    const user = `<a href="https://www.instagram.com/${instagramFeed.userName}" class="instagram-btn" target="_blank" rel="noopener noreferrer"><i class="i-instagram"></i> ${instagramFeed.userName}</a>`
-
-    if (window.innerWidth > 768) {
-      instagram(url, user)
-    }
+  // Instagram Feed
+  // -----------------------------------------------------------------------------
+  const instagramBox = document.querySelector('.js-instagram')
+  if (typeof instagramFeed === 'object' && instagramFeed !== null && instagramBox) {
+    instagram(instagramFeed, instagramBox)
   }
 //
 })(window, document)

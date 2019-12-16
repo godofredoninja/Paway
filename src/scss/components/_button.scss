@@ -1,0 +1,74 @@
+// Buttons
+// -----------------------------------------------------------------------------
+.button {
+  @extend %font-header;
+
+  background: #111;
+  border-radius: 4px;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  // font-family: $primary-font;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  height: 35px;
+  letter-spacing: 0;
+  line-height: 35px;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  transition: .1s background-color, .1s border-color, .1s color, .1s fill;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:focus { outline: none }
+
+  &:hover {
+    background: $color-text-3;
+    // color: $button-hover-color;
+  }
+
+  .icon {
+    position: relative;
+    top: -1px
+  }
+
+  &--large {
+    font-size: 20px;
+    height: 48px;
+    line-height: 46px;
+    padding: 0 18px;
+    font-weight: 500;
+  }
+
+  &--circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    padding: 0;
+  }
+
+  // Tags
+  &--tags {
+    &::before {
+      content: '#';
+    }
+  }
+}
+
+.buttonSet {
+  > .button {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    vertical-align: middle;
+
+    &:last-child { margin-right: 0 }
+  }
+}

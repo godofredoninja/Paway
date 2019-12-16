@@ -1,0 +1,39 @@
+/* Instagram in the footer of page
+/* ---------------------------------------------------------- */
+
+.py-instagram-content {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.py-instagram-items {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(100% / 3 - .01px);
+  position: relative;
+  overflow: hidden;
+}
+
+.py-instagram-img {
+  padding-top: 90%;
+  display: block;
+
+  img { filter: brightness(65%); transition: all .2s ease; }
+
+  &:hover > img { filter: brightness(90%) }
+}
+
+.py-instagram-name {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
+@media #{$md-and-up} {
+  .py-instagram-items {
+    flex: 0 0 calc(100% / 6 - .01px);
+  }
+}

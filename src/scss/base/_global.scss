@@ -164,16 +164,16 @@ table {
   text-align: center;
   margin: 70px 0;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 20px;
   // letter-spacing: 1px;
   line-height: 1.4;
 
   & > span { margin: 0 10px }
 
-  i {
-    font-size: 24px;
-    line-height: 1
-  }
+  // i {
+  //   font-size: 24px;
+  //   line-height: 1
+  // }
 
   a {
     color: #999;
@@ -213,42 +213,6 @@ table {
     position: absolute;
     top: 0;
     width: 100%;
-  }
-}
-
-// Instagram Fedd
-// ==========================================================================
-.instagram {
-  // &-hover {
-  //   background-color: rgba(0, 0, 0, .3);
-  //   // transition: opacity 1s ease-in-out;
-  //   opacity: 0;
-  // }
-
-  &-img {
-    height: 264px;
-
-    img { filter: brightness(65%); transition: all .2s ease; }
-
-    &:hover > img { filter: brightness(90%) }
-  }
-
-  &-name {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-
-  &-btn {
-    background-color: #fff;
-    color: #000;
-    display: block;
-    font-weight: 600;
-    line-height: 1;
-    min-width: 200px;
-    padding: 10px;
-    text-align: center;
   }
 }
 

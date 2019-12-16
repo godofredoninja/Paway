@@ -345,7 +345,7 @@ template {
   top: 0;
 }
 
-.u-meta, .header, .sidenav, .cat-links {
+.u-meta, .header, .sidenav, .button, .cat-links {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
 }
 
@@ -527,17 +527,12 @@ table th {
   text-align: center;
   margin: 70px 0;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 20px;
   line-height: 1.4;
 }
 
 .pagination > span {
   margin: 0 10px;
-}
-
-.pagination i {
-  font-size: 24px;
-  line-height: 1;
 }
 
 .pagination a {
@@ -576,37 +571,6 @@ table th {
   position: absolute;
   top: 0;
   width: 100%;
-}
-
-.instagram-img {
-  height: 264px;
-}
-
-.instagram-img img {
-  filter: brightness(65%);
-  transition: all .2s ease;
-}
-
-.instagram-img:hover > img {
-  filter: brightness(90%);
-}
-
-.instagram-name {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.instagram-btn {
-  background-color: #fff;
-  color: #000;
-  display: block;
-  font-weight: 600;
-  line-height: 1;
-  min-width: 200px;
-  padding: 10px;
-  text-align: center;
 }
 
 .pp-header {
@@ -1307,6 +1271,74 @@ body.has-sidenav .sidenav {
   visibility: visible;
 }
 
+.button {
+  background: #111;
+  border-radius: 4px;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  height: 35px;
+  letter-spacing: 0;
+  line-height: 35px;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  transition: .1s background-color, .1s border-color, .1s color, .1s fill;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  background: #ae9678;
+}
+
+.button .icon {
+  position: relative;
+  top: -1px;
+}
+
+.button--large {
+  font-size: 20px;
+  height: 48px;
+  line-height: 46px;
+  padding: 0 18px;
+  font-weight: 500;
+}
+
+.button--circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  padding: 0;
+}
+
+.button--tags::before {
+  content: '#';
+}
+
+.buttonSet > .button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  vertical-align: middle;
+}
+
+.buttonSet > .button:last-child {
+  margin-right: 0;
+}
+
 .icon {
   display: inline-block;
   width: 20px;
@@ -1322,8 +1354,16 @@ body.has-sidenav .sidenav {
   height: 24px;
 }
 
+.rotate90 {
+  transform: rotate(90deg);
+}
+
 .rotate180 {
   transform: rotate(180deg);
+}
+
+.rotate270 {
+  transform: rotate(270deg);
 }
 
 .search {
@@ -1572,6 +1612,50 @@ body.is-search .search {
   }
   .story-title {
     font-size: 36px;
+  }
+}
+
+/* Instagram in the footer of page
+/* ---------------------------------------------------------- */
+.py-instagram-content {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.py-instagram-items {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(100% / 3 - .01px);
+  position: relative;
+  overflow: hidden;
+}
+
+.py-instagram-img {
+  padding-top: 90%;
+  display: block;
+}
+
+.py-instagram-img img {
+  filter: brightness(65%);
+  transition: all .2s ease;
+}
+
+.py-instagram-img:hover > img {
+  filter: brightness(90%);
+}
+
+.py-instagram-name {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
+@media only screen and (min-width: 766px) {
+  .py-instagram-items {
+    flex: 0 0 calc(100% / 6 - .01px);
   }
 }
 
