@@ -1,23 +1,37 @@
 <div class="sidenav">
     {{!-- Close --}}
-    <div id="sidenav-close" class="sidenav-close u-pointer u-absolute i-close"></div>
+    <div class="js-menu-toggle sidenav-close u-pointer u-absolute">
+        <svg class="icon icon--md"><use xlink:href="#icon-close"></use></svg>
+    </div>
+
     {{!-- Site Name --}}
-    <div class="sidenav-title logo-txt">{{@site.title}}</div>
+    <div class="sidenav-title logo-txt u-marginBottom30">{{@site.title}}</div>
+
     {{!-- Site Description --}}
-    {{#if @site.description}}<div class="sidenav-des">{{@site.description}}</div>{{/if}}
+    {{#if @site.description}}<div class="sidenav-des u-marginBottom30">{{@site.description}}</div>{{/if}}
+
     {{!-- navigation --}}
-    <div class="sidenav-nav u-hide-after-lg">{{navigation}}</div>
+    <nav class="sidenav-nav u-marginBottom30 u-hide-after-lg">{{navigation}}</nav>
 
     {{!-- Featured Post Featured Article --}}
     {{#get "posts" limit="3" filter="featured:true" as |sidenav_featured_post|}}
         {{#if sidenav_featured_post}}
-            <div class="sfp u-hide-before-lg">
+            <div class="sfp u-marginBottom30">
                 {{#foreach sidenav_featured_post}}
                     {{> "story/story-featured-sidenav"}}
                 {{/foreach}}
             </div>
         {{/if}}
     {{/get}}
+
+    <div class="u-flex1"></div>
+
+    {{!-- Secondary menu --}}
+    {{#if @site.secondary_navigation}}
+        <nav class="sidenav-menu-secondary u-marginBottom30">
+            {{navigation type="secondary"}}
+        </nav>
+    {{/if}}
 
     {{!-- social Media --}}
     <div class="sidenav-social">{{> "widget/witget-social-media"}}</div>

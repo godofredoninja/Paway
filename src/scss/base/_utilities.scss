@@ -8,7 +8,7 @@
 .u-pointer { cursor: pointer; }
 
 .u-meta {
-  @extend %secundary-font;
+  @extend %font-header;
 
   font-size: 12px;
   text-transform: uppercase;
@@ -28,6 +28,7 @@
 // margin
 .u-margin-0-15 { margin: 0 15px }
 .u-marginTop30 { margin-top: 30px }
+.u-marginBottom30 { margin-bottom: 30px }
 
 // Positions
 .u-relative { position: relative; }

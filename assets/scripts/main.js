@@ -906,29 +906,31 @@ exports["default"] = void 0;
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-var _default = function _default(links) {
+var _default = function _default(socialMedia) {
   var urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
 
-  var templateSocialMedia = function templateSocialMedia(name, url) {
-    return "<a href=\"".concat(url, "\" title=\"Follow me in ").concat(name, "\" target=\"_blank\" rel=\"noopener noreferrer\"><i class=\"i-").concat(name, "\"></i><span>").concat(name, "</span></a>");
+  var templateSocialMedia = function templateSocialMedia(name, url, title) {
+    return "\n    <a href=\"".concat(url, "\" title=\"Follow me in ").concat(title, "\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <svg class=\"icon\"><use xlink:href=\"#icon-").concat(name, "\"></use></svg>\n    <span>").concat(name, "</span>\n  </a>");
   };
 
-  function createPasteElement(parent) {
-    Object.entries(links).forEach(function (_ref) {
+  var createPasteElement = function createPasteElement(box) {
+    Object.entries(socialMedia).forEach(function (_ref) {
       var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
           name = _ref2[0],
-          url = _ref2[1];
+          urlTitle = _ref2[1];
+
+      var url = urlTitle[0];
 
       if (typeof url === 'string' && urlRegexp.test(url)) {
-        var template = templateSocialMedia(name, url);
+        var template = templateSocialMedia(name, url, urlTitle[1]);
         var li = document.createElement('li');
         li.innerHTML = template;
-        parent.appendChild(li);
+        box.appendChild(li);
       }
     });
-  }
+  };
 
-  document.querySelectorAll('.social-media').forEach(function (el) {
+  document.querySelectorAll('.js-social-media').forEach(function (el) {
     return createPasteElement(el);
   });
 };
@@ -951,37 +953,19 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
 /* global instagramFeed followSocialMedia siteUrl */
 // import external dependencies
 // Image Zoom
-// import Lightense from 'lightense-images';
+// import Lightense from 'lightense-images'
 // Impost App
 (function (window, document) {
   /* Variables */
-  var $body = document.body;
-  var $header = document.getElementById('header');
-  /* Variables Boolean */
-
-  var didScroll = false;
-  /* Variables Object or Arrays */
-
-  /* Iframe SRC video */
-
-  var iframeVideo = ['iframe[src*="player.vimeo.com"]', 'iframe[src*="dailymotion.com"]', 'iframe[src*="youtube.com"]', 'iframe[src*="youtube-nocookie.com"]', 'iframe[src*="vid.me"]', 'iframe[src*="kickstarter.com"][src*="video.html"]']; // Setting Image Zoom
-  // const lightenseArgs = {
-  //   // time: 300,
-  //   padding: 60,
-  //   offset: 30,
-  //   // keyboard: true,
-  //   cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
-  //   background: 'rgb(255, 255, 255)',
-  //   zIndex: 999,
-  // }
+  var $body = document.body; // const $header = document.getElementById('header')
   // Toggle Menu
 
-  var toggleMenu = function toggleMenu() {
-    return $body.classList.toggle('has-sidenav');
-  };
-
-  document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
-  document.getElementById('sidenav-close').addEventListener('click', toggleMenu);
+  document.querySelectorAll('.js-menu-toggle').forEach(function (item) {
+    return item.addEventListener('click', function (e) {
+      e.preventDefault();
+      $body.classList.toggle('has-sidenav');
+    });
+  });
   /**
    * Social Media
    */
@@ -1001,80 +985,8 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
     if (window.innerWidth > 768) {
       (0, _app["default"])(url, user);
     }
-  } // If is article
+  } //
 
-
-  if ($body.classList.contains('is-article')) {
-    // Select all Iframe
-    var $imagesGallery = document.querySelectorAll('.kg-gallery-image img');
-    var $allIframe = document.getElementById('post-body').querySelectorAll(iframeVideo.join(','));
-    var $imageHasParentLink = document.querySelectorAll('.post-body a img'); // Add not class for not zoom image
-
-    $imageHasParentLink.forEach(function (el) {
-      return el.classList.add('no-lightense');
-    }); // Zoom Image
-
-    new Lightense('#post-body img:not(.no-lightense)', lightenseArgs); // Video Responsive
-
-    if ($allIframe.length) {
-      // Run Iframe
-      $allIframe.forEach(function (el) {
-        var parentForVideo = document.createElement('div');
-        parentForVideo.className = 'video-responsive';
-        el.parentNode.insertBefore(parentForVideo, el);
-        parentForVideo.appendChild(el);
-      });
-    } // Gallery Image
-
-
-    $imagesGallery.forEach(function (image) {
-      var container = image.closest('.kg-gallery-image');
-      var width = image.attributes.width.value;
-      var height = image.attributes.height.value;
-      var ratio = width / height;
-      container.style.flex = ratio + ' 1 0%';
-    }); // PrismJS code syntax
-
-    var $prismPre = document.getElementById('post-body').querySelectorAll('code[class*="language-"]');
-
-    if ($prismPre.length) {
-      var prismScript = document.createElement('script');
-      prismScript.src = "".concat(siteUrl, "/assets/scripts/prism.js");
-      prismScript.defer = true;
-      $body.appendChild(prismScript);
-    }
-  } // Active Scroll
-
-
-  window.addEventListener('scroll', function () {
-    return didScroll = true;
-  });
-  /**
-   * Add Shadow and Hide Shdow in .header
-   */
-
-  function hasScrolled() {
-    if ($body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-      $header.classList.add('has-shadow');
-    } else {
-      $header.classList.remove('has-shadow');
-    }
-  }
-  /**
-   * Functions that are activated when a scroll
-   * is performed in a time interval
-   */
-
-
-  setInterval(function () {
-    if (didScroll) {
-      if ($header !== null) {
-        hasScrolled();
-      }
-
-      didScroll = false;
-    }
-  }, 250);
 })(window, document);
 
 },{"./app/app.instagram":8,"./app/app.social-media":9,"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/typeof":6,"lazysizes":7}]},{},[10])

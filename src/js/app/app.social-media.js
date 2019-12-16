@@ -1,18 +1,25 @@
-export default links => {
+export default socialMedia => {
   const urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
-  const templateSocialMedia = (name, url) => `<a href="${url}" title="Follow me in ${name}" target="_blank" rel="noopener noreferrer"><i class="i-${name}"></i><span>${name}</span></a>`;
 
-  function createPasteElement(parent) {
-    Object.entries(links).forEach(([name, url]) => {
+  const templateSocialMedia = (name, url, title) => `
+    <a href="${url}" title="Follow me in ${title}" target="_blank" rel="noopener noreferrer">
+    <svg class="icon"><use xlink:href="#icon-${name}"></use></svg>
+    <span>${name}</span>
+  </a>`
+
+  const createPasteElement = box => {
+    Object.entries(socialMedia).forEach(([name, urlTitle]) => {
+      const url = urlTitle[0]
+
       if (typeof url === 'string' && urlRegexp.test(url)) {
-        const template = templateSocialMedia(name, url);
+        const template = templateSocialMedia(name, url, urlTitle[1])
 
-        const li = document.createElement('li');
-        li.innerHTML = template;
-        parent.appendChild(li);
+        const li = document.createElement('li')
+        li.innerHTML = template
+        box.appendChild(li)
       }
-    });
+    })
   }
 
-  document.querySelectorAll('.social-media').forEach( el => createPasteElement(el));
-};
+  document.querySelectorAll('.js-social-media').forEach(el => createPasteElement(el))
+}

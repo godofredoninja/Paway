@@ -2,22 +2,17 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<div class="u-margin-0-15">
-
-<section class="feed-entry-content">
+<div class="feed-entry-content">
     <div class="feed-entry-wrap">
-        <div class="row no-space">
+
+        <div class="story-feed">
             {{#foreach posts}}
-                <div class="col s12 {{#has number="1,7"}}l12 ss12{{else}}{{#has number="2,3,8,9"}}l6 ss6{{else}}l4{{/has}}{{/has}}">
-                    {{!-- markup for each stories - partials/story/story-card.hbs --}}
-                    {{> "story/story-card" }}
-                </div>
+                {{!-- markup for each stories - partials/story/story.hbs --}}
+                {{> "story/story"}}
             {{/foreach}}
         </div>
     </div>
-</section>
+</div>
 
 {{!-- Pagination - partials/pagination.hbs --}}
 {{"pagination"}}
-
-</div>

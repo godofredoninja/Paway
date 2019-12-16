@@ -7,34 +7,27 @@ html {
   font-size: $font-size-root;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out 0s;
-
-  &:active,
-  &:hover {
-    outline: 0;
-  }
-}
-
 body {
   @extend %primary-font;
 
-  background: #fff;
+  // background: #fff;
   color: $primary-text-color;
-  font-size: 18px;
-  line-height: 1.8em;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.6;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+}
 
-  &.has-zoom-img {
-    .header {
-      transform: translateY(-100%);
-      opacity: 0;
-      transition: transform .2s, opacity .2s, visibility 0s 2s;
-      visibility: hidden;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all .25s ease-in-out;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: 0;
   }
 }
 
@@ -282,9 +275,18 @@ table {
   }
 }
 
+// Social Media
+
+.social-media > li {
+  margin: 0 7px;
+}
+
 // Blur
 .blur-up {
-  .lazyload { filter: blur(5px) }
-  .lazyloading { filter: blur(3px); transition: filter 1500ms }
-  .lazyloaded { filter: blur(0) }
+  animation: fadeIn 3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
 }

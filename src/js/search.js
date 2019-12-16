@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Not active
   if (typeof searchSettings === 'undefined') return;
 
-  const $openSearch = document.getElementById('search-open');
+  const $openSearch = document.querySelector('.js-search-toggle');
   const $closeSearch = document.getElementById('search-close');
   // const $search = document.getElementById('search');
 

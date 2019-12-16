@@ -1,13 +1,14 @@
-// Header
-// --------------------------------------------------
+/* Header
+/* ---------------------------------------------------------- */
+
 .header {
   @extend %font-header;
 
   background: #fff;
-  color: #151515;
+  color: #111;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
 
   &.has-shadow {
     border-bottom: 1px solid #f1f1f1;
@@ -21,10 +22,13 @@
   }
 }
 
-// Logo
-// --------------------------------------------------
+/* Logo
+/* ---------------------------------------------------------- */
+
 .logo {
   &-txt {
+    @extend %secundary-font;
+
     font-size: 36px;
     font-weight: 700;
     color: #000;
@@ -34,8 +38,8 @@
   &-img { max-height: 40px; }
 }
 
-// bavbar ( Navigation )
-// --------------------------------------------------
+/* Navigation
+/* ---------------------------------------------------------- */
 
 .navbar ul {
   @extend %flex;
@@ -43,8 +47,6 @@
 
 .sidenav-nav,
 .navbar {
-  // width: 60%;
-
   ul {
     a {
       padding: 16px 0;
@@ -54,8 +56,6 @@
     }
 
     li {
-      // @extend %secundary-font;
-
       margin: 0 10px;
       font-size: 14px;
       text-transform: uppercase;
@@ -76,9 +76,13 @@ li.nav-current > a,
   color: $header-color-hover;
 }
 
-// Social Media
-// --------------------------------------------------
+/* Social Media
+/* ---------------------------------------------------------- */
+
 .header .social-media span { display: none }
+
+/* Media Queries
+/* ---------------------------------------------------------- */
 
 // @media #{$xl-and-up} {
 //   .header-right, .logo { width: 300px }

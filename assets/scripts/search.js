@@ -1226,7 +1226,7 @@ var _app = _interopRequireDefault(require("./app/app.search"));
 document.addEventListener('DOMContentLoaded', function () {
   // Not active
   if (typeof searchSettings === 'undefined') return;
-  var $openSearch = document.getElementById('search-open');
+  var $openSearch = document.querySelector('.js-search-toggle');
   var $closeSearch = document.getElementById('search-close'); // const $search = document.getElementById('search');
 
   var mySearchSettings = {
