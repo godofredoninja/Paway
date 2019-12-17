@@ -1,5 +1,8 @@
+/* Footer
+/* ---------------------------------------------------------- */
+
 .footer {
-  @extend %secundary-font;
+  @extend %font-header;
 
   background-color: #000;
   color: #fff;
@@ -7,12 +10,15 @@
   text-align: center;
 }
 
-.subscribe {
+/* Footer Subscribe Box
+/* ---------------------------------------------------------- */
+
+.f-subscribe {
   max-width: 700px;
   margin: 70px auto 0;
 
   &-title {
-    @extend %primary-font;
+    @extend %secundary-font;
 
     font-style: italic;
     font-weight: 400;
@@ -21,96 +27,120 @@
     @media #{$md-and-down} { font-size: 2rem }
   }
 
-  // Subscribe
-  .form-group { flex: 1 1 auto }
-
-  &-description {
+  &-des {
     color: #999;
-    font-size: 1rem;
+    font-size: 18px;
     padding: 10px 0 30px 0;
   }
+}
+
+/* Footer Form for Subscribe
+/* ---------------------------------------------------------- */
+
+.footer-form {
+  max-width: 600px;
+  margin: 0 auto;
 
   input {
     background-color: #000;
-    border-radius: 25px 0 0 25px;
-    border: 2px solid #262626;
     color: #fff;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
+    border: 2px solid #262626;
     height: 50px;
-    letter-spacing: 0;
-    line-height: 1.5em;
-    padding: 10px 10px 10px 24px;
-    text-decoration: none;
-    text-transform: none;
-    width: 100%;
+    line-height: 48px;
+    padding: 0 15px;
 
     &:focus { border-color: #3c3c3c }
   }
 
-  button {
-    background-color: #ae9678;
-    border-radius: 0 25px 25px 0;
-    border: 0;
-    color: #fff;
-    cursor: pointer;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 0 2.3em 0 1.5em;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: auto;
+  .button {
+    margin-top: 20px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 1.5em;
+    width: 100%;
+  }
 
-    &::before { font-size: 24px; margin-right: 5px }
+  // Error
+  &.error,
+  &.invalid {
+    .message-error {
+      color: #ec694b;
+      display: block !important;
+      padding-top: 10px;
+    }
+  }
 
-    &:hover { background-color: #9c8467; transition: all .3s ease }
+  // success
+  &.success .message-success {
+    color: #acd053;
+    display: block !important;
+    padding-top: 10px;
+  }
+
+  // Animation Loafing
+  &.loading {
+    .icon--send { display: none }
+
+    .icon--loader {
+      display: inline-block !important;
+      animation: spin .8s linear infinite;
+    }
   }
 }
 
-// Social Media
-.footer-social {
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Footer Social Media
+/* ---------------------------------------------------------- */
+
+.footer .social-media {
   color: #fff;
   margin: 70px auto 0;
 
-  .social-media {
-    // justify-content: center;
-    // align-items: center;
-
-    li {
-      margin: 5px 30px;
-      font-size: 20px;
-
-      &:last-child {
-        margin-right: 0
-      }
-    }
-
-    span {
-      display: block;
-      color: #adadad;
-      margin-top: 0;
-      font-size: 14px;
-      line-height: 19px;
-      letter-spacing: .3px;
-    }
+  span {
+    display: block;
+    color: #adadad;
+    margin-top: 5px;
+    font-size: 15px;
+    letter-spacing: .3px;
   }
 }
 
-// copyright
+/* Footer copyright
+/* ---------------------------------------------------------- */
+
 .copyright {
   margin: 70px auto 0;
   text-align: center;
   font-size: 14px;
   padding: 43px 0;
-  border-top: 1px solid #262626;
+  border-top: 1px solid hsla(0, 0%, 100%, .1);
   color: #adadad;
   letter-spacing: .015em;
 
   a {
     color: #fff;
     &:hover { color: $color-text-3 }
+  }
+}
+
+/* Media Query
+/* ---------------------------------------------------------- */
+
+@media #{$md-and-up} {
+  .footer {
+    .form-group { display: flex }
+    input { border-radius: 25px 0 0 25px }
+
+    .button {
+      border-radius: 0 25px 25px 0;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .social-media > li { margin: 0 1rem; }
   }
 }

@@ -3,20 +3,20 @@
 .button {
   @extend %font-header;
 
-  background: #111;
+  background: $button-bg;
   border-radius: 4px;
   border: 0;
   box-sizing: border-box;
-  color: #fff;
+  color: $button-color;
   cursor: pointer;
   display: inline-block;
   // font-family: $primary-font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  height: 35px;
+  height: $button-height;
   letter-spacing: 0;
-  line-height: 35px;
+  line-height: $button-height;
   padding: 0 10px;
   position: relative;
   text-align: center;
@@ -30,13 +30,21 @@
   &:focus { outline: none }
 
   &:hover {
-    background: $color-text-3;
-    // color: $button-hover-color;
+    background: $button-hover-bg;
+    color: $button-hover-color;
   }
 
   .icon {
     position: relative;
     top: -1px
+  }
+
+  &--primary {
+    background-color: $button-primary-bg;
+
+    &:hover {
+      background-color: $button-primary-bg-hover;
+    }
   }
 
   &--large {

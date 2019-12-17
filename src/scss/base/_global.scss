@@ -28,6 +28,7 @@ a {
   &:focus,
   &:hover {
     outline: 0;
+    color: $primary-color;
   }
 }
 
@@ -119,9 +120,40 @@ i {
   vertical-align: middle;
 }
 
-button,
+textarea,
 input {
-  outline: 0;
+  @extend %font-header;
+
+  background: $input-bg;
+  border-radius: 4px;
+  border: 1px solid $input-border-color;
+  color: $input-color;
+  display: block;
+  font-size: 1rem;
+  margin: 0;
+  outline: none;
+  padding: 0 10px;
+  position: relative;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  width: 100%;
+
+  &:focus {
+    border-color: $input-focus-color;
+    outline: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* stylelint-disable-next-line */
+textarea {
+  min-height: 160px;
+  padding: 15px 10px;
+}
+
+/* stylelint-disable-next-line */
+input {
+  height: $input-height;
+  line-height: $input-height - 2;
 }
 
 // Table

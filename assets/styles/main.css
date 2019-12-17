@@ -337,6 +337,22 @@ template {
   display: none;
 }
 
+/* 1. Colors
+/* ---------------------------------------------------------- */
+/* 2. Fonts
+/* ---------------------------------------------------------- */
+/* 3. Typography
+/* ---------------------------------------------------------- */
+/* Container
+/* ---------------------------------------------------------- */
+/* Header
+/* ---------------------------------------------------------- */
+/* 3. Media Query Ranges
+/* ---------------------------------------------------------- */
+/* 3. Media Query Ranges
+/* ---------------------------------------------------------- */
+/* Buttons and Inputs
+/* ---------------------------------------------------------- */
 .u-absolute0 {
   bottom: 0;
   left: 0;
@@ -345,15 +361,16 @@ template {
   top: 0;
 }
 
-.u-meta, .header, .sidenav, .button, .cat-links {
+textarea,
+input, .u-meta, .header, .footer, .sidenav, .button, .cat-links {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
 }
 
-body, blockquote, .subscribe-title, .story-title, .pn-title {
+body, blockquote, .story-title, .pn-title {
   font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
 }
 
-figcaption, .pagination, .pp-subtitle, h1, h2, h3, h4, h5, h6, .logo-txt, .footer, .sfp-title, .story-meta, .post-tags-link, .au-meta li {
+figcaption, .pagination, .pp-subtitle, h1, h2, h3, h4, h5, h6, .logo-txt, .f-subscribe-title, .sfp-title, .story-meta, .post-tags-link, .au-meta li {
   font-family: "Lora", serif;
 }
 
@@ -403,6 +420,7 @@ a {
 
 a:active, a:focus, a:hover {
   outline: 0;
+  color: #ae9678;
 }
 
 blockquote {
@@ -487,9 +505,39 @@ i {
   vertical-align: middle;
 }
 
-button,
+textarea,
 input {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  display: block;
+  font-size: 1rem;
+  margin: 0;
+  outline: none;
+  padding: 0 10px;
+  position: relative;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  width: 100%;
+}
+
+textarea:focus,
+input:focus {
+  border-color: #ae9678;
   outline: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* stylelint-disable-next-line */
+textarea {
+  min-height: 160px;
+  padding: 15px 10px;
+}
+
+/* stylelint-disable-next-line */
+input {
+  height: 44px;
+  line-height: 42px;
 }
 
 table {
@@ -614,7 +662,7 @@ table th {
 }
 
 .u-hide {
-  display: none;
+  display: none !important;
 }
 
 .u-pointer {
@@ -1055,6 +1103,8 @@ li.nav-current > a,
   }
 }
 
+/* Footer
+/* ---------------------------------------------------------- */
 .footer {
   background-color: #000;
   color: #fff;
@@ -1062,109 +1112,112 @@ li.nav-current > a,
   text-align: center;
 }
 
-.subscribe {
+/* Footer Subscribe Box
+/* ---------------------------------------------------------- */
+.f-subscribe {
   max-width: 700px;
   margin: 70px auto 0;
 }
 
-.subscribe-title {
+.f-subscribe-title {
   font-style: italic;
   font-weight: 400;
   font-size: 2.25rem;
 }
 
 @media only screen and (max-width: 766px) {
-  .subscribe-title {
+  .f-subscribe-title {
     font-size: 2rem;
   }
 }
 
-.subscribe .form-group {
-  flex: 1 1 auto;
-}
-
-.subscribe-description {
+.f-subscribe-des {
   color: #999;
-  font-size: 1rem;
+  font-size: 18px;
   padding: 10px 0 30px 0;
 }
 
-.subscribe input {
-  background-color: #000;
-  border-radius: 25px 0 0 25px;
-  border: 2px solid #262626;
-  color: #fff;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  height: 50px;
-  letter-spacing: 0;
-  line-height: 1.5em;
-  padding: 10px 10px 10px 24px;
-  text-decoration: none;
-  text-transform: none;
-  width: 100%;
+/* Footer Form for Subscribe
+/* ---------------------------------------------------------- */
+.footer-form {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.subscribe input:focus {
+.footer-form input {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #262626;
+  height: 50px;
+  line-height: 48px;
+  padding: 0 15px;
+}
+
+.footer-form input:focus {
   border-color: #3c3c3c;
 }
 
-.subscribe button {
-  background-color: #ae9678;
-  border-radius: 0 25px 25px 0;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 0 2.3em 0 1.5em;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: auto;
+.footer-form .button {
+  margin-top: 20px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 1.5em;
+  width: 100%;
 }
 
-.subscribe button::before {
-  font-size: 24px;
-  margin-right: 5px;
+.footer-form.error .message-error, .footer-form.invalid .message-error {
+  color: #ec694b;
+  display: block !important;
+  padding-top: 10px;
 }
 
-.subscribe button:hover {
-  background-color: #9c8467;
-  transition: all .3s ease;
+.footer-form.success .message-success {
+  color: #acd053;
+  display: block !important;
+  padding-top: 10px;
 }
 
-.footer-social {
+.footer-form.loading .icon--send {
+  display: none;
+}
+
+.footer-form.loading .icon--loader {
+  display: inline-block !important;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer Social Media
+/* ---------------------------------------------------------- */
+.footer .social-media {
   color: #fff;
   margin: 70px auto 0;
 }
 
-.footer-social .social-media li {
-  margin: 5px 30px;
-  font-size: 20px;
-}
-
-.footer-social .social-media li:last-child {
-  margin-right: 0;
-}
-
-.footer-social .social-media span {
+.footer .social-media span {
   display: block;
   color: #adadad;
-  margin-top: 0;
-  font-size: 14px;
-  line-height: 19px;
+  margin-top: 5px;
+  font-size: 15px;
   letter-spacing: .3px;
 }
 
+/* Footer copyright
+/* ---------------------------------------------------------- */
 .copyright {
   margin: 70px auto 0;
   text-align: center;
   font-size: 14px;
   padding: 43px 0;
-  border-top: 1px solid #262626;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #adadad;
   letter-spacing: .015em;
 }
@@ -1175,6 +1228,25 @@ li.nav-current > a,
 
 .copyright a:hover {
   color: #ae9678;
+}
+
+/* Media Query
+/* ---------------------------------------------------------- */
+@media only screen and (min-width: 766px) {
+  .footer .form-group {
+    display: flex;
+  }
+  .footer input {
+    border-radius: 25px 0 0 25px;
+  }
+  .footer .button {
+    border-radius: 0 25px 25px 0;
+    margin-top: 0;
+    width: auto;
+  }
+  .footer .social-media > li {
+    margin: 0 1rem;
+  }
 }
 
 /* Sidenav
@@ -1282,9 +1354,9 @@ body.has-sidenav .sidenav {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  height: 35px;
+  height: 44px;
   letter-spacing: 0;
-  line-height: 35px;
+  line-height: 44px;
   padding: 0 10px;
   position: relative;
   text-align: center;
@@ -1302,11 +1374,20 @@ body.has-sidenav .sidenav {
 
 .button:hover {
   background: #ae9678;
+  color: #fff;
 }
 
 .button .icon {
   position: relative;
   top: -1px;
+}
+
+.button--primary {
+  background-color: #ae9678;
+}
+
+.button--primary:hover {
+  background-color: #9c8467;
 }
 
 .button--large {

@@ -1,18 +1,14 @@
 <footer class="footer u-flexColumn">
     <div class="container">
         {{!-- Subscribers -- partials/widget/widget-subscribe.hbs --}}
-        {{> "widget/widget-subscribe"}}
+        {{#if @labs.members}}{{> "widget/widget-subscribe"}}{{/if}}
 
-        <div class="footer-social">
-            {{!-- Facebook & Twitter - partials/witget/witget-social-media.hbs --}}
-            {{> "widget/witget-social-media"}}
-        </div>
+        {{!-- Facebook & Twitter - partials/witget/witget-social-media.hbs --}}
+        {{> "widget/witget-social-media"}}
 
         <div class="copyright">
-            &copy; Copyright {{date format="YYYY"}} - <a href="{{@site.url}}">{{@site.title}}</a>
-            {{t "All Rights Reserved."}} {{t "Design with"}}
-            <i class="i-favorite animated infinite pulse" style="color:red;display:inline-block"></i>
-            {{t "By"}} <a href="https://godofredo.ninja" title="Developer FullStack.">@GodoFredoNinja</a>
+            &copy; {{date format="YYYY"}} {{@site.title}}.
+            Design by <a href="https://godofredo.ninja" title="Developer FullStack.">@GodoFredoNinja</a>
         </div>
     </div>
 </footer>

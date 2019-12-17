@@ -1,8 +1,9 @@
-// 1. Colors
-// ==========================================================================
+/* 1. Colors
+/* ---------------------------------------------------------- */
 $primary-text-color: #505050;
 $secundary-text-color: #FF4F58;
 $color-text-3: #ae9678;
+$primary-color: #ae9678;
 
 // social colors
 $social-colors: (
@@ -15,8 +16,8 @@ $social-colors: (
   whatsapp:   #64d448,
 );
 
-// 2. Fonts
-// ==========================================================================
+/* 2. Fonts
+/* ---------------------------------------------------------- */
 
 $font-header: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
 
@@ -27,8 +28,8 @@ $secundary-font: 'Lora', serif;
 // $secundary-font: "Roboto", Mercury SSm A,Mercury SSm B,Georgia,serif; // font for content
 // $code-font:       'Source Code Pro', monospace; // font for code and pre
 
-// 3. Typography
-// ==========================================================================
+/* 3. Typography
+/* ---------------------------------------------------------- */
 
 $font-size-root:  16px;
 
@@ -43,8 +44,9 @@ $headings-font-family:     $primary-font;
 $headings-font-weight:     500;
 $headings-line-height:     1.2em;
 $headings-color: inherit;
-// Container
-// ==========================================================================
+
+/* Container
+/* ---------------------------------------------------------- */
 
 $grid-gutter-width:        24px;
 
@@ -53,19 +55,19 @@ $container-md:             767px;
 $container-lg:             970px;
 $container-xl:             1200px;
 
-// Header
-// ==========================================================================
+/* Header
+/* ---------------------------------------------------------- */
 $header-color: #151515;
 $header-color-hover: $color-text-3;
 $header-height: 80px;
 
-// 3. Media Query Ranges
-// ==========================================================================
+/* 3. Media Query Ranges
+/* ---------------------------------------------------------- */
 $num-cols: 12;
 $container-gutter-width: 15px;
 
-// 3. Media Query Ranges
-// ==========================================================================
+/* 3. Media Query Ranges
+/* ---------------------------------------------------------- */
 
 $sm:            640px;
 $md:            766px;
@@ -80,6 +82,24 @@ $xl-and-up:     "only screen and (min-width : #{$xl})";
 $sm-and-down:   "only screen and (max-width : #{$sm})";
 $md-and-down:   "only screen and (max-width : #{$md})";
 $lg-and-down:   "only screen and (max-width : #{$lg})";
+
+/* Buttons and Inputs
+/* ---------------------------------------------------------- */
+$button-color: #fff;
+$button-bg: #111;
+$button-hover-color: #fff;
+$button-height: 44px;
+$button-hover-bg: $primary-color;
+
+$button-primary-bg: $primary-color;
+$button-primary-bg-hover: #9c8467;
+// $button-primary-color: #fff;
+
+$input-height: 44px;
+$input-color: #495057;
+$input-bg: #fff;
+$input-border-color: #ced4da;
+$input-focus-color: $primary-color;
 
 // Code Color
 $code-bg-color:   #f0f0f0;
