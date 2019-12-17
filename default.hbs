@@ -53,6 +53,9 @@
 
     {{!-- Main Scripts --}}
     <script src="{{asset "scripts/main.js"}}"></script>
+    {{#is "post"}}
+    <script src="{{asset "scripts/post.js"}}"></script>
+    {{/is}}
     {{!-- Search --}}
     {{!-- Content APi --}}
     <script src="https://unpkg.com/@tryghost/content-api@1.0.0/umd/content-api.min.js" defer></script>

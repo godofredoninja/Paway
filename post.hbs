@@ -3,49 +3,61 @@
 into the {body} of the default.hbs template --}}
 
 {{#post}}
-<div class="u-margin-0-15">
 <article class="post">
+    <header class="post-header u-maxWidth768 u-marginAuto">
+        {{!-- Category --}}
+        {{#if primary_tag}}{{#primary_tag}}
+        <div class="cat-links">
+            <a href="{{url}}" title="{{name}}" class="cat-links-item">{{name}}</a>
+        </div>
+        {{/primary_tag}}{{/if}}
 
-    <header class="sss u-relative u-flexContentCenter">
-        {{!-- Featured Image --}}
-        {{#if feature_image}}
-        <img class="post-img u-image u-absolute0"
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            sizes="(max-width: 800px) 400px,
-                    (max-width: 1170px) 700px,
-                    1400px"
-            src="{{img_url feature_image size="xl"}}"
-            alt="{{title}}"
-        />
-        {{/if}}
-        {{!-- overlay --}}
-        <div class="u-overlay u-absolute0 zindex1"></div>
+        {{!-- Post Title --}}
+        <h1 class="post-title">{{title}}</h1>
 
-        <div class="sss-body u-relative zindex2">
-            {{!-- date - title - excerpt --}}
-            <div class="date u-meta"><time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time></div>
-            <h1 class="sss-title">{{title}}</h1>
-            {{#if custom_excerpt}}<p class="sss-excerpt">{{custom_excerpt}}</p>{{/if}}
-
-            {{!-- author - tags - readingTime --}}
-            <div class="sss-meta u-meta">
-                <span>{{t "By"}}</span>
-                {{#primary_author}}<a href="{{url}}" rel="author">{{name}}</a>{{/primary_author}}
-                {{#if primary_tag}}{{#primary_tag}}<i class="point i-circle"></i><a href="{{url}}" class="sss-tag">{{name}}</a>{{/primary_tag}}{{/if}}
-                <i class="point i-circle"></i>
-                <span class="readingTime">{{reading_time seconds=(t "< 1 min read") minute=(t "1 min read") minutes=(t "% min read")}}</span></1>
-            </div>
+        {{!-- meta --}}
+        <div class="post-meta u-text-muted">
+            <span class="posted-on">
+                {{t "Posted on"}}
+                <time class="datetime u-textCapitalize" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+            </span>
+            <span class="byline">
+                {{#primary_author}}
+                {{t "by"}}
+                <a href="{{url}}">{{name}}</a>
+                {{/primary_author}}
+            </span>
         </div>
     </header>
 
+    {{!-- Featured Image --}}
+    {{#if feature_image}}
+    <figure class="post-image">
+        <div class="post-image-inner">
+            <img class="post-img u-image u-absolute0"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 700px,
+                        1400px"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}"
+            />
+        </div>
+    </figure>
+    {{/if}}
+
+    <div class="post-body u-maxWidth768 u-marginAuto">
+        {{content}}
+    </div>
+
     <div class="container">
         <div class="post-wrap">
-            <div id="post-body" class="post-body">
+            {{!-- <div id="post-body" class="post-body">
                 {{content}}
-            </div>
+            </div> --}}
 
             {{!-- Post footer --}}
             <footer class="post-footer">
@@ -84,6 +96,3 @@ into the {body} of the default.hbs template --}}
 {{#post}}
 {{> "article/article-comments"}}
 {{/post}}
-
-</div>
-

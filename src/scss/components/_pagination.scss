@@ -1,0 +1,26 @@
+.pagination {
+  @extend %primary-font;
+
+  text-align: center;
+  margin: 70px 0;
+  font-weight: 500;
+  font-size: 20px;
+  // letter-spacing: 1px;
+  line-height: 1.4;
+
+  & > span { margin: 0 10px }
+
+  // i {
+  //   font-size: 24px;
+  //   line-height: 1
+  // }
+
+  a {
+    color: #999;
+
+    &:hover {
+      color: $primary-text-color;
+      border-bottom: 1px solid #999;
+    }
+  }
+}

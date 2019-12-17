@@ -1,14 +1,11 @@
-.u-image {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
+.u-image { @extend %u-image; }
+.u-text-muted { @extend %text-muted; }
 
 .u-hide { display: none !important }
 .u-pointer { cursor: pointer; }
 
 .u-meta {
-  @extend %font-header;
+  @extend %secondary-font;
 
   font-size: 12px;
   text-transform: uppercase;
@@ -45,6 +42,13 @@
   transition: all 0.3s ease;
 }
 // .u-bgGradient { background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 29%, rgba(0, 0, 0, .7) 81%) }
+
+.u-maxWidth768 { max-width: 768px }
+
+.u-marginAuto {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 //  flex
 .u-flex { @extend %flex }

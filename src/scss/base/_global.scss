@@ -5,20 +5,26 @@
 html {
   box-sizing: border-box;
   font-size: $font-size-root;
+  line-height: 1.15;
 }
+
+/* Body
+/* ---------------------------------------------------------- */
 
 body {
   @extend %primary-font;
 
   // background: #fff;
   color: $primary-text-color;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
 
+/* Links
+/* ---------------------------------------------------------- */
 a {
   color: inherit;
   text-decoration: none;
@@ -32,11 +38,14 @@ a {
   }
 }
 
-blockquote {
-  @extend %primary-font;
+/* Blockquote - hr
+/* ---------------------------------------------------------- */
 
-  border-left: 5px solid #151515;
-  color: #151515;
+blockquote {
+  @extend %font-title;
+
+  border-left: 5px solid #111;
+  color: #111;
   font-size: 1.5rem;
   font-style: italic;
   font-weight: 400;
@@ -48,20 +57,43 @@ blockquote {
   // a { background-position: 0 1.07em !important } //stylelint-disable-line
 }
 
+hr {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* Figure - figcaption - img
+/* ---------------------------------------------------------- */
+
 figure {
   margin: 0;
 }
 
 figcaption {
-  @extend %secundary-font;
+  @extend %text-muted;
 
-  text-align: center;
-  margin-top: 15px;
-  text-transform: none;
+  font-size: 1rem;
   font-style: italic;
-  color: #999;
-  font-size: 15px;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: none;
 }
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  width: auto;
+
+  &:not([src]) {
+    visibility: hidden;
+  }
+}
+
+/* On && Ul
+/* ---------------------------------------------------------- */
 
 ol, ul {
   list-style: none;
@@ -70,15 +102,8 @@ ol, ul {
   padding: 0;
 }
 
-hr {
-  margin-top: 24px;
-  margin-bottom: 24px;
-  border: 0;
-  border-top: 1px solid #eee;
-}
-
-// Code
-// ==========================================================================
+/* Code
+/* ---------------------------------------------------------- */
 kbd, samp, code {
   background: $code-bg-color;
   border-radius: 4px;
@@ -104,25 +129,12 @@ pre {
   }
 }
 
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-  width: auto;
-
-  &:not([src]) {
-    visibility: hidden;
-  }
-}
-
-i {
-  // display: inline-block;
-  vertical-align: middle;
-}
+/* Textarea - input
+/* ---------------------------------------------------------- */
 
 textarea,
 input {
-  @extend %font-header;
+  @extend %secondary-font;
 
   background: $input-bg;
   border-radius: 4px;
@@ -156,7 +168,9 @@ input {
   line-height: $input-height - 2;
 }
 
-// Table
+/* Table
+/* ---------------------------------------------------------- */
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -189,36 +203,9 @@ table {
   }
 }
 
-// Pagination
-.pagination {
-  @extend %secundary-font;
+/* Video Responsive
+/* ---------------------------------------------------------- */
 
-  text-align: center;
-  margin: 70px 0;
-  font-weight: 500;
-  font-size: 20px;
-  // letter-spacing: 1px;
-  line-height: 1.4;
-
-  & > span { margin: 0 10px }
-
-  // i {
-  //   font-size: 24px;
-  //   line-height: 1
-  // }
-
-  a {
-    color: #999;
-
-    &:hover {
-      color: $primary-text-color;
-      border-bottom: 1px solid #999;
-    }
-  }
-}
-
-// Video Responsive
-// ==========================================================================
 .video-responsive {
   display: block;
   height: 0;
@@ -257,7 +244,7 @@ table {
   }
 
   &-subtitle {
-    @extend %secundary-font;
+    @extend %primary-font;
 
     text-transform: uppercase;
     font-size: 16px;
@@ -272,12 +259,12 @@ table {
 }
 
 // Social Media
-
 .social-media > li {
   margin: 0 7px;
 }
 
-// Blur
+/* Blur all Image
+/* ---------------------------------------------------------- */
 .blur-up {
   animation: fadeIn 3s ease-out;
 }

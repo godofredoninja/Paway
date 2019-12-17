@@ -2,7 +2,7 @@
 /* ---------------------------------------------------------- */
 
 .header {
-  @extend %font-header;
+  @extend %secondary-font;
 
   background: #fff;
   color: #111;
@@ -27,7 +27,7 @@
 
 .logo {
   &-txt {
-    @extend %secundary-font;
+    @extend %primary-font;
 
     font-size: 36px;
     font-weight: 700;

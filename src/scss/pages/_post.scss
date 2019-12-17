@@ -1,46 +1,92 @@
-.post {
-  .sss { height: 40em }
-  .sss-title { font-size: 4rem }
+/* Post
+/* ---------------------------------------------------------- */
 
-  &-wrap {
-    max-width: 56.25rem;
-    margin: 4.375rem auto;
+.post {
+  padding: 5%;
+
+  &-header {
+    margin-bottom: 1.6rem;
   }
 
-  &-footer {
-    margin-top: 3.125rem;
+  &-title {
+    @extend %font-title;
+
+    font-weight: 700;
+    letter-spacing: 0;
+    font-size: 56px;
+    margin-bottom: 1rem;
+    color: #111;
+  }
+
+  &-meta {
+    font-style: italic;
+    font-size: 17px;
+
+    a { text-decoration: underline; }
   }
 }
 
-// Post Content
-// ==========================================================================
+/* Post Featured Image
+/* ---------------------------------------------------------- */
+
+.post-image {
+  display: block;
+  left: 50%;
+  margin-bottom: 1.6rem;
+  max-width: calc(111.11111% + 1px);
+  overflow: hidden;
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+
+  &-inner {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 66.666666666667%;
+  }
+}
+
+/* Post Body Content
+/* ---------------------------------------------------------- */
+
 .post-body {
   @extend %flex;
   @extend %flex-direction-column;
   @extend %flex-align-items-center;
 
-  a {
-    color: #999;
-    border-bottom: 1px solid #999;
+  font-size: 20px;
+  color: #222831;
+
+  & > * {
+    min-width: 100%;
+    margin: 25px 0;
+  }
+
+  p { margin: 15px 0 }
+
+  a:not(.kg-bookmark-container) {
+    color: $primary-color;
+    border-bottom: 1px solid $primary-color;
 
     &:hover { border: none; color: #b2b2b2 }
   }
 
-  h1, h2, h3, h4, h5, h6, p,
-  ol, ul, hr, pre, dl, blockquote, table, .kg-embed-card {
-    min-width: 100%;
-    margin-bottom: 2rem;
+  h1, h2, h3, h4, h5, h6 {
+    @extend %font-title;
+
+    color: #111;
+
+    & + p { margin-top: 0; }
   }
 
-  h1, h2, h3, h4, h5, h6 { color: #151515; margin-bottom: 5px }
-
-  blockquote { margin-bottom: 36px }
+  blockquote { margin: 30px }
 
   ul,
   ol {
     counter-reset: post;
-    // margin-left: 30px;
-    // margin-top: 20px;
 
     li {
       // letter-spacing: -.003em;
@@ -68,136 +114,132 @@
     counter-increment: post;
     padding-right: 12px;
   }
-
-  & > iframe,
-  & > img,
-  & > .video-responsive,
-  .kg-image-card,
-  .kg-gallery-card,
-  .kg-card,
-  .kg-embed-card {
-    margin-bottom: 2rem;
-  }
 }
+
+/* Light Gallery
+/* ---------------------------------------------------------- */
+
+.lg-backdrop { background-color: rgba(0, 0, 0, .8) !important }
+.lg-sub-html, .lg-toolbar { background-color: rgba(0, 0, 0, .1) !important }
 
 // Post Tags
 // ==========================================================================
-.post-tags {
-  &-link {
-    @extend %secundary-font;
+// .post-tags {
+//   &-link {
+//     @extend %primary-font;
 
-    border-radius: 30px;
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 400;
-    height: 30px;
-    letter-spacing: 1px;
-    line-height: 30px;
-    margin: 0 5px 5px 0;
-    padding: 0 18px;
-    text-transform: uppercase;
-    vertical-align: middle;
-  }
-}
+//     border-radius: 30px;
+//     display: inline-block;
+//     font-size: 13px;
+//     font-weight: 400;
+//     height: 30px;
+//     letter-spacing: 1px;
+//     line-height: 30px;
+//     margin: 0 5px 5px 0;
+//     padding: 0 18px;
+//     text-transform: uppercase;
+//     vertical-align: middle;
+//   }
+// }
 
 // Post Share
 // ==========================================================================
-.post-share {
-  color: #000;
+// .post-share {
+//   color: #000;
 
-  &-link {
-    font-size: 18px;
-    border-radius: 50%;
-    margin-left: 5px;
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
-    text-align: center;
-  }
-}
+//   &-link {
+//     font-size: 18px;
+//     border-radius: 50%;
+//     margin-left: 5px;
+//     height: 40px;
+//     width: 40px;
+//     line-height: 40px;
+//     text-align: center;
+//   }
+// }
 
-.post-tags-link,
-.post-share-link {
-  background: #000;
-  color: #fff;
+// .post-tags-link,
+// .post-share-link {
+//   background: #000;
+//   color: #fff;
 
-  &:hover { background-color: $color-text-3 }
-}
+//   &:hover { background-color: $color-text-3 }
+// }
 
 // Post Author
 // ==========================================================================
-.au {
-  width: 100%;
-  text-align: center;
-  margin: 60px auto 30px;
-  padding: 50px 30px 30px 30px;
-  border-top: 1px solid #f1f1f1;
+// .au {
+//   width: 100%;
+//   text-align: center;
+//   margin: 60px auto 30px;
+//   padding: 50px 30px 30px 30px;
+//   border-top: 1px solid #f1f1f1;
 
-  &-avatar {
-    width: 90px;
-    margin-bottom: 15px;
-  }
+//   &-avatar {
+//     width: 90px;
+//     margin-bottom: 15px;
+//   }
 
-  &-name {
-    // @extend %primary-font;
+//   &-name {
+//     // @extend %font-title;
 
-    color: #151515;
-    font-size: 2rem;
-  }
+//     color: #151515;
+//     font-size: 2rem;
+//   }
 
-  &-bio {
-    margin: 24px auto;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    max-width: 750px;
-  }
+//   &-bio {
+//     margin: 24px auto;
+//     font-size: 1rem;
+//     line-height: 1.5rem;
+//     max-width: 750px;
+//   }
 
-  /* stylelint-disable-next-line */
-  &-meta li {
-    @extend %secundary-font;
+//   /* stylelint-disable-next-line */
+//   &-meta li {
+//     @extend %primary-font;
 
-    font-size: 12px;
-    color: #999;
-    font-weight: 500;
-    text-transform: uppercase;
-    display: inline-block;
-    letter-spacing: 1px;
+//     font-size: 12px;
+//     color: #999;
+//     font-weight: 500;
+//     text-transform: uppercase;
+//     display: inline-block;
+//     letter-spacing: 1px;
 
-    &:not(:last-child)::after {
-      content: "/";
-      margin-left: 6px;
-      color: #999;
-    }
+//     &:not(:last-child)::after {
+//       content: "/";
+//       margin-left: 6px;
+//       color: #999;
+//     }
 
-    /* stylelint-disable-next-line */
-    a {
-      color: #151515;
-      border-bottom: solid 1px #f1f1f1;
-    }
-  }
-}
+//     /* stylelint-disable-next-line */
+//     a {
+//       color: #151515;
+//       border-bottom: solid 1px #f1f1f1;
+//     }
+//   }
+// }
 
 // Post Next Prev
 // ==========================================================================
-.pn {
-  color: #fff;
-  // width: calc(100% / 2 - 30px);
+// .pn {
+//   color: #fff;
+//   // width: calc(100% / 2 - 30px);
 
-  &-body {
-    height: 400px;
-    text-align: center;
-  }
+//   &-body {
+//     height: 400px;
+//     text-align: center;
+//   }
 
-  &-header { padding: 20px 10px; }
+//   &-header { padding: 20px 10px; }
 
-  &-title {
-    @extend %primary-font;
-    //
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 1.5em;
-  }
-}
+//   &-title {
+//     @extend %font-title;
+//     //
+//     font-weight: 400;
+//     font-size: 2rem;
+//     line-height: 1.5em;
+//   }
+// }
 
 // Post Comments
 // ==========================================================================
@@ -207,58 +249,7 @@
   margin: 24px auto;
 }
 
-// Clases for box of ghost
-// ==========================================================================
-.kg-gallery {
-  &-container {
-    @extend %flex;
-    @extend %flex-direction-column;
-
-    max-width: 1100px;
-    width: 100vw;
-  }
-
-  &-row {
-    @extend %flex;
-    @extend %flex-direction-row;
-    @extend %flex-justify-content-center;
-
-    &:not(:first-of-type) { margin: 0.75em 0 0 0 }
-  }
-
-  &-image {
-    img {
-      display: block;
-      margin: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    &:not(:first-of-type) { margin: 0 0 0 0.75em }
-  }
-}
-
-// stylelint-disable-next-line
-.kg-embed-card, .kg-gallery-container {
-  @extend %flex;
-  @extend %flex-direction-column;
-}
-
-// stylelint-disable-next-line
-.kg-embed-card {
-  @extend %flex-align-items-center;
-
-  max-width: 100%;
-}
-
-// Image
-// ==========================================================================
-.kg-width-full .kg-image { max-width: 100vw; padding: 0 20px }
-.kg-width-wide .kg-image { max-width: 1100px }
-// .kg-width-full, .kg-width-wide { position: relative; z-index: 2; }
-
 @media #{$lg-and-down} {
-  .kg-width-wide .kg-image { max-width: 100% }
   .post .sss-title { font-size: 3rem }
 
   .post-body {

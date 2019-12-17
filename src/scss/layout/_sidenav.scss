@@ -2,7 +2,7 @@
 /* ---------------------------------------------------------- */
 
 .sidenav {
-  @extend %font-header;
+  @extend %secondary-font;
 
   backface-visibility: hidden;
   background-color: #000;
@@ -75,7 +75,7 @@
   }
 
   &-title {
-    @extend %secundary-font;
+    @extend %primary-font;
 
     font-weight: 600;
     font-size: 17px;

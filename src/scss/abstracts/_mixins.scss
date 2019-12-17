@@ -1,3 +1,5 @@
+%text-muted { color: $text-muted }
+
 %u-absolute0 {
   bottom: 0;
   left: 0;
@@ -6,10 +8,33 @@
   top: 0;
 }
 
+%u-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+// Shadow
+%box-shadow-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 4px;
+  overflow: hidden;
+}
+
+// LineClamp
+%lineClamp {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 //  Fonts
-%font-header { font-family: $font-header }
 %primary-font { font-family: $primary-font }
-%secundary-font { font-family: $secundary-font }
+%secondary-font { font-family: $secondary-font }
+%font-title { font-family: $font-title }
 
 // flexbox
 %flex { display: flex }

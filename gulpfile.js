@@ -64,7 +64,7 @@ const style = () => {
 }
 
 const script = () => {
-  const files = ['main', 'search']
+  const files = ['main', 'search', 'post']
 
   return merge(files.map(function (file) {
     return browserify({

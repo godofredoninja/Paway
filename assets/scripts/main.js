@@ -1743,15 +1743,15 @@ var _app = _interopRequireDefault(require("./app/app.instagram"));
 
 var _app2 = _interopRequireDefault(require("./app/app.social-media"));
 
-/* global instagramFeed followSocialMedia siteUrl */
-// import external dependencies
-// Image Zoom
-// import Lightense from 'lightense-images'
+/* global instagramFeed followSocialMedia */
 // Impost App
 (function (window, document) {
-  /* Variables */
+  /* Variables
+  /* ---------------------------------------------------------- */
   var $body = document.body; // const $header = document.getElementById('header')
-  // Toggle Menu
+
+  /* Toggle Menu
+  /* ---------------------------------------------------------- */
 
   document.querySelectorAll('.js-menu-toggle').forEach(function (item) {
     return item.addEventListener('click', function (e) {
@@ -1759,14 +1759,14 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
       $body.classList.toggle('has-sidenav');
     });
   });
-  /**
-   * Social Media
-   */
+  /* Social Media
+  /* ---------------------------------------------------------- */
 
   if ((typeof followSocialMedia === "undefined" ? "undefined" : (0, _typeof2["default"])(followSocialMedia)) === 'object' && followSocialMedia !== null) {
     (0, _app2["default"])(followSocialMedia);
-  } // Instagram Feed
-  // -----------------------------------------------------------------------------
+  }
+  /* Instagram Feed
+  /* ---------------------------------------------------------- */
 
 
   var instagramBox = document.querySelector('.js-instagram');

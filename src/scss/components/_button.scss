@@ -1,7 +1,7 @@
 // Buttons
 // -----------------------------------------------------------------------------
 .button {
-  @extend %font-header;
+  @extend %secondary-font;
 
   background: $button-bg;
   border-radius: 4px;
