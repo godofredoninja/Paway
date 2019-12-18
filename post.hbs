@@ -84,4 +84,4 @@ into the {body} of the default.hbs template --}}
 
 {{/post}}
 
-{{> "article/article-related"}}
+{{#if post.tags}}{{> "article/article-related"}}{{/if}}
