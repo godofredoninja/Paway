@@ -7,11 +7,13 @@
 .u-meta {
   @extend %secondary-font;
 
-  font-size: 12px;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid rgba(255, 255, 255, .4);
 }
 
 .u-round { border-radius: 50% }

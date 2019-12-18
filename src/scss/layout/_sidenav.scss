@@ -64,6 +64,16 @@
 /* ---------------------------------------------------------- */
 
 .sfp {
+  time {
+    @extend %secondary-font;
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+  }
+
   &-left {
     width: 80px;
     height: 80px;

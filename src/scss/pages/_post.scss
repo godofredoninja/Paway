@@ -175,30 +175,67 @@
   }
 }
 
-// Post Next Prev
-// ==========================================================================
-// .pn {
-//   color: #fff;
-//   // width: calc(100% / 2 - 30px);
+.prev-next,
+.post-comments,
+.post-related {
+  padding-bottom: 5%;
+}
 
-//   &-body {
-//     height: 400px;
-//     text-align: center;
-//   }
+/* Post Next Prev
+/* ---------------------------------------------------------- */
+.prev-next {
+  color: #fff;
+  // width: calc(100% / 2 - 30px);
 
-//   &-header { padding: 20px 10px; }
+  .u-meta {
+    font-size: 14px;
+  }
 
-//   &-title {
-//     @extend %font-title;
-//     //
-//     font-weight: 400;
-//     font-size: 2rem;
-//     line-height: 1.5em;
-//   }
-// }
+  &-body {
+    padding: 10% 5%;
+    position: relative;
+    display: block;
+    z-index: 2;
+  }
+
+  &-link {
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      transition: background-color .4s ease-in-out;
+      background-color: rgba(0, 0, 0, .4);
+      z-index: 1;
+    }
+  }
+
+  &-header { padding: 20px 10px; }
+
+  &-title {
+    @extend %font-title;
+    //
+    font-weight: 700;
+    margin-top: 30px;
+    font-size: 28px;
+    line-height: 1.15;
+    display: block
+  }
+
+  &-item {
+    flex: 1 1 100%;
+
+    &:hover .prev-next-link::before {
+      background-color: rgba(0, 0, 0, .6)
+    }
+  }
+}
 
 // Post Comments
-// ==========================================================================
+/* ---------------------------------------------------------- */
+
 .post-comments {
   padding: 15px;
   max-width: 950px;
@@ -219,6 +256,21 @@
     h4 { font-size: 1.6rem; }
     h5 { font-size: 1.375rem; }
     h6 { font-size: 1.125rem; }
+  }
+}
+
+@media #{$md-and-up} {
+  .prev-next-item {
+    flex: 1 1 50%;
+    text-align: center;
+  }
+
+  .prev-next-title { font-size: 2.5rem; }
+  .prev-next-body { padding: 20% 10%; }
+
+  .prev-next .nav-previous:last-child .prev-next-body,
+  .prev-next .nav-next:first-child .prev-next-body {
+    padding: 10%;
   }
 }
 

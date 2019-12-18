@@ -69,23 +69,19 @@ into the {body} of the default.hbs template --}}
 </article>
 
 {{!-- Prev and next post --}}
-{{!-- <div class="container">
-    <div class="row" style="margin-bottom:30px">
-        {{#prev_post}}
-            {{> "article/article-prev-next" mytitle="previous post"}}
-        {{/prev_post}}
+<div class="prev-next story-feed">
+    {{#prev_post}}
+        {{> "article/article-prev-next" mytitle="previous post" class="nav-previous"}}
+    {{/prev_post}}
 
-        {{#next_post}}
-            {{> "article/article-prev-next" mytitle="next post"}}
-        {{/next_post}}
-    </div>
-</div>  --}}
+    {{#next_post}}
+        {{> "article/article-prev-next" mytitle="next post" class="nav-next"}}
+    {{/next_post}}
+</div>
 {{!-- ./end prev next post ---}}
+
+{{> "article/article-comments"}}
 
 {{/post}}
 
 {{> "article/article-related"}}
-
-{{#post}}
-{{> "article/article-comments"}}
-{{/post}}
