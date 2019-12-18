@@ -1724,6 +1724,10 @@ body.is-search .search {
   position: relative;
 }
 
+.kg-bookmark-publisher {
+  position: relative;
+}
+
 .kg-bookmark-container:hover {
   color: #111;
 }
