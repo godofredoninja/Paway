@@ -2,18 +2,18 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<div class="u-margin-0-15">
-    {{!-- Tag --}}
-    {{#tag}}
-    <header class="pp-header container u-marginTop30">
-        <div class="pp-subtitle">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
-        <h1 class="pp-title">{{name}}</h1>
+{{#tag}}
+<div class="page-hero">
+    <header class="page-hero-header u-maxWidth768 u-marginAuto">
+        <div class="page-hero-subtitle u-text-muted">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
+        <h1 class="page-hero-title">{{name}}</h1>
+        {{#if description}}<p class="page-hero-description">{{description}}</p>{{/if}}
     </header>
-    {{/tag}}
-
-    {{!-- All Story - partials/loop.hbs --}}
-    {{> "loop"}}
-
-    {{!-- Pagination --}}
-    {{"pagination"}}
 </div>
+{{/tag}}
+
+{{!-- All Story - partials/loop.hbs --}}
+{{> "loop"}}
+
+{{!-- Pagination --}}
+{{"pagination"}}
