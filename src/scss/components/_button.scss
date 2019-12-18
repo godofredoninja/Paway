@@ -4,7 +4,7 @@
   @extend %secondary-font;
 
   background: $button-bg;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 0;
   box-sizing: border-box;
   color: $button-color;
@@ -17,7 +17,7 @@
   height: $button-height;
   letter-spacing: 0;
   line-height: $button-height;
-  padding: 0 10px;
+  padding: 0 1rem;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -47,12 +47,10 @@
     }
   }
 
-  &--large {
-    font-size: 20px;
-    height: 48px;
-    line-height: 46px;
-    padding: 0 18px;
-    font-weight: 500;
+  &--small {
+    font-size: 1rem;
+    height: 30px;
+    line-height: 30px;
   }
 
   &--circle {
@@ -73,7 +71,7 @@
 
 .buttonSet {
   > .button {
-    margin-right: 8px;
+    margin-right: 5px;
     margin-bottom: 8px;
     vertical-align: middle;
 

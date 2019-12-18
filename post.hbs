@@ -53,26 +53,19 @@ into the {body} of the default.hbs template --}}
         {{content}}
     </div>
 
-    <div class="container">
-        <div class="post-wrap">
-            {{!-- <div id="post-body" class="post-body">
-                {{content}}
-            </div> --}}
+    {{!-- Post footer --}}
+    <footer class="post-footer u-maxWidth768 u-marginAuto">
+        <div class="post-tags-share">
+            {{!-- Tags Cloud - Partials/article/article-tags.hbs --}}
+            {{> "article/article-tags"}}
 
-            {{!-- Post footer --}}
-            <footer class="post-footer">
-                <div class="u-flex u-flexCenter">
-                    {{!-- Tags Cloud - Partials/article/article-tags.hbs --}}
-                    {{> "article/article-tags"}}
-
-                    {{!-- Share in Social Media - Partials/article/article-share.hbs --}}
-                    {{> "article/article-share"}}
-                </div>
-                {{!-- Author info - Partials/article/article-author.hbs --}}
-                {{> "article/article-author"}}
-            </footer>
+            {{!-- Share in Social Media - Partials/article/article-share.hbs --}}
+            {{> "article/article-share"}}
         </div>
-    </div>
+
+        {{!-- Author info - Partials/article/article-author.hbs --}}
+        {{> "article/article-author"}}
+    </footer>
 </article>
 
 {{!-- Prev and next post --}}

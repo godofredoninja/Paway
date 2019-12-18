@@ -57,6 +57,7 @@
   @extend %flex-direction-column;
   @extend %flex-align-items-center;
 
+  margin-bottom: 2rem;
   font-size: 20px;
   color: #222831;
 
@@ -121,6 +122,7 @@
 
 .lg-backdrop { background-color: rgba(0, 0, 0, .8) !important }
 .lg-sub-html, .lg-toolbar { background-color: rgba(0, 0, 0, .1) !important }
+.paway-light-gallery { cursor: zoom-in; }
 
 // Post Tags
 // ==========================================================================
@@ -249,8 +251,12 @@
   margin: 24px auto;
 }
 
+// @media #{$md-and-down} {
+// }
+
 @media #{$lg-and-down} {
-  .post .sss-title { font-size: 3rem }
+  .post-title { font-size: 3rem }
+  .post-share { margin-top: 30px; }
 
   .post-body {
     h1 { font-size: 2.875rem; }
@@ -260,4 +266,9 @@
     h5 { font-size: 1.375rem; }
     h6 { font-size: 1.125rem; }
   }
+}
+
+@media #{$lg-and-up} {
+  .post-tags-share { display: flex }
+  .post-share { margin-left: 30px }
 }

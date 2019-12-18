@@ -1369,7 +1369,7 @@ body.has-sidenav .sidenav {
 
 .button {
   background: #111;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 0;
   box-sizing: border-box;
   color: #fff;
@@ -1381,7 +1381,7 @@ body.has-sidenav .sidenav {
   height: 44px;
   letter-spacing: 0;
   line-height: 44px;
-  padding: 0 10px;
+  padding: 0 1rem;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -1414,12 +1414,10 @@ body.has-sidenav .sidenav {
   background-color: #9c8467;
 }
 
-.button--large {
-  font-size: 20px;
-  height: 48px;
-  line-height: 46px;
-  padding: 0 18px;
-  font-weight: 500;
+.button--small {
+  font-size: 1rem;
+  height: 30px;
+  line-height: 30px;
 }
 
 .button--circle {
@@ -1435,7 +1433,7 @@ body.has-sidenav .sidenav {
 }
 
 .buttonSet > .button {
-  margin-right: 8px;
+  margin-right: 5px;
   margin-bottom: 8px;
   vertical-align: middle;
 }
@@ -1945,6 +1943,7 @@ body.is-search .search {
 /* Post Body Content
 /* ---------------------------------------------------------- */
 .post-body {
+  margin-bottom: 2rem;
   font-size: 20px;
   color: #222831;
 }
@@ -2022,6 +2021,10 @@ body.is-search .search {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.paway-light-gallery {
+  cursor: zoom-in;
+}
+
 .post-comments {
   padding: 15px;
   max-width: 950px;
@@ -2029,8 +2032,11 @@ body.is-search .search {
 }
 
 @media only screen and (max-width: 1000px) {
-  .post .sss-title {
+  .post-title {
     font-size: 3rem;
+  }
+  .post-share {
+    margin-top: 30px;
   }
   .post-body h1 {
     font-size: 2.875rem;
@@ -2049,6 +2055,15 @@ body.is-search .search {
   }
   .post-body h6 {
     font-size: 1.125rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .post-tags-share {
+    display: flex;
+  }
+  .post-share {
+    margin-left: 30px;
   }
 }
 
