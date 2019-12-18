@@ -1,21 +1,21 @@
 {{#primary_author}}
-<div class="au">
+<div class="post-author">
     {{!-- avatar --}}
-    <img class="au-avatar u-round lazyload"
+    <img class="post-author-avatar u-round"
         src="{{#if profile_image}}{{img_url profile_image size="s"}}{{else}}{{asset "images/avatar.png"}}{{/if}}"
         alt="{{t "Go to the profile of "}} {{name}}"/>
     {{!-- Name --}}
-    <h2 class="au-name">{{name}}</h2>
+    <h2 class="post-author-name">{{name}}</h2>
     {{!-- bio --}}
-    {{#if bio}}<p class="au-bio">{{bio}}</p>{{/if}}
+    {{#if bio}}<p class="post-author-bio">{{bio}}</p>{{/if}}
     {{!-- Facebook - Twitter - Webpage --}}
     {{#has any="twitter, facebook, website"}}
-    <div class="au-meta">
+    <div class="post-author-meta">
         <ul class="">
             <li>{{t "follow me"}}</li>
-            {{#if facebook}}<li><a class="au-meta-link" href="{{facebook_url}}" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>{{/if}}
-            {{#if twitter}}<li><a class="au-meta-link" href="{{twitter_url}}" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>{{/if}}
-            {{#if website}}<li><a class="au-meta-link" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">Website</a></li>{{/if}}
+            {{#if facebook}}<li><a class="post-author-meta-link" href="{{facebook_url}}" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>{{/if}}
+            {{#if twitter}}<li><a class="post-author-meta-link" href="{{twitter_url}}" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>{{/if}}
+            {{#if website}}<li><a class="post-author-meta-link" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">Website</a></li>{{/if}}
         </ul>
     </div>
     {{/has}}
