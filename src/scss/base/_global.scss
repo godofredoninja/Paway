@@ -8,7 +8,7 @@ html {
   line-height: 1.15;
 }
 
-/* Body
+/* 01 - Body
 /* ---------------------------------------------------------- */
 
 body {
@@ -23,7 +23,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Links
+/* 02 - Links
 /* ---------------------------------------------------------- */
 a {
   color: inherit;
@@ -37,7 +37,7 @@ a {
   }
 }
 
-/* Blockquote - hr
+/* 03 - Blockquote - hr
 /* ---------------------------------------------------------- */
 
 blockquote {
@@ -63,7 +63,7 @@ hr {
   border-top: 1px solid #eee;
 }
 
-/* Figure - figcaption - img
+/* 04 - Figure - figcaption - img
 /* ---------------------------------------------------------- */
 
 figure {
@@ -91,7 +91,7 @@ img {
   }
 }
 
-/* On && Ul
+/* 05 - On && Ul
 /* ---------------------------------------------------------- */
 
 ol, ul {
@@ -101,7 +101,7 @@ ol, ul {
   padding: 0;
 }
 
-/* Code
+/* 06 - Code
 /* ---------------------------------------------------------- */
 kbd, samp, code {
   background: $code-bg-color;
@@ -128,7 +128,7 @@ pre {
   }
 }
 
-/* Textarea - input
+/* 07 - Textarea - input
 /* ---------------------------------------------------------- */
 
 textarea,
@@ -167,7 +167,7 @@ input {
   line-height: $input-height - 2;
 }
 
-/* Table
+/* 08 - Table
 /* ---------------------------------------------------------- */
 
 table {
@@ -202,7 +202,7 @@ table {
   }
 }
 
-/* Video Responsive
+/* 09 - Video Responsive
 /* ---------------------------------------------------------- */
 
 .video-responsive {
@@ -234,7 +234,7 @@ table {
   }
 }
 
-/* Page hero Tag and Author
+/* 10 - Page hero Tag and Author
 /* ---------------------------------------------------------- */
 
 .page-hero {
@@ -272,7 +272,7 @@ table {
   margin: 0 7px;
 }
 
-/* Blur all Image
+/* 11 - Blur all Image
 /* ---------------------------------------------------------- */
 .blur-up {
   animation: fadeIn 3s ease-out;
@@ -281,4 +281,43 @@ table {
 @keyframes fadeIn {
   0% { opacity: 0 }
   100% { opacity: 1 }
+}
+
+/* 12. Subscribe Message and Overlay
+/* ---------------------------------------------------------- */
+
+.subscribe-success-message {
+  @extend %secondary-font;
+
+  background: #000;
+  box-shadow: 0 2px 4px rgba(36, 50, 86, 0.06), 0 4px 14px rgba(36, 50, 86, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  height: $header-height;
+  justify-content: center;
+  left: 0;
+  padding: 18px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateY(-175%);
+  transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  z-index: 50;
+
+  .button {
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+  }
+}
+
+.subscribe-success .subscribe-success-message {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.subscribe-success-message.close {
+  visibility: hidden;
+  transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateY(-175%);
 }

@@ -10,6 +10,7 @@ import socialMedia from './app/app.social-media'
   /* Variables
   /* ---------------------------------------------------------- */
   const $body = document.body
+  const $header = document.querySelector('.header')
   // const $header = document.getElementById('header')
 
   /* Toggle Menu
@@ -50,6 +51,39 @@ import socialMedia from './app/app.social-media'
       loadScript(siteSearch)
     })
   }
+
+  /* Scroll - add border bottom in the header
+  /* ---------------------------------------------------------- */
+
+  let lastScrollY = window.scrollY
+  let ticking = false
+
+  const onScroll = () => {
+    lastScrollY = window.scrollY
+    requestTick()
+  }
+
+  const requestTick = () => {
+    if (!ticking) {
+      requestAnimationFrame(update)
+    }
+
+    ticking = true
+  }
+
+  const update = () => {
+    if (lastScrollY >= 100) {
+      $header.classList.add('has-shadow')
+    } else {
+      $header.classList.remove('has-shadow')
+    }
+
+    ticking = false
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+
+  update()
 
   //
 })(window, document)

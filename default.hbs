@@ -42,6 +42,14 @@
     {{!-- Site Fotoer - partials/footer.hbs--}}
     {{> "footer"}}
 
+    {{!-- notification Subscribe --}}
+    {{#if @labs.members}}
+    <div class="subscribe-success-message u-flexCenter">
+        <span class="u-fontSize22" style="margin-right:10px">🎉</span> {{t "You've successfully subscribed to"}} {{@site.title}}!
+        <div class="notification-close button button--primary">OK</div>
+    </div>
+    {{/if}}
+
     {{!-- icons --}}
     {{> "icons/icons"}}
 
@@ -58,6 +66,33 @@
     {{#is "post"}}
     <script src="{{asset "scripts/post.js"}}"></script>
     {{/is}}
+
+    {{#if @labs.members}}
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        function ready() {
+            if (action == 'subscribe') { document.body.classList.add('subscribe-success'); }
+
+            document.querySelector('.notification-close').addEventListener('click', function() {
+                this.parentNode.classList.add('close');
+            });
+        }
+        window.addEventListener('load', ready, false);
+    </script>
+    {{/if}}
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. --}}
     {{{block "scripts"}}}

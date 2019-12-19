@@ -1748,7 +1748,8 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
 (function (window, document) {
   /* Variables
   /* ---------------------------------------------------------- */
-  var $body = document.body; // const $header = document.getElementById('header')
+  var $body = document.body;
+  var $header = document.querySelector('.header'); // const $header = document.getElementById('header')
 
   /* Toggle Menu
   /* ---------------------------------------------------------- */
@@ -1791,8 +1792,41 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
     loadScript('https://unpkg.com/@tryghost/content-api@1.3.4/umd/content-api.min.js', function () {
       loadScript(siteSearch);
     });
-  } //
+  }
+  /* Scroll - add border bottom in the header
+  /* ---------------------------------------------------------- */
 
+
+  var lastScrollY = window.scrollY;
+  var ticking = false;
+
+  var onScroll = function onScroll() {
+    lastScrollY = window.scrollY;
+    requestTick();
+  };
+
+  var requestTick = function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+    }
+
+    ticking = true;
+  };
+
+  var update = function update() {
+    if (lastScrollY >= 100) {
+      $header.classList.add('has-shadow');
+    } else {
+      $header.classList.remove('has-shadow');
+    }
+
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', onScroll, {
+    passive: true
+  });
+  update(); //
 })(window, document);
 
 },{"./app/app.instagram":11,"./app/app.social-media":12,"@babel/runtime/helpers/interopRequireDefault":2,"@babel/runtime/helpers/typeof":6,"lazysizes":8}]},{},[13])
