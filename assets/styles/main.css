@@ -2334,9 +2334,8 @@ body.has-search .search {
 
 .error404 {
   color: #000;
-  font-family: "Roboto", sans-serif;
-  padding: 3rem 0;
   text-align: center;
+  padding: 5%;
 }
 
 .error404-title {
@@ -2358,27 +2357,11 @@ body.has-search .search {
 }
 
 .error404-sub {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.4;
   margin: 0 auto;
   max-width: 500px;
-}
-
-.error404-btn {
-  background: #000;
-  border-radius: 50px;
-  color: #fff;
-  display: block;
-  height: 40px;
-  line-height: 1;
-  margin: 2.5rem auto 0;
-  max-width: 300px;
-  padding: 11px 20px;
-  width: 100%;
-}
-
-.error404-btn:hover {
-  background-color: #ae9678;
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=map/main.css.map */
