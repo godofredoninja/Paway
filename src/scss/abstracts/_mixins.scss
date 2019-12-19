@@ -43,3 +43,25 @@
 %flex-direction-row { flex-direction: row }
 %flex-direction-wrap { flex-direction: wrap }
 %flex-justify-content-center { justify-content: center }
+
+%modal {
+  opacity: 0;
+  transition: opacity .2s ease-out .1s, visibility 0s .4s;
+  z-index: 100;
+  visibility: hidden;
+}
+
+%modal-bg { background-color: rgba(0, 0, 0, .9) }
+
+%modal-inner {
+  opacity: 0;
+  transform: scale(.6);
+  transition: transform .3s cubic-bezier(.06, .47, .38, .99), opacity .3s cubic-bezier(.06, .47, .38, .99);
+  // overflow: hidden;
+}
+
+%modal-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform .8s cubic-bezier(.26, .63, 0, .96);
+}

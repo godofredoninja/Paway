@@ -1,4 +1,4 @@
-/* global instagramFeed followSocialMedia */
+/* global instagramFeed followSocialMedia siteSearch */
 
 import 'lazysizes'
 
@@ -31,6 +31,24 @@ import socialMedia from './app/app.social-media'
   const instagramBox = document.querySelector('.js-instagram')
   if (typeof instagramFeed === 'object' && instagramFeed !== null && instagramBox) {
     instagram(instagramFeed, instagramBox)
+  }
+
+  /* Search
+  /* ---------------------------------------------------------- */
+  const loadScript = (src, callback) => {
+    const scriptElement = document.createElement('script')
+    scriptElement.src = src
+    scriptElement.defer = true
+    scriptElement.async = true
+
+    callback && scriptElement.addEventListener('load', callback)
+    document.body.appendChild(scriptElement)
+  }
+
+  if (typeof searchSettings !== 'undefined' && typeof siteSearch !== 'undefined') {
+    loadScript('https://unpkg.com/@tryghost/content-api@1.3.4/umd/content-api.min.js', () => {
+      loadScript(siteSearch)
+    })
   }
 
   //

@@ -1743,7 +1743,7 @@ var _app = _interopRequireDefault(require("./app/app.instagram"));
 
 var _app2 = _interopRequireDefault(require("./app/app.social-media"));
 
-/* global instagramFeed followSocialMedia */
+/* global instagramFeed followSocialMedia siteSearch */
 // Impost App
 (function (window, document) {
   /* Variables
@@ -1773,6 +1773,24 @@ var _app2 = _interopRequireDefault(require("./app/app.social-media"));
 
   if ((typeof instagramFeed === "undefined" ? "undefined" : (0, _typeof2["default"])(instagramFeed)) === 'object' && instagramFeed !== null && instagramBox) {
     (0, _app["default"])(instagramFeed, instagramBox);
+  }
+  /* Search
+  /* ---------------------------------------------------------- */
+
+
+  var loadScript = function loadScript(src, callback) {
+    var scriptElement = document.createElement('script');
+    scriptElement.src = src;
+    scriptElement.defer = true;
+    scriptElement.async = true;
+    callback && scriptElement.addEventListener('load', callback);
+    document.body.appendChild(scriptElement);
+  };
+
+  if (typeof searchSettings !== 'undefined' && typeof siteSearch !== 'undefined') {
+    loadScript('https://unpkg.com/@tryghost/content-api@1.3.4/umd/content-api.min.js', function () {
+      loadScript(siteSearch);
+    });
   } //
 
 })(window, document);

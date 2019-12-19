@@ -953,12 +953,12 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-/* global GhostContentAPI */
+/* global GhostContentAPI siteUrl */
 
 /**
  * Thanks => https://github.com/HauntedThemes/ghost-search
  */
-// import fuzzysort from 'fuzzysort';
+// import fuzzysort from 'fuzzysort'
 var fuzzysort = require('fuzzysort');
 
 var GhostSearch =
@@ -968,18 +968,15 @@ function () {
     (0, _classCallCheck2["default"])(this, GhostSearch);
     this.check = false;
     var defaults = {
-      host: '',
+      url: siteUrl,
       key: '',
-      version: 'v2',
-      input: '#ghost-search-field',
-      results: '#ghost-search-results',
-      button: '',
+      version: 'v3',
+      input: '#search-field',
+      results: '#search-results',
       defaultValue: '',
       template: function template(result) {
-        var url = [location.protocol, '//', location.host].join('');
-        return '<a href="' + url + '/' + result.slug + '/">' + result.title + '</a>';
+        return "<a href=\"".concat(siteUrl, "/").concat(result.slug, "/\">").concat(result.title, "</a>");
       },
-      trigger: 'focus',
       options: {
         keys: ['title'],
         limit: 10,
@@ -1001,10 +998,14 @@ function () {
       on: {
         beforeDisplay: function beforeDisplay() {},
         afterDisplay: function afterDisplay(results) {},
-        //eslint-disable-line
-        beforeFetch: function beforeFetch() {},
-        afterFetch: function afterFetch(results) {} //eslint-disable-line
-
+        beforeFetch: function beforeFetch() {
+          return document.body.classList.add('is-loading');
+        },
+        afterFetch: function afterFetch() {
+          return setTimeout(function () {
+            document.body.classList.remove('is-loading');
+          }, 4000);
+        }
       }
     };
     var merged = this.mergeDeep(defaults, args);
@@ -1038,7 +1039,7 @@ function () {
 
       this.on.beforeFetch();
       var ghostAPI = new GhostContentAPI({
-        host: this.host,
+        url: this.url,
         key: this.key,
         version: this.version
       });
@@ -1046,11 +1047,10 @@ function () {
       var parameters = this.api.parameters;
 
       for (var key in parameters) {
-        if (parameters[key] != '') {
+        if (parameters[key] !== '') {
           browse[key] = parameters[key];
         }
-      } // browse.limit = 'all';
-
+      }
 
       ghostAPI[this.api.resource].browse(browse).then(function (data) {
         _this2.search(data);
@@ -1076,7 +1076,7 @@ function () {
 
       var inputValue = document.querySelectorAll(this.input)[0].value;
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue !== '') {
         inputValue = this.defaultValue;
       }
 
@@ -1104,34 +1104,16 @@ function () {
       this.on.afterFetch(data);
       this.check = true;
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue !== '') {
         this.on.beforeDisplay();
         this.displayResults(data);
       }
 
-      if (this.button != '') {
-        var button = document.querySelectorAll(this.button)[0];
+      document.querySelectorAll(this.input)[0].addEventListener('keyup', function () {
+        _this3.on.beforeDisplay();
 
-        if (button.tagName == 'INPUT' && button.type == 'submit') {
-          button.closest('form').addEventListener('submit', function (e) {
-            e.preventDefault();
-          });
-        }
-
-        button.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          _this3.on.beforeDisplay();
-
-          _this3.displayResults(data);
-        });
-      } else {
-        document.querySelectorAll(this.input)[0].addEventListener('keyup', function () {
-          _this3.on.beforeDisplay();
-
-          _this3.displayResults(data);
-        });
-      }
+        _this3.displayResults(data);
+      });
     }
   }, {
     key: "checkArgs",
@@ -1146,19 +1128,12 @@ function () {
         return false;
       }
 
-      if (this.button != '') {
-        if (!document.querySelectorAll(this.button).length) {
-          console.log('Button not found.');
-          return false;
-        }
-      }
-
-      if (this.host == '') {
+      if (this.url === '') {
         console.log('Content API Client Library host missing. Please set the host. Must not end in a trailing slash.');
         return false;
       }
 
-      if (this.key == '') {
+      if (this.key === '') {
         console.log('Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.');
         return false;
       }
@@ -1183,7 +1158,7 @@ function () {
         return;
       }
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue !== '') {
         document.querySelectorAll(this.input)[0].value = this.defaultValue;
 
         window.onload = function () {
@@ -1193,19 +1168,11 @@ function () {
         };
       }
 
-      if (this.trigger == 'focus') {
-        document.querySelectorAll(this.input)[0].addEventListener('focus', function () {
-          if (!_this4.check) {
-            _this4.fetch();
-          }
-        });
-      } else if (this.trigger == 'load') {
-        window.onload = function () {
-          if (!_this4.check) {
-            _this4.fetch();
-          }
-        };
-      }
+      document.querySelectorAll(this.input)[0].addEventListener('focus', function () {
+        if (!_this4.check) {
+          _this4.fetch();
+        }
+      });
     }
   }]);
   return GhostSearch;
@@ -1223,36 +1190,164 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 var _app = _interopRequireDefault(require("./app/app.search"));
 
 /* global searchSettings */
-document.addEventListener('DOMContentLoaded', function () {
-  // Not active
-  if (typeof searchSettings === 'undefined') return;
-  var $openSearch = document.querySelector('.js-search-toggle');
-  var $closeSearch = document.getElementById('search-close'); // const $search = document.getElementById('search');
+(function (window, document) {
+  var qs = document.querySelector.bind(document);
+  var qsa = document.querySelectorAll.bind(document);
+  var domBody = document.body;
+  var searchInput = qs('#search-field');
+  var searchResults = qs('#search-results');
+  var searchMessage = qs('.js-search-message');
+  var searchResultsHeight = {
+    outer: 0,
+    scroll: 0
+  }; // SHow icon search in header
+
+  qs('.js-search-toggle').classList.remove('u-hide'); // Variable for search
+  // -----------------------------------------------------------------------------
 
   var mySearchSettings = {
-    input: '#search-input',
-    results: '#search-results'
-  };
-  Object.assign(mySearchSettings, searchSettings); // Remove class u-hide
+    on: {
+      afterDisplay: function afterDisplay(results) {
+        searchResultActive();
+        searchResultsHeight = {
+          outer: searchResults.offsetHeight,
+          scroll: searchResults.scrollHeight
+        }; // Show message if dont have results
 
-  $openSearch.classList.remove('u-hide');
-  /* Open search */
+        if (results.total === 0 && searchInput.value !== '') {
+          searchMessage.classList.remove('u-hide');
+        } else {
+          searchMessage.classList.add('u-hide');
+        }
+      }
+    }
+  }; // join user settings
 
-  $openSearch.addEventListener('click', function (e) {
-    // $search.classList.remove('u-hide');
-    document.body.classList.add('is-search');
+  Object.assign(mySearchSettings, searchSettings); // when the Enter key is pressed
+  // -----------------------------------------------------------------------------
+
+  function enterKey() {
+    var link = searchResults.querySelector('a.search-result--active');
+    link && link.click();
+  } // Attending the active class to the search link
+  // -----------------------------------------------------------------------------
+
+
+  function searchResultActive(t, e) {
+    t = t || 0;
+    e = e || 'up'; // Dont use key functions
+
+    if (window.innerWidth < 768) return;
+    var allLink = searchResults.querySelectorAll('a');
+    if (!allLink.length) return;
+    var linkActive = searchResults.querySelector('a.search-result--active');
+    linkActive && linkActive.classList.remove('search-result--active');
+    allLink[t].classList.add('search-result--active');
+    var n = allLink[t].offsetTop;
+    var o = 0;
+    e === 'down' && n > searchResultsHeight.outer / 2 ? o = n - searchResultsHeight.outer / 2 : e === 'up' && (o = n < searchResultsHeight.scroll - searchResultsHeight.outer / 2 ? n - searchResultsHeight.outer / 2 : searchResultsHeight.scroll);
+    searchResults.scrollTo(0, o);
+  } // Clear Input for write new letters
+  // -----------------------------------------------------------------------------
+
+
+  function clearInput() {
+    searchInput.focus();
+    searchInput.setSelectionRange(0, searchInput.value.length);
+  } // Search close with Key
+  // -----------------------------------------------------------------------------
+
+
+  function searchClose() {
+    domBody.classList.remove('has-search');
+    document.removeEventListener('keyup', mySearchKey);
+  } // Reacted to the up or down keys
+  // -----------------------------------------------------------------------------
+
+
+  function arrowKeyUpDown(keyNumber) {
+    var e;
+    var indexTheLink = 0;
+    var resultActive = searchResults.querySelector('.search-result--active');
+
+    if (resultActive) {
+      indexTheLink = [].slice.call(resultActive.parentNode.children).indexOf(resultActive);
+    }
+
+    searchInput.blur();
+
+    if (keyNumber === 38) {
+      e = 'up';
+
+      if (indexTheLink <= 0) {
+        searchInput.focus();
+        indexTheLink = 0;
+      } else {
+        indexTheLink -= 1;
+      }
+    } else {
+      e = 'down';
+
+      if (indexTheLink >= searchResults.querySelectorAll('a').length - 1) {
+        indexTheLink = searchResults.querySelectorAll('a').length - 1;
+      } else {
+        indexTheLink = indexTheLink + 1;
+      }
+    }
+
+    searchResultActive(indexTheLink, e);
+  } // Adding functions to the keys
+  // -----------------------------------------------------------------------------
+
+
+  function mySearchKey(e) {
     e.preventDefault();
-  });
-  /* Close Serach */
+    var keyNumber = e.keyCode;
+    /**
+      * 38 => Top
+      * 40 => down
+      * 27 => escape
+      * 13 => enter
+      * 191 => /
+      **/
 
-  $closeSearch.addEventListener('click', function (e) {
-    // $search.classList.add('u-hide');
-    document.body.classList.remove('is-search');
-    e.preventDefault();
+    if (keyNumber === 27) {
+      searchClose();
+    } else if (keyNumber === 13) {
+      searchInput.blur();
+      enterKey();
+    } else if (keyNumber === 38 || keyNumber === 40) {
+      arrowKeyUpDown(keyNumber);
+    } else if (keyNumber === 191) {
+      clearInput();
+    }
+  } // Open Search
+  // -----------------------------------------------------------------------------
+
+
+  qsa('.js-search-toggle').forEach(function (item) {
+    return item.addEventListener('click', function (e) {
+      e.preventDefault();
+      domBody.classList.add('has-search');
+      searchInput.focus();
+      window.innerWidth > 768 && document.addEventListener('keyup', mySearchKey);
+    });
+  }); // Close Search
+  // -----------------------------------------------------------------------------
+
+  qsa('.js-search-close').forEach(function (item) {
+    return item.addEventListener('click', function (e) {
+      e.preventDefault();
+      domBody.classList.remove('has-search');
+      document.removeEventListener('keyup', mySearchKey);
+    });
   }); // Search
+  // -----------------------------------------------------------------------------
+
+  /* eslint-disable no-new */
 
   new _app["default"](mySearchSettings);
-});
+})(window, document);
 
 },{"./app/app.search":9,"@babel/runtime/helpers/interopRequireDefault":4}]},{},[10])
 

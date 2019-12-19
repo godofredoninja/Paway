@@ -45,8 +45,10 @@
     {{!-- icons --}}
     {{> "icons/icons"}}
 
-    {{!-- Site URL --}}
-    <script>var siteUrl = '{{@site.url}}';</script>
+    <script>
+        var siteUrl = '{{@site.url}}';
+        var siteSearch = '{{asset "scripts/search.js"}}';
+    </script>
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
     {{ghost_foot}}
@@ -56,10 +58,6 @@
     {{#is "post"}}
     <script src="{{asset "scripts/post.js"}}"></script>
     {{/is}}
-    {{!-- Search --}}
-    {{!-- Content APi --}}
-    <script src="https://unpkg.com/@tryghost/content-api@1.0.0/umd/content-api.min.js" defer></script>
-    <script src="{{asset "scripts/search.js"}}" defer></script>
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. --}}
     {{{block "scripts"}}}
