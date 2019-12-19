@@ -8,24 +8,36 @@
 
 {{#contentFor "scripts"}}
 <script>
-    var $boxComments = document.getElementById('post-comments');
+(function(d, s, id) {
+    if (typeof disqusShortName === 'undefined') return;
 
     var disqus_config = function () {
         this.page.url = '{{url absolute="true"}}';
         this.page.identifier = 'ghost-{{comment_id}}';
     };
 
-    (function(d, s) {
-        if (typeof disqusShortName !== 'undefined') {
-            $boxComments.classList.remove('u-hide');
+    d.querySelector('.post-comments').classList.remove('u-hide')
+
+    function loadDisqus() {
+        var currentScroll = d.scrollingElement.scrollTop;
+        var disqusTarget = d.getElementById('disqus_thread');
+
+        if (d.getElementById(id)) return;
+
+        if( disqusTarget && (currentScroll > disqusTarget.getBoundingClientRect().top - 150) ) {
             var js = d.createElement(s);
+            js.id = id;
             js.src = 'https://'+disqusShortName+'.disqus.com/embed.js';
             js.async = true;
+            js.defer = true;
             js.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(js);
-        } else {
-            $boxComments.remove();
+            d.body.appendChild(js);
+
+            window.removeEventListener('scroll', loadDisqus);
         }
-    }(document, 'script'));
+    }
+
+    window.addEventListener('scroll', loadDisqus);
+}(document, 'script', 'disqus-js'));
 </script>
 {{/contentFor}}
