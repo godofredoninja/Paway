@@ -3,7 +3,7 @@ import fetchQuote from './app.fetch'
 const templateInstagram = data => {
   return `<div class="py-instagram-items">
   <a href="${data.link}" class="py-instagram-img" target="_blank" rel="noopener noreferrer">
-    <img class="u-absolute0 u-image u-block lazyload" data-src="${data.images.standard_resolution.url}"/>
+    <img class="u-absolute0 u-image u-block lazyload" data-src="${data.images.standard_resolution.url}" alt=""/>
   </a>
 </div>`
 }

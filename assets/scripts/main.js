@@ -1621,7 +1621,7 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 var _app = _interopRequireDefault(require("./app.fetch"));
 
 var templateInstagram = function templateInstagram(data) {
-  return "<div class=\"py-instagram-items\">\n  <a href=\"".concat(data.link, "\" class=\"py-instagram-img\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <img class=\"u-absolute0 u-image u-block lazyload\" data-src=\"").concat(data.images.standard_resolution.url, "\"/>\n  </a>\n</div>");
+  return "<div class=\"py-instagram-items\">\n  <a href=\"".concat(data.link, "\" class=\"py-instagram-img\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <img class=\"u-absolute0 u-image u-block lazyload\" data-src=\"").concat(data.images.standard_resolution.url, "\" alt=\"\"/>\n  </a>\n</div>");
 }; // Shuffle Array
 
 
@@ -1703,7 +1703,7 @@ var _default = function _default(socialMedia) {
   var urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
 
   var templateSocialMedia = function templateSocialMedia(name, url, title) {
-    return "\n    <a href=\"".concat(url, "\" title=\"Follow me in ").concat(title, "\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <svg class=\"icon\"><use xlink:href=\"#icon-").concat(name, "\"></use></svg>\n    <span>").concat(name, "</span>\n  </a>");
+    return "\n    <a href=\"".concat(url, "\" title=\"Follow me in ").concat(title, "\" aria-label=\"Follow me in ").concat(title, "\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <svg class=\"icon\"><use xlink:href=\"#icon-").concat(name, "\"></use></svg>\n    <span>").concat(name, "</span>\n  </a>");
   };
 
   var createPasteElement = function createPasteElement(box) {

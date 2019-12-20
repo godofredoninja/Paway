@@ -1,6 +1,7 @@
 .pagination {
   @extend %primary-font;
 
+  color: #111;
   text-align: center;
   margin: 70px 0;
   font-weight: 500;
@@ -16,10 +17,10 @@
   // }
 
   a {
-    color: #999;
+    color: #757575;
 
     &:hover {
-      color: $primary-text-color;
+      color: #111;
       border-bottom: 1px solid #999;
     }
   }

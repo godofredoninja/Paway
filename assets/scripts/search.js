@@ -998,14 +998,8 @@ function () {
       on: {
         beforeDisplay: function beforeDisplay() {},
         afterDisplay: function afterDisplay(results) {},
-        beforeFetch: function beforeFetch() {
-          return document.body.classList.add('is-loading');
-        },
-        afterFetch: function afterFetch() {
-          return setTimeout(function () {
-            document.body.classList.remove('is-loading');
-          }, 4000);
-        }
+        beforeFetch: function beforeFetch() {},
+        afterFetch: function afterFetch() {}
       }
     };
     var merged = this.mergeDeep(defaults, args);

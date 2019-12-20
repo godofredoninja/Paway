@@ -1,22 +1,13 @@
 /* 1. Colors
 /* ---------------------------------------------------------- */
 $primary-text-color: #505050;
-$secondary-text-color: #FF4F58;
-$color-text-3: #ae9678;
-$primary-color: #ae9678;
+// $secondary-text-color: #FF4F58;
+$primary-color: #8C7154;
 
-$text-muted: #818189;
+$primary-color-link: #ae9678;
+$primary-color-link-hover: #ae9678;
 
-// social colors
-$social-colors: (
-  facebook:   #3b5998,
-  twitter:    #55acee,
-  linkedin:   #007bb6,
-  reddit:     #ff4500,
-  pocket:     #f50057,
-  pinterest:  #bd081c,
-  whatsapp:   #64d448,
-);
+$text-muted: #6C757D;
 
 /* 2. Fonts
 /* ---------------------------------------------------------- */
@@ -57,7 +48,7 @@ $container-xl:             1200px;
 /* Header
 /* ---------------------------------------------------------- */
 $header-color: #151515;
-$header-color-hover: $color-text-3;
+$header-color-hover: $primary-color-link;
 $header-height: 80px;
 
 /* 3. Media Query Ranges

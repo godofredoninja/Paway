@@ -42,8 +42,8 @@ class GhostSearch {
       on: {
         beforeDisplay: function () { },
         afterDisplay: function (results) { },
-        beforeFetch: () => document.body.classList.add('is-loading'),
-        afterFetch: () => setTimeout(() => { document.body.classList.remove('is-loading') }, 4000)
+        beforeFetch: function () { },
+        afterFetch: function () { },
       }
     }
 

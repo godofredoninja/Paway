@@ -355,7 +355,7 @@ template {
 /* Buttons and Inputs
 /* ---------------------------------------------------------- */
 figcaption, .u-text-muted, .kg-bookmark-description {
-  color: #818189;
+  color: #6C757D;
 }
 
 .u-absolute0, .kg-bookmark-thumbnail img {
@@ -581,7 +581,7 @@ input {
 
 textarea:focus,
 input:focus {
-  border-color: #ae9678;
+  border-color: #8C7154;
   outline: 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
@@ -1180,7 +1180,7 @@ li.nav-current > a,
 .footer-social a:hover,
 .search-toggle:hover,
 .menu-toggle:hover,
-.navbar ul > li > a:hover,
+.nav > li > a:hover,
 .social-media a :hover {
   color: #ae9678;
 }
@@ -1480,7 +1480,7 @@ body.has-sidenav .sidenav {
 }
 
 .button:hover {
-  background: #ae9678;
+  background: #8C7154;
   color: #fff;
 }
 
@@ -1490,7 +1490,7 @@ body.has-sidenav .sidenav {
 }
 
 .button--primary {
-  background-color: #ae9678;
+  background-color: #8C7154;
 }
 
 .button--primary:hover {
@@ -1592,7 +1592,7 @@ body.has-sidenav .sidenav {
   font-weight: 4000;
   text-align: center;
   height: auto;
-  border-bottom: 2px solid #ae9678;
+  border-bottom: 2px solid #8C7154;
 }
 
 .search-form input:focus {
@@ -1616,7 +1616,7 @@ body.has-sidenav .sidenav {
 }
 
 .search-results a:hover, .search-results a.search-result--active {
-  background-color: #ae9678;
+  background-color: #8C7154;
 }
 
 .search-nav-hints {
@@ -1638,7 +1638,7 @@ body.has-sidenav .sidenav {
 
 .search-nav-hint > span {
   display: inline-block;
-  background-color: #ae9678;
+  background-color: #8C7154;
   padding: 1px 4px 2px;
   border-radius: 2px;
   min-width: 20px;
@@ -1988,6 +1988,7 @@ body.has-search .search {
 }
 
 .pagination {
+  color: #111;
   text-align: center;
   margin: 70px 0;
   font-weight: 500;
@@ -2000,11 +2001,11 @@ body.has-search .search {
 }
 
 .pagination a {
-  color: #999;
+  color: #757575;
 }
 
 .pagination a:hover {
-  color: #505050;
+  color: #111;
   border-bottom: 1px solid #999;
 }
 
@@ -2075,13 +2076,13 @@ body.has-search .search {
 }
 
 .post-body a:not(.kg-bookmark-container) {
-  color: #ae9678;
-  border-bottom: 1px solid #ae9678;
+  color: #8C7154;
+  border-bottom: 1px solid #8C7154;
 }
 
 .post-body a:not(.kg-bookmark-container):hover {
   border: none;
-  color: #b2b2b2;
+  color: #ae9678;
 }
 
 .post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6 {
@@ -2171,7 +2172,6 @@ body.has-search .search {
 
 .post-author-meta li {
   font-size: 12px;
-  color: #999;
   font-weight: 500;
   text-transform: uppercase;
   display: inline-block;
@@ -2315,8 +2315,9 @@ body.has-search .search {
 
 .page-title {
   color: #fff;
-  border-bottom: solid 2px #ae9678;
+  border-bottom: solid 3px #ae9678;
   font-weight: 700;
+  padding-bottom: 5px;
 }
 
 .page-img {

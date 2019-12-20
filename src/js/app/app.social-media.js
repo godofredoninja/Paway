@@ -2,7 +2,7 @@ export default socialMedia => {
   const urlRegexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \+\.-]*)*\/?$/; // eslint-disable-line
 
   const templateSocialMedia = (name, url, title) => `
-    <a href="${url}" title="Follow me in ${title}" target="_blank" rel="noopener noreferrer">
+    <a href="${url}" title="Follow me in ${title}" aria-label="Follow me in ${title}" target="_blank" rel="noopener noreferrer">
     <svg class="icon"><use xlink:href="#icon-${name}"></use></svg>
     <span>${name}</span>
   </a>`
