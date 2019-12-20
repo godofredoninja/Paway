@@ -1,11 +1,11 @@
 {
   "name": "paway",
-  "description": "Personal blogging theme for Ghost. Beautiful, minimal and responsive.",
+  "description": "For fancy people, Photographers and Travel Lovers",
   "demo": "https://godofredo.ninja",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "ghost": ">=2.0.0",
-    "ghost-api": "v2"
+    "ghost": ">=3.0.0",
+    "ghost-api": "v3"
   },
   "license": "GPLv3",
   "screenshots": {
@@ -39,7 +39,6 @@
     "url": "https://github.com/godofredoninja/Paway.git"
   },
   "bugs": "https://github.com/godofredoninja/Paway/issues",
-  "contributors": "https://github.com/godofredoninja/Paway/network/dependencies",
   "config": {
     "posts_per_page": 12,
     "image_sizes": {

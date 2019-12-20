@@ -1,38 +1,31 @@
-<aside class="post-share u-hide-before-lg u-flexCenter u-flex0">
+<aside class="post-share u-flex0 buttonSet">
     <span class="post-hsare-t" style="margin-right:10px">{{t "Share this"}}:</span>
     <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
         target="_blank"
         rel="noopener noreferrer"
         title="{{t "Share on"}} Facebook"
-        class="post-share-link i-facebook"
-        onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+        class="js-share button button--circle">
+        <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
     </a>
     <a href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
         target="_blank"
         rel="noopener noreferrer"
         title="{{t "Share on"}} Twitter"
-        class="post-share-link i-twitter"
-        onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+        class="js-share button button--circle">
+        <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
     </a>
     <a href="https://www.reddit.com/submit?url={{url absolute="true"}}&amp;title={{encode title}}"
         target="_blank"
         rel="noopener noreferrer"
-        title="{{t "Share on"}} Redit"
-        class="post-share-link i-reddit"
-        onclick="window.open(this.href, 'share-reddit', 'width=600,height=480');return false;">
+        title="{{t "Share on"}} Reddit"
+        class="js-share button button--circle">
+        <svg class="icon"><use xlink:href="#icon-reddit"></use></svg>
     </a>
     <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}&amp;title={{encode title}}"
         target="_blank"
         rel="noopener noreferrer"
         title="{{t "Share on"}} Linkeding"
-        class="post-share-link i-linkedin"
-        onclick="window.open(this.href, 'share-linkeding', 'width=600,height=480');return false;">
-    </a>
-    <a href="http://pinterest.com/pin/create/button/?url={{url absolute="true"}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="{{t "Share on"}} Pinterest"
-        class="post-share-link i-pinterest"
-        onclick="window.open(this.href, 'share-pinterest', 'width=600,height=480');return false;">
+        class="js-share button button--circle">
+        <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
     </a>
 </aside>

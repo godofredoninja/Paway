@@ -3,7 +3,7 @@
 into the {body} of the default.hbs template --}}
 {{#post}}
 
-<article class="page {{#unless feature_image}}not-img{{/unless}}">
+<article class="page {{#unless feature_image}}not-img u-maxWidth768 u-marginAuto{{/unless}}">
     <div class="page-wrap u-relative">
         <header class="page-header relative u-flexContentCenter">
             {{#if feature_image}}
@@ -22,7 +22,7 @@ into the {body} of the default.hbs template --}}
         </header>
     </div>
 
-    <div class="container">
+    <div class="u-maxWidth768 u-marginAuto">
         <div class="post-wrap">
             <div id="post-body" class="post-body u-margin-0-15">
                 {{content}}

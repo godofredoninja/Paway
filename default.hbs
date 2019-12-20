@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+    Design by:
+    ——————————
+        GODO FREDO
+        ✉ https://godofredo.ninja
+        ✎ @GodoFredoNinja
+        ✈ Lima - Perú
+-->
 <html lang="{{@site.lang}}">
 <head>
     {{!-- Document Settings --}}
@@ -10,9 +18,10 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{!-- Styles'n'Scripts --}}
+    {{!-- fonts --}}
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700|Playfair+Display:400,400i,700,700i" rel="stylesheet">
     {{!-- <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/> --}}
     <style>{{> "styles"}}</style>
 
@@ -32,8 +41,8 @@
         {{{body}}}
     </div>
 
-    {{!-- Instagram Feed - partials/widget/widget-instagram.hbs--}}
-    {{> "widget/widget-instagram"}}
+    {{!-- Instagram Feed --}}
+    <div class="py-instagram js-instagram u-hide u-relative"></div>
 
     {{!-- Search - partials/widget/widget-search.hbs--}}
     {{> "widget/widget-search"}}
@@ -41,18 +50,57 @@
     {{!-- Site Fotoer - partials/footer.hbs--}}
     {{> "footer"}}
 
-    {{!-- Site URL --}}
-    <script>var siteUrl = '{{@site.url}}';</script>
+    {{!-- notification Subscribe --}}
+    {{#if @labs.members}}
+    <div class="subscribe-success-message u-flexCenter">
+        <span class="u-fontSize22" style="margin-right:10px">🎉</span> {{t "You've successfully subscribed to"}} {{@site.title}}!
+        <div class="notification-close button button--primary">OK</div>
+    </div>
+    {{/if}}
+
+    {{!-- icons --}}
+    {{> "icons/icons"}}
+
+    <script>
+        var siteUrl = '{{@site.url}}';
+        var siteSearch = '{{asset "scripts/search.js"}}';
+    </script>
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
     {{ghost_foot}}
 
     {{!-- Main Scripts --}}
     <script src="{{asset "scripts/main.js"}}"></script>
-    {{!-- Search --}}
-    {{!-- Content APi --}}
-    <script src="https://unpkg.com/@tryghost/content-api@1.0.0/umd/content-api.min.js" defer></script>
-    <script src="{{asset "scripts/search.js"}}" defer></script>
+    {{#is "post, page"}}
+    <script src="{{asset "scripts/post.js"}}"></script>
+    {{/is}}
+
+    {{#if @labs.members}}
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        function ready() {
+            if (action == 'subscribe') { document.body.classList.add('subscribe-success'); }
+
+            document.querySelector('.notification-close').addEventListener('click', function() {
+                this.parentNode.classList.add('close');
+            });
+        }
+        window.addEventListener('load', ready, false);
+    </script>
+    {{/if}}
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. --}}
     {{{block "scripts"}}}

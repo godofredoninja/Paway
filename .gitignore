@@ -472,12 +472,11 @@ __pycache__/
 ./build
 
 # End of https://www.gitignore.io/api/node,phpstorm,sas,sass,sublimetext,visualstudio,webstorm
-
+./src
 .sass-lint.yml
 .cache-loader
 yarn-error.log
-#
-#.eslintrc.js
-#.stylelintrc.js
-#.yarn.lock
-#./src
+*.swp
+*.zip
+yarn.lock
+*.log

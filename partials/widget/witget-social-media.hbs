@@ -1,4 +1,14 @@
-<ul class="social-media">
-    {{#if @site.facebook}}<li><a href="{{facebook_url}}" title="Facebook {{@site.facebook}}" target="_blank" rel="noopener noreferrer"><i class="i-facebook"></i> <span>Facebook</span></a></li>{{/if}}
-    {{#if @site.twitter}}<li><a href="{{twitter_url}}" title="Twitter {{@site.twitter}}" target="_blank" rel="noopener noreferrer"><i class="i-twitter"></i> <span>Twitter</span></a></li>{{/if}}
+<ul class="social-media js-social-media u-flexContentCenter">
+    {{#if @site.facebook}}<li>
+        <a href="{{facebook_url}}" title="Facebook {{@site.facebook}}" aria-label="Facebook {{@site.facebook}}" target="_blank" rel="noopener noreferrer">
+            <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
+            <span>Facebook</span>
+        </a>
+    </li>{{/if}}
+    {{#if @site.twitter}}<li>
+        <a href="{{twitter_url}}" title="Twitter {{@site.twitter}}" aria-label="Twitter {{@site.twitter}}" target="_blank" rel="noopener noreferrer">
+            <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
+            <span>Twitter</span>
+        </a>
+    </li>{{/if}}
 </ul>

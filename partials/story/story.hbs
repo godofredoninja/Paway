@@ -1,0 +1,45 @@
+<article class="story">
+    {{#if feature_image}}
+    <figure class="story-figure">
+        <a href="{{url}}" class="story-image-link" aria-hidden="true" tabindex="-1">
+            <img class="story-img u-image u-absolute0 lazyload blur-up"
+                src="{{img_url feature_image size="m"}}"
+                srcset="{{img_url feature_image size="xxs"}}"
+                data-srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                data-sizes="(max-width: 1000px) 400px, 700px"
+                alt="{{title}}"
+            />
+        </a>
+    </figure>
+    {{/if}}
+
+    <div class="story-body">
+        {{!-- Category --}}
+        {{#if primary_tag}}{{#primary_tag}}
+        <div class="cat-links">
+            <a href="{{url}}" title="{{name}}" class="cat-links-item">{{name}}</a>
+        </div>
+        {{/primary_tag}}{{/if}}
+
+        {{!-- Title --}}
+        <h2 class="story-title"><a href="{{url}}" class="story-title-link">{{title}}</a></h2>
+
+        {{!-- meta --}}
+        <div class="story-meta">
+            <span class="posted-on">
+                {{t "Posted on"}}
+                <time class="datetime u-textCapitalize" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+            </span>
+            <span class="byline">
+                {{#primary_author}}
+                {{t "by"}}
+                <a href="{{url}}">{{name}}</a>
+                {{/primary_author}}
+            </span>
+        </div>
+
+    </div>
+</article>

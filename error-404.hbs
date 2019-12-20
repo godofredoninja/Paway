@@ -1,0 +1,12 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<div class="error404">
+    <div class="container">
+		<h1 class="error404-title">{{t "Page not found..."}}</h1>
+        <div class="error404-number">404</div>
+        <p class="error404-sub">{{t "Sorry, but the page you are looking for is not found. Please, make sure you have typed the current URL."}}</p>
+        <a href="{{@site.url}}" class="button button--primary">{{t "go to home"}}</a>
+	</div>
+</div>

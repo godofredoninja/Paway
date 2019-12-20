@@ -1,9 +1,15 @@
-<nav class="pagination" role="navigation">
+<nav class="pagination">
     {{#if prev}}
-        <a class="newer-posts" href="{{page_url prev}}"><i class="i-arrow-left"></i> {{t "Newer Posts"}}</a>
+        <a class="newer-posts" href="{{page_url prev}}">
+            <svg class="icon icon--md rotate270"><use xlink:href="#icon-arrow"></use></svg>
+            {{t "Newer Posts"}}
+        </a>
     {{/if}}
     <span class="page-number">{{t "Page {page} of {pages}" page=page pages=pages}}</span>
     {{#if next}}
-        <a class="older-posts" href="{{page_url next}}">{{t "Older Posts"}} <i class="i-arrow-right"></i></a>
+        <a class="older-posts" href="{{page_url next}}">
+            {{t "Older Posts"}}
+            <svg class="icon icon--md rotate90"><use xlink:href="#icon-arrow"></use></svg>
+        </a>
     {{/if}}
 </nav>
