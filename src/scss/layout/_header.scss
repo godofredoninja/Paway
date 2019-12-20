@@ -35,7 +35,11 @@
     line-height: 1;
   }
 
-  &-img { max-height: 40px; }
+  &-link-img {
+    height: 30px;
+  }
+
+  &-img { height: 100%; }
 }
 
 /* Navigation

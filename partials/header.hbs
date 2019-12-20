@@ -2,13 +2,11 @@
     <div class="header-wrap u-flex u-margin-0-15">
         {{!-- Logo --}}
         <div class="logo u-flex1 u-flexCenter">
-            <a class="logo-link" href="{{@site.url}}">
                 {{#if @site.logo}}
-                    <img class="logo-img" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/>
+                    <a class="logo-link-img" href="{{@site.url}}"><img class="logo-img" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/></a>
                 {{else}}
-                    <span class="logo-txt">{{@site.title}}</span>
+                    <a class="logo-link" href="{{@site.url}}"><span class="logo-txt">{{@site.title}}</span></a>
                 {{/if}}
-            </a>
         </div>
 
         {{!-- navbar --}}

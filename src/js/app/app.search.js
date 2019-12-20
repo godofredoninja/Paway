@@ -43,7 +43,7 @@ class GhostSearch {
         beforeDisplay: function () { },
         afterDisplay: function (results) { },
         beforeFetch: function () { },
-        afterFetch: function () { },
+        afterFetch: function () { }
       }
     }
 

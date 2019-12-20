@@ -479,5 +479,4 @@ yarn-error.log
 *.swp
 *.zip
 yarn.lock
-
-
+*.log

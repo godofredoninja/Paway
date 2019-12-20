@@ -12,7 +12,7 @@ $text-muted: #6C757D;
 /* 2. Fonts
 /* ---------------------------------------------------------- */
 
-$primary-font: 'Lora', serif;
+$primary-font: 'Lora',Georgia,'Times New Roman',Times, serif;
 $font-title: 'Playfair Display',Georgia,'Times New Roman',Times, serif;
 $secondary-font: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
 
@@ -35,7 +35,7 @@ $headings-font-weight:     700;
 $headings-line-height:     1.15;
 $headings-color: inherit;
 
-/* Container
+/* 4. Container
 /* ---------------------------------------------------------- */
 
 $grid-gutter-width:        24px;
@@ -45,18 +45,13 @@ $container-md:             767px;
 $container-lg:             970px;
 $container-xl:             1200px;
 
-/* Header
+/* 5. Header
 /* ---------------------------------------------------------- */
 $header-color: #151515;
 $header-color-hover: $primary-color-link;
 $header-height: 80px;
 
-/* 3. Media Query Ranges
-/* ---------------------------------------------------------- */
-$num-cols: 12;
-$container-gutter-width: 15px;
-
-/* 3. Media Query Ranges
+/* 6. Media Query Ranges
 /* ---------------------------------------------------------- */
 
 $sm:            640px;
@@ -73,7 +68,7 @@ $sm-and-down:   "only screen and (max-width : #{$sm})";
 $md-and-down:   "only screen and (max-width : #{$md})";
 $lg-and-down:   "only screen and (max-width : #{$lg})";
 
-/* Buttons and Inputs
+/* 7. Buttons and Inputs
 /* ---------------------------------------------------------- */
 $button-color: #fff;
 $button-bg: #111;
@@ -85,13 +80,17 @@ $button-primary-bg: $primary-color;
 $button-primary-bg-hover: #9c8467;
 // $button-primary-color: #fff;
 
+/* Input and Textarea
+/* ---------------------------------------------------------- */
+
 $input-height: 44px;
 $input-color: #495057;
 $input-bg: #fff;
 $input-border-color: #ced4da;
 $input-focus-color: $primary-color;
 
-// Code Color
+/* Code Color
+/* ---------------------------------------------------------- */
 $code-bg-color:   #f0f0f0;
 $font-size-code:  15px;
 $code-color:      #333;
