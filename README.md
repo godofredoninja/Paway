@@ -273,6 +273,7 @@ Read more about the search [Read More](https://github.com/HauntedThemes/ghost-se
 
 - `en` — English default language
 - `es` — Spanish
+- `tr` — :tr: Turkish by [Tolga ALTAS](https://github.com/tolgaaaltas)
 
 ![Publication Language for ghost](./documentation/language.jpg)
 
