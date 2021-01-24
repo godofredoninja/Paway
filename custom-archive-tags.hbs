@@ -12,7 +12,7 @@ into the {body} of the default.hbs template --}}
 {{/post}}
 
 <section class="topic-container">
-    <div class="topic-wrap">
+    <div class="topic-wrap" style="margin-left:1rem; margin-right:1rem">
 
         {{#get "tags" limit="18" filter="visibility:public" include="count.posts" order="count.posts desc"}}
 
@@ -56,8 +56,8 @@ into the {body} of the default.hbs template --}}
     .topic-row {
         display: flex;
         flex-wrap: wrap;
-        margin-left: - 1rem;
-        margin-right: - 1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
     }
     .topic-col {
         flex-basis: 0;
