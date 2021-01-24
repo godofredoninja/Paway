@@ -1,0 +1,118 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{#post}}
+<div class="page-hero" style="padding: 5%">
+    <header class="page-hero-header u-maxWidth768 u-marginAuto">
+        <h1 class="page-hero-title">{{title}}</h1>
+        <div class="page-hero-description">{{content}}</div>
+    </header>
+</div>
+{{/post}}
+
+<section class="topic-container">
+    <div class="topic-wrap">
+
+        {{#get "tags" limit="18" filter="visibility:public" include="count.posts" order="count.posts desc"}}
+
+        <div class="topic-row">
+
+            {{#foreach tags}}
+            <div class="topic-col s12 m6 l4">
+                <article class="topic-story" {{#if accent_color}}style="background-color:{{accent_color}}"{{/if}}>
+                    {{#if feature_image}}
+                    <a href="{{url}}">
+                        <img class="u-image u-absolute0 lazyload blur-up"
+                            src="{{img_url feature_image size="m"}}"
+                            srcset="{{img_url feature_image size="xxs"}}"
+                            data-srcset="{{img_url feature_image size="s"}} 300w,
+                                        {{img_url feature_image size="m"}} 600w"
+                            data-sizes="(max-width: 1000px) 400px, 600px"
+                            alt="{{name}}"
+                        />
+                    </a>
+                    <div class="topic-bg u-absolute0"></div>
+                    {{/if}}
+
+                    <header class="topic-header">
+                        <div class="topic-count-post">{{count.posts}} {{t "Stories"}}</div>
+                        <h2 class="topic-title"><a href="{{url}}">{{name}}</a></h2>
+                    </header>
+
+                    <a href="{{url}}" class="u-absolute0" style="z-index: 10" aria-label="{{name}}"></a>
+                </article>
+            </div>
+            {{/foreach}}
+
+        </div>
+
+        {{/get}}
+
+    </div>
+</section>
+
+<style>
+    .topic-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: - 1rem;
+        margin-right: - 1rem;
+    }
+    .topic-col {
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .topic-col.s12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .topic-story {
+        position: relative;
+        color: #fff;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 2rem;
+        background-color: #222831;
+    }
+
+    .topic-header {
+        position: relative;
+        z-index: 5;
+    }
+
+    .topic-title {
+        font-size: 28px;
+    }
+    .topic-count-post {
+        font-style: italic;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+    .topic-bg {
+        background-color: rgba(0,0,0,.55);
+    }
+
+    @media only screen and (min-width: 766px){
+        .topic-col.m6 {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+    }
+
+    @media only screen and (min-width: 1000px) {
+        .topic-col.l4 {
+            flex-basis: 33.33333%;
+            max-width: 33.33333%;
+        }
+    }
+</style>
