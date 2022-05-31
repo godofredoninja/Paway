@@ -3,13 +3,11 @@
 into the {body} of the default.hbs template --}}
 
 {{#tag}}
-<div class="page-hero">
-    <header class="page-hero-header u-maxWidth768 u-marginAuto">
-        <div class="page-hero-subtitle u-text-muted">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
-        <h1 class="page-hero-title">{{name}}</h1>
-        {{#if description}}<p class="page-hero-description">{{description}}</p>{{/if}}
-    </header>
-</div>
+<header class="py-vw6 text-center max-w-2xl mx-auto">
+    <div class="page-hero-subtitle text-gray-500 uppercase tracking-wider">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
+    <h1 class="page-hero-title text-44 capitalize my-2">{{name}}</h1>
+    {{#if description}}<p class="page-hero-description font-serif text-xl text-gray-500 italic my-6">{{description}}</p>{{/if}}
+</header>
 {{/tag}}
 
 {{!-- All Story - partials/loop.hbs --}}

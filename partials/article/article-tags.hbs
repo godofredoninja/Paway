@@ -1,9 +1,7 @@
 {{#if tags}}
-<div class="post-tags buttonSet u-flex1">
+<div class="tags-links mt-10 uppercase mb-4 text-sm tracking-wider font-bold leading-normal space-x-3">
     {{#foreach tags}}
-        <a href="{{url absolute="true"}}" title="{{name}}" class="button button--small button--tags">
-            {{name}}
-        </a>
+        <a href="{{url absolute="true"}}" title="{{name}}" class="inline-block hover:text-primary border-gray-300 border-b-3 border-opacity-25">{{name}}</a>
     {{/foreach}}
 </div>
 {{/if}}

@@ -1,5 +1,5 @@
-<div id="post-comments" class="post-comments u-hide">
-    <div class="u-container">
+<div id="post-comments" class="post-comments hidden">
+    <div class="container mx-auto max-w-4xl py-vmin8">
         {{!-- Disqus Comments --}}
         <div id="disqus_thread" class="simply-disqus"></div>
     </div>
@@ -16,7 +16,7 @@
         this.page.identifier = 'ghost-{{comment_id}}';
     };
 
-    d.querySelector('.post-comments').classList.remove('u-hide')
+    d.querySelector('.post-comments').classList.remove('hidden')
 
     function loadDisqus() {
         var currentScroll = d.scrollingElement.scrollTop;

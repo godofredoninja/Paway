@@ -2,11 +2,9 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<div class="error404">
-    <div class="container">
-		<h1 class="error404-title">{{t "Page not found..."}}</h1>
-        <div class="error404-number">404</div>
-        <p class="error404-sub">{{t "Sorry, but the page you are looking for is not found. Please, make sure you have typed the current URL."}}</p>
-        <a href="{{@site.url}}" class="button button--primary">{{t "go to home"}}</a>
-	</div>
+<div class="container mx-auto text-center py-vw4">
+    <h1 class="text-2xl font-normal">{{t "Page not found..."}}</h1>
+    <div class="page-error-number text-title text-9xl font-serif font-bold my-10">404</div>
+    <p class="mb-8 max-w-lg text-xl mx-auto">{{t "Sorry, but the page you are looking for is not found. Please, make sure you have typed the current URL."}}</p>
+    <a href="{{@site.url}}" class="button is-primary">{{t "go to home"}}</a>
 </div>

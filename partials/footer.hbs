@@ -1,14 +1,28 @@
-<footer class="footer u-flexColumn">
-    <div class="container">
-        {{!-- Subscribers -- partials/widget/widget-subscribe.hbs --}}
-        {{#if @labs.members}}{{> "widget/widget-subscribe"}}{{/if}}
+<footer class="footer flex flex-col bg-black text-white text-opacity-60 text-center pt-8 lg:pt-vw4">
+    <div class="container mx-auto">
+        {{#if @site.members_enabled}}
+        <div class="f-subscribe">
+            <h2 class="italic font-serif font-normal text-4xl text-white">{{t "Subscribe to the best creative feed."}}</h2>
+            <p class="mt-2 mb-8 text-sm">{{t "Stay up to date! Get all the latest & greatest posts delivered straight to your inbox"}}</p>
+
+            <div class="max-w-xl mx-auto">
+                <a class="flex" href="#/portal" data-portal>
+                    <div class="input flex items-center px-4 flex-auto cursor-pointer">{{t "youremail@example.com"}}</div>
+                    <div class="button is-primary">
+                        <span>{{t "Subscribe"}}</span>
+                        <svg class="icon ml-2"><use xlink:href="#icon-send"></use></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {{/if}}
 
         {{!-- Facebook & Twitter - partials/witget/witget-social-media.hbs --}}
         {{> "widget/witget-social-media"}}
 
-        <div class="copyright">
+        <div class="copyright py-14 mt-16 text-sm">
             &copy; {{date format="YYYY"}} {{@site.title}}.
-            Design by <a href="http://godofredo.ninja/about-me/" title="Developer FullStack.">GodoFredo</a>
+            Design by <a href="http://godofredo.ninja/about-me/" class="text-white hover:text-primary" title="Developer FullStack.">GodoFredo</a>
         </div>
     </div>
 </footer>

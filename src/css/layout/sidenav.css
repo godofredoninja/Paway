@@ -1,0 +1,46 @@
+/* Sidenav
+/* ---------------------------------------------------------- */
+.sidenav {
+  backface-visibility: hidden;
+  min-height: 100%;
+  padding: 3% 4%;
+  right: -100%;
+  transition: all .4s ease-in-out;
+}
+
+.scroll-transparent::-webkit-scrollbar {
+  width: 5px;
+  position: fixed;
+  right: 0;
+}
+
+.sidenav-nav ul a {
+  @apply py-2 block uppercase font-medium;
+}
+
+/* secondary menu
+/* ---------------------------------------------------------- */
+
+.sidenav-menu-secondary ul > li {
+  @apply uppercase text-sm font-semibold mx-2 my-1 inline-block;
+}
+
+/* Sidenav Open
+/* ---------------------------------------------------------- */
+
+body.has-sidenav {
+  .sidenav {
+    right: 0;
+    visibility: visible;
+  }
+}
+
+/* Media Query
+/* ---------------------------------------------------------- */
+
+@screen md {
+  .sidenav {
+    right: -30rem;
+    width: 30rem;
+  }
+}

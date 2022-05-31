@@ -51,6 +51,7 @@ If for some reason I'm using a theme other than Paway. then you can see the scre
 - [AMP](#amp)
 - [PrismJS code syntax](#prismjs-code-syntax)
 - [Copyright & License](#copyright--license)
+- [Development](#Development)
 
 ## Ghost Settings
 
@@ -273,7 +274,6 @@ Read more about the search [Read More](https://github.com/HauntedThemes/ghost-se
 
 - `en` — English default language
 - `es` — Spanish
-- `tr` — :tr: Turkish by [Tolga ALTAS](https://github.com/tolgaaaltas)
 
 ![Publication Language for ghost](./documentation/language.jpg)
 
@@ -294,6 +294,44 @@ Just enter the [language/locale tag](https://www.w3schools.com/tags/ref_language
 To customize the AMP page [read here](https://github.com/godofredoninja/Hodor-AMP-Ghost)
 
 ---
+
+## Development
+
+Paway uses [Gulp](https://gulpjs.com/) as a build tool and [Yarn](https://yarnpkg.com/) to manage front-end packages.
+
+```bash
+# clone this repo
+$ git clone https://github.com/godofredoninja/Paway.git
+
+# Use branch Dev
+$ git checkout dev
+
+# install the dependencies
+$ cd Paway && yarn
+
+# run build & livereload task
+$ yarn dev
+
+# link to ghost themes dir
+$ ln -s $PWD path/to/ghost/content/themes/Paway
+
+# restart ghost server
+$ cd path/to/ghost && ghost restart --development
+```
+
+### Build commands
+
+- `yarn dev` — Compile assets when file changes are made, start [livereload](http://livereload.com/)
+- `yarn build` — Compile and optimize the files in your assets directory
+- `yarn release` — Compile assets for production and generate a `zip`
+
+#### Additional commands
+
+- `yarn lint:js` — [Standard](https://standardjs.com/), Check for errors in the script.
+- `yarn lint:scss` — [Stylelint](https://stylelint.io/), Check for errors in the styles.
+- `yarn lint` — check error in script and styles.
+- `yarn scan` — [Ghost Scan](https://github.com/TryGhost/gscan) check for errors, deprecations and other compatibility issues.
+- `yarn test` — Check the script errors and styles then check the theme if it is compatible with the latest version of Ghost.
 
 ### Credits
 

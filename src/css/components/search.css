@@ -1,0 +1,33 @@
+.search-form input {
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 2.5rem;
+
+  &::placeholder {
+    @apply text-gray-500;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.search-results {
+  max-height: calc(100vh - 12rem);
+
+  li {
+    background-color: #0f0f0f;
+
+    &:hover,
+    &.is-active {
+      @apply bg-primary;
+    }
+  }
+}
+
+.search-results a {
+  padding: 10px;
+  border-bottom: 1px solid #33312e;
+  line-height: 1.5;
+}

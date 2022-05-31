@@ -1,0 +1,48 @@
+/* Root
+/* ---------------------------------------------------------- */
+
+:root {
+  --ghost-accent-color: $primary-color;
+  --color-primary: var(--ghost-accent-color);
+  --blank: #fff;
+
+  /* Global Color */
+  --bg-base: #fff;
+  --text-base: #292929;
+
+  /* Header */
+  --header-text-link: #292929;
+  --header-bg: #fff;
+
+  /* story */
+  --story-small-bg: #fff;
+  --card-bg: #fff;
+
+  /* title */
+  --title-color: #18181B;
+
+  /* link */
+  --color-link: var(--ghost-accent-color);
+
+  --border-color: #e2ecec;
+
+  /* Button */
+  --button-color: #292929;
+  --button-bg: #f2f2f2;
+  --button-hover-color: rgba(0,0,0,.7);
+  --button-hover-bg: #ececec;
+
+  /* Button white */
+  --button-white-color: #191919;
+  --button-white-bg: #fff;
+  --button-white-hover-color: #757575;
+  --button-white-hover-bg: #f9f9f9;
+
+  /* form */
+  --input-color: hsl(0, 0%, 21%);
+  --input-bg: #fff;
+  --input-border-color: #ced4da;
+  --input-hover-border-color: var(--ghost-accent-color);
+  --input-focus-border-color: var(--ghost-accent-color);
+  --placeholder-color: rgba(54, 54, 54, 0.8);
+}

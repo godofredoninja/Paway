@@ -1,0 +1,141 @@
+.godo-canvas {
+  display: grid;
+  grid-template-columns: [full-start] minmax(4vmin,auto) [wide-start] minmax(auto,240px) [main-start] min(768px,calc(100% - 8vw)) [main-end] minmax(auto,240px) [wide-end] minmax(4vmin,auto) [full-end];
+
+  & > * {
+    grid-column: main-start/main-end;
+  }
+}
+
+.is-canvas-full .godo-canvas > * {
+  grid-column: full-start / full-end;
+}
+
+.post-body {
+  /*  new */
+  font-size: 1.25rem;
+  line-height: 1.6;
+  padding-top: 6vmin;
+
+  /* stylelint-disable-next-line */
+  & > * + * {
+    margin-top: 4vmin;
+    margin-bottom: 0;
+  }
+
+  /* & > [id] {
+    margin: 0;
+    color: var(--color-darkgrey);
+  } */
+
+  & > [id]:not(:first-child) {
+    margin: 2em 0 0;
+  }
+
+  & > [id] + * {
+    /* margin-top: 1em !important; */
+    margin-top: 0.86em !important;
+  }
+
+  a {
+    @apply underline underline-offset-4 break-words;
+
+    color: var(--color-link);
+    /* text-decoration: underline; */
+    /* word-break: break-word; */
+
+    &:hover {
+      @apply no-underline opacity-80;
+    }
+  }
+
+  & > hr,
+  & > blockquote {
+    position: relative;
+    margin-top: 6vmin;
+  }
+
+  /* stylelint-disable */
+  & > hr + *,
+  & > blockquote + * {
+    margin-top: 6vmin !important;
+  }
+  /* stylelint-enable */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--title-color);
+    scroll-margin-top: calc(4rem + 4vmin);
+  }
+
+  /* List */
+  li + li {
+    margin-top: .5em;
+  }
+
+  ul,
+  ol {
+    counter-reset: post;
+
+    li {
+      margin-left: 2rem;
+
+      &::before {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-left: -1.25rem;
+        position: absolute;
+        text-align: right;
+      }
+    }
+  }
+
+  ul > li::before {
+    content: "\2022";
+    opacity: .9;
+    transform: scale(1.1);
+  }
+
+  ol > li::before {
+    content: counter(post) ".";
+    counter-increment: post;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Post Meta
+/* ---------------------------------------------------------- */
+
+.post-author-meta li:not(:last-child):after {
+  @apply text-gray-500;
+
+  content: "/";
+  margin-left: 0.5rem;
+}
+
+/* tags Link
+/* ---------------------------------------------------------- */
+.tags-links a:before {
+  display: inline;
+  content: "\0023";
+}
+
+/* Post Share
+/* ---------------------------------------------------------- */
+.post-share-wrap:before, .post-share-wrap:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border-bottom: 1px solid;
+  border-color: #ddd;
+  width: 690px;
+  margin: 0 20px;
+}
+
+.post-share-wrap:before {
+  right: 100%;
+}

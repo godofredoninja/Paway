@@ -1,0 +1,86 @@
+.story {
+  background-color: #222831;
+  max-height: 660px;
+
+  &-body {
+    padding: 10% 5%;
+  }
+
+  /* Hover */
+  &:hover .story-image-link::before {
+    background-color: rgba(0, 0, 0, .55);
+  }
+}
+
+.story-figure {
+  padding-top: 90%;
+  overflow: hidden;
+}
+
+.story-image-link::before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transition: background-color .5s ease-in-out;
+  opacity: 1;
+  background-color: transparent;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, .8) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+/* .cat-links-item {
+  display: inline-block;
+  text-decoration: none;
+  color: #212025;
+  border-bottom: 3px solid #efeff0;
+} */
+
+/* Previus and next post
+/* ---------------------------------------------------------- */
+
+.prev-next-body {
+  padding: 10% 5%;
+}
+
+.prev-next-link::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transition: background-color .5s ease-in-out;
+  background-color: rgba(0, 0, 0, .4);
+  z-index: 1;
+}
+
+.prev-next {
+  &-item {
+    flex: 1 1 100%;
+
+    &:hover .prev-next-link::before {
+      background-color: rgba(0, 0, 0, .6);
+    }
+  }
+}
+
+
+/* Mediquery afer md
+/* ---------------------------------------------------------- */
+
+@screen md {
+  .story-figure {
+    padding-top: 125%;
+  }
+
+  .prev-next-body {
+    padding: 20% 10%;
+  }
+
+  .prev-next-item {
+    flex: 1 1 50%;
+  }
+}

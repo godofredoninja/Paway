@@ -1,26 +1,26 @@
-<header class="header">
-    <div class="header-wrap u-flex u-margin-0-15">
+<header class="header bg-white sticky top-0 z-10">
+    <div class="header-wrap flex mx-4 h-20">
         {{!-- Logo --}}
-        <div class="logo u-flex1 u-flexCenter">
-                {{#if @site.logo}}
-                    <a class="logo-link-img" href="{{@site.url}}"><img class="logo-img" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/></a>
-                {{else}}
-                    <a class="logo-link" href="{{@site.url}}"><span class="logo-txt">{{@site.title}}</span></a>
-                {{/if}}
+        <div class="logo flex flex-grow items-center">
+            {{#if @site.logo}}
+                <a class="logo-link-img h-8 md:h-10" href="{{@site.url}}"><img class="logo-img h-full" src="{{img_url @site.logo size="m"}}" alt="{{@site.title}}"/></a>
+            {{else}}
+                <a class="logo-link" href="{{@site.url}}"><span class="logo-txt text-4xl font-bold text-black leading-none">{{@site.title}}</span></a>
+            {{/if}}
         </div>
 
         {{!-- navbar --}}
-        <nav class="navbar u-flexContentCenter u-hide-before-lg">{{navigation}}</nav>
+        <nav class="navbar hidden justify-center items-center lg:flex">{{navigation}}</nav>
 
-        <div class="header-right u-flex u-flex1 u-flexEnd">
+        <div class="header-right flex flex-grow justify-end">
             {{!-- Facebook & Twitter - partials/witget/witget-social-media.hbs --}}
             {{> "widget/witget-social-media"}}
 
-            <ul class="u-flex" style="margin-left:10px">
+            <ul class="flex items-center ml-3 space-x-2">
                 {{!-- Toggle Search --}}
-                <li class="js-search-toggle search-toggle u-pointer u-hide"><svg class="icon"><use xlink:href="#icon-search"></use></svg></li>
+                <li class="js-modal-button search-toggle cursor-pointer" data-target="modal-search"><svg class="icon"><use xlink:href="#icon-search"></use></svg></li>
                 {{!-- Toggle Menu --}}
-                <li class="js-menu-toggle menu-toggle u-pointer"><svg class="icon icon--md"><use xlink:href="#icon-menu"></use></svg></li>
+                <li class="js-menu-toggle menu-toggle cursor-pointer"><svg class="icon is-stroke"><use xlink:href="#icon-menu"></use></svg></li>
             </ul>
         </div>
     </div>

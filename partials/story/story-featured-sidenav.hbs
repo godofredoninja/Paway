@@ -1,21 +1,21 @@
-<div class="sfp-item u-flexCenter u-marginBottom30">
+<div class="flex items-center justify-center mb-7">
     {{!-- Featured Image --}}
     {{#if feature_image}}
-    <div class="sfp-left u-flex0 u-relative">
-        <a class="sfp-image" href="{{url}}">
-            <img class="u-image u-absolute0 u-round lazyload"
-                src="{{img_url feature_image size="xss"}}"
-                srcset="{{img_url feature_image size="s"}}"
-                data-srcset="{{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w"
-                data-src="{{img_url feature_image size="m"}}"
-                alt="{{title}}"
-            />
-        </a>
-    </div>
+    <a class="flex-none" href="{{url}}">
+        <img class="story-img rounded-full h-20 w-20 blur-up lazyload"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w"
+            data-sizes="auto"
+            height="80"
+            width="80"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+        />
+    </a>
     {{/if}}
-    {{!-- date and title --}}
-    <div class="sfp-right u-flex1">
-        <time class="datetime" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time>
-        <h2 class="sfp-title"><a href="{{url}}">{{title}}</a></h2>
+
+    <div class="flex-1 text-left pl-4">
+        <time class="datetime text-xs font-medium uppercase text-white text-opacity-60" datetime="{{date format=" YYYY-MM-DD "}}">{{date published_at format="MMMM DD, YYYY"}}</time>
+        <h2 class="text-lg font-serif font-semibold line-clamp-2 hover:text-primary"><a href="{{url}}">{{title}}</a></h2>
     </div>
 </div>

@@ -1,0 +1,24 @@
+/* Navigation
+/* ---------------------------------------------------------- */
+
+.navbar ul {
+  @apply flex;
+}
+
+.navbar ul a {
+  @apply px-4 block relative;
+}
+
+.navbar ul li {
+  @apply my-3 text-sm uppercase font-medium leading-none;
+}
+
+/* stylelint-disable-next-line */
+li.nav-current > a,
+.nav > li > a:hover,
+.footer .social-media a:hover,
+.search-toggle:hover,
+.menu-toggle:hover,
+.social-media a :hover {
+  @apply text-primary;
+}

@@ -3,65 +3,51 @@
 into the {body} of the default.hbs template --}}
 
 {{#post}}
-<article class="post">
-    <header class="post-header u-maxWidth768 u-marginAuto">
+<article class="post py-vmin8 relative">
+    <header class="post-header godo-canvas mb-7">
         {{!-- Category --}}
         {{#if primary_tag}}{{#primary_tag}}
-        <div class="cat-links">
-            <a href="{{url}}" title="{{name}}" class="cat-links-item">{{name}}</a>
+        <div class="cat-links uppercase mb-4 text-base tracking-wider font-bold leading-normal">
+            <a href="{{url}}" title="{{name}}" class="cat-links-item inline-block hover:text-primary border-gray-300 border-b-3 border-opacity-25">{{name}}</a>
         </div>
         {{/primary_tag}}{{/if}}
 
         {{!-- Post Title --}}
-        <h1 class="post-title">{{title}}</h1>
+        <h1 class="post-title mb-4 text-5xl text-title">{{title}}</h1>
 
-        {{!-- meta --}}
-        <div class="post-meta u-text-muted">
-            <span class="posted-on">
-                {{t "Posted on"}}
-                <time class="datetime u-textCapitalize" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
-            </span>
-            <span class="byline">
-                {{#primary_author}}
-                {{t "by"}}
-                <a href="{{url}}">{{name}}</a>
-                {{/primary_author}}
-            </span>
-        </div>
+        {{!-- Author Meta partials/components/author-meta.hbs --}}
+        {{> "components/author-meta"}}
     </header>
 
     {{!-- Featured Image --}}
     {{#if feature_image}}
-    <figure class="post-image">
-        <div class="post-image-inner">
-            <img class="post-img u-image u-absolute0"
-                srcset="{{img_url feature_image size="s"}} 300w,
-                        {{img_url feature_image size="m"}} 600w,
-                        {{img_url feature_image size="l"}} 1000w,
-                        {{img_url feature_image size="xl"}} 2000w"
-                sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 700px,
-                        1400px"
-                src="{{img_url feature_image size="xl"}}"
-                alt="{{title}}"
-            />
-        </div>
+    <figure class="post-image godo-canvas">
+        <img class="post-img kg-width-full w-full"
+            srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w,
+                    {{img_url feature_image size="xl"}} 2000w"
+            sizes="(max-width: 800px) 400px,
+                    (max-width: 1170px) 700px,
+                    1400px"
+            src="{{img_url feature_image size="xl"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+        />
+        {{#if feature_image_caption}}<figcaption class="post-figcaption">{{feature_image_caption}}</figcaption>{{/if}}
     </figure>
     {{/if}}
 
-    <div class="post-body u-maxWidth768 u-marginAuto">
+    <div class="post-body godo-canvas font-serif">
         {{content}}
     </div>
 
     {{!-- Post footer --}}
-    <footer class="post-footer u-maxWidth768 u-marginAuto">
-        <div class="post-tags-share">
-            {{!-- Tags Cloud - Partials/article/article-tags.hbs --}}
-            {{> "article/article-tags"}}
+    <footer class="post-footer godo-canvas">
+        {{!-- Tags Cloud - Partials/article/article-tags.hbs --}}
+        {{> "article/article-tags"}}
 
-            {{!-- Share in Social Media - Partials/article/article-share.hbs --}}
-            {{> "article/article-share"}}
-        </div>
+        {{!-- Share in Social Media - Partials/article/article-share.hbs --}}
+        {{> "article/article-share"}}
 
         {{!-- Author info - Partials/article/article-author.hbs --}}
         {{> "article/article-author"}}
@@ -69,7 +55,7 @@ into the {body} of the default.hbs template --}}
 </article>
 
 {{!-- Prev and next post --}}
-<div class="prev-next story-feed">
+<div class="prev-next story-feed relative flex flex-wrap">
     {{#prev_post}}
         {{> "article/article-prev-next" mytitle="previous post" class="nav-previous"}}
     {{/prev_post}}

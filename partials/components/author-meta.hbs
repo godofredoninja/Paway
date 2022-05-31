@@ -1,0 +1,12 @@
+<div class="story-meta italic font-serif {{#if class}}{{class}}{{else}}text-lg text-gray-500{{/if}}">
+    <span class="posted-on">
+        {{t "Posted on"}}
+        <time class="datetime capitalize" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+    </span>
+    <span class="byline">
+        {{#primary_author}}
+        {{t "by"}}
+        <a href="{{url}}" class="underline hover:no-underline {{#if classLink}}{{classLink}}{{else}}{{/if}}">{{name}}</a>
+        {{/primary_author}}
+    </span>
+</div>

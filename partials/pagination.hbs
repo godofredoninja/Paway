@@ -1,15 +1,15 @@
-<nav class="pagination">
+<nav class="pagination flex flex-col justify-center space-x-5 md:flex-row my-20 px-4 text-xl text-center text-title">
     {{#if prev}}
-        <a class="newer-posts" href="{{page_url prev}}">
-            <svg class="icon icon--md rotate270"><use xlink:href="#icon-arrow"></use></svg>
+        <a class="newer-posts text-gray-500 underline-offset-4 hover:text-title hover:underline" href="{{page_url prev}}">
+            <svg class="icon is-stroke -rotate-90"><use xlink:href="#icon-arrow"></use></svg>
             {{t "Newer Posts"}}
         </a>
     {{/if}}
     <span class="page-number">{{t "Page {page} of {pages}" page=page pages=pages}}</span>
     {{#if next}}
-        <a class="older-posts" href="{{page_url next}}">
+        <a class="older-posts text-gray-500 underline-offset-4 hover:text-title hover:underline" href="{{page_url next}}">
             {{t "Older Posts"}}
-            <svg class="icon icon--md rotate90"><use xlink:href="#icon-arrow"></use></svg>
+            <svg class="icon is-stroke rotate-90"><use xlink:href="#icon-arrow"></use></svg>
         </a>
     {{/if}}
 </nav>

@@ -3,33 +3,28 @@
 into the {body} of the default.hbs template --}}
 {{#post}}
 
-<article class="page {{#unless feature_image}}not-img u-maxWidth768 u-marginAuto{{/unless}}">
-    <div class="page-wrap u-relative">
-        <header class="page-header relative u-flexContentCenter">
-            {{#if feature_image}}
-            <img class="page-img u-image u-absolute0"
-                srcset="{{img_url feature_image size="s"}} 300w,
-                        {{img_url feature_image size="m"}} 600w,
-                        {{img_url feature_image size="l"}} 1000w,
-                        {{img_url feature_image size="xl"}} 2000w"
-                sizes="(max-width: 1000px) 400px, 700px"
-                src="{{img_url feature_image size="m"}}"
-                alt="{{title}}"
-            />
-            {{/if}}
+<article class="page relative pb-vmin8">
+    <header class="page-header relative flex items-center justify-center {{#unless feature_image}}text-title pt-vmin8{{else}}text-white h-96{{/unless}}">
+        {{#if feature_image}}
+        <img class="post-img inset-image brightness-75"
+            srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w,
+                    {{img_url feature_image size="xl"}} 2000w"
+            sizes="(max-width: 800px) 400px,
+                    (max-width: 1170px) 700px,
+                    1400px"
+            src="{{img_url feature_image size="xl"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+        />
+        {{/if}}
 
-            <h1 class="page-title u-relative zindex3">{{title}}</h1>
-        </header>
+        <h1 class="page-title text-44 relative z-3 max-w-3xl mx-4">{{title}}</h1>
+    </header>
+
+    <div class="post-body godo-canvas font-serif">
+        {{content}}
     </div>
-
-    <div class="u-maxWidth768 u-marginAuto">
-        <div class="post-wrap">
-            <div id="post-body" class="post-body u-margin-0-15">
-                {{content}}
-            </div>
-        </div>
-    </div>
-
 </article>
 
 {{/post}}

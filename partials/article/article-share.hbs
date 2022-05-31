@@ -1,31 +1,32 @@
-<aside class="post-share u-flex0 buttonSet">
-    <span class="post-hsare-t" style="margin-right:10px">{{t "Share this"}}:</span>
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="{{t "Share on"}} Facebook"
-        class="js-share button button--circle">
-        <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
-    </a>
-    <a href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="{{t "Share on"}} Twitter"
-        class="js-share button button--circle">
-        <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
-    </a>
-    <a href="https://www.reddit.com/submit?url={{url absolute="true"}}&amp;title={{encode title}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="{{t "Share on"}} Reddit"
-        class="js-share button button--circle">
-        <svg class="icon"><use xlink:href="#icon-reddit"></use></svg>
-    </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}&amp;title={{encode title}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="{{t "Share on"}} Linkeding"
-        class="js-share button button--circle">
-        <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
-    </a>
+<aside class="post-share relative text-center overflow-hidden mt-12 mb-5">
+    <div class="post-share-wrap inline-block relative space-x-2">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="{{t "Share on"}} Facebook"
+            class="js-share button is-circle text-sm is-outlined">
+            <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+        <a href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="{{t "Share on"}} Twitter"
+            class="js-share button is-circle text-sm is-outlined">
+            <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
+        </a>
+        <a href="https://www.reddit.com/submit?url={{url absolute="true"}}&amp;title={{encode title}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="{{t "Share on"}} Reddit"
+            class="js-share button is-circle text-sm is-outlined">
+            <svg class="icon"><use xlink:href="#icon-reddit"></use></svg>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}&amp;title={{encode title}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="{{t "Share on"}} Linkeding"
+            class="js-share button is-circle text-sm is-outlined">
+            <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
+        </a>
+    </div>
 </aside>

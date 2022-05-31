@@ -1,22 +1,18 @@
-<div class="sidenav">
-    {{!-- Close --}}
-    <div class="js-menu-toggle sidenav-close u-pointer u-absolute">
-        <svg class="icon icon--md"><use xlink:href="#icon-close"></use></svg>
+<div class="sidenav fixed h-full flex flex-col bg-black text-white top-0 text-center z-20 overflow-x-hidden scroll-transparent w-full">
+    <div class="js-menu-toggle sidenav-close absolute cursor-pointer top-3 right-3 p-3">
+        <svg class="icon is-stroke"><use xlink:href="#icon-close"></use></svg>
     </div>
 
-    {{!-- Site Name --}}
-    <div class="sidenav-title logo-txt u-marginBottom30">{{@site.title}}</div>
-
-    {{!-- Site Description --}}
-    {{#if @site.description}}<div class="sidenav-des u-marginBottom30">{{@site.description}}</div>{{/if}}
+    <div class="text-white mb-8 font-serif font-bold text-4xl">{{@site.title}}</div>
+    {{#if @site.description}}<div class="sidenav-des mb-8 text-lg">{{@site.description}}</div>{{/if}}
 
     {{!-- navigation --}}
-    <nav class="sidenav-nav u-marginBottom30 u-hide-after-lg">{{navigation}}</nav>
+    <nav class="sidenav-nav mb-8 lg:hidden">{{navigation}}</nav>
 
     {{!-- Featured Post Featured Article --}}
     {{#get "posts" limit="3" filter="featured:true" as |sidenav_featured_post|}}
         {{#if sidenav_featured_post}}
-            <div class="sfp u-marginBottom30">
+            <div class="mb-8">
                 {{#foreach sidenav_featured_post}}
                     {{> "story/story-featured-sidenav"}}
                 {{/foreach}}
@@ -24,15 +20,15 @@
         {{/if}}
     {{/get}}
 
-    <div class="u-flex1"></div>
+    <div class="flex-auto"></div>
 
     {{!-- Secondary menu --}}
     {{#if @site.secondary_navigation}}
-        <nav class="sidenav-menu-secondary u-marginBottom30">
+        <nav class="sidenav-menu-secondary mb-8">
             {{navigation type="secondary"}}
         </nav>
     {{/if}}
 
     {{!-- social Media --}}
-    <div class="sidenav-social">{{> "widget/witget-social-media"}}</div>
+    {{> "widget/witget-social-media"}}
 </div>

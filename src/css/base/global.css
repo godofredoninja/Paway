@@ -1,0 +1,73 @@
+/* Img Blur lazyloaded
+/* ---------------------------------------------------------- */
+
+.blur-up {
+  opacity: 0;
+}
+
+.blur-up.lazyloaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Loanding Bar
+/* ---------------------------------------------------------- */
+
+.loadingBar {
+  background-color: #48e79a;
+  height: 2px;
+  transform: translateX(100%);
+  z-index: 800;
+}
+
+.is-loading .loadingBar {
+  animation: loading-bar 1s ease-in-out infinite;
+  animation-delay: 0.8s;
+  display: block;
+}
+
+@keyframes loading-bar {
+  0% { transform: translateX(-100%); }
+  40% { transform: translateX(0); }
+  60% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* Inset Image
+/* ---------------------------------------------------------- */
+
+.inset-image {
+  @extend %inset-image;
+}
+
+/* Video Responsive
+/* ---------------------------------------------------------- */
+
+.video-responsive {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding: 0 0 56.25%;
+  position: relative;
+  width: 100%;
+
+  video,
+  iframe {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* Error Page
+/* ---------------------------------------------------------- */
+
+@screen lg {
+  .page-error-number {
+    font-size: 15rem !important;
+  }
+}

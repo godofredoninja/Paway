@@ -1,0 +1,36 @@
+.kg-blockquote-alt {
+  @apply text-title;
+
+  font-size: 1.2em;
+  font-style: italic;
+  line-height: 1.7em;
+  padding: 0 1.2em;
+  text-align: center;
+
+  &::before,
+  &::after {
+    position: absolute;
+    opacity: .12;
+    font-size: 8em;
+    line-height: 1;
+  }
+
+  &::before {
+    top: -1.125rem;
+    left: -.5rem;
+    content: "\201c";
+  }
+
+  &::after {
+    right: -.375rem;
+    bottom: -4rem;
+    content: "\201d";
+  }
+}
+
+@screen md {
+  .kg-blockquote-alt {
+    font-size: 1.5em;
+    padding: 0 2em;
+  }
+}
