@@ -2,9 +2,6 @@
 
 import 'lazysizes'
 
-// Impost App
-import socialMedia from './app/app.social-media'
-
 ((window, document) => {
   /* Variables
   /* ---------------------------------------------------------- */
@@ -19,12 +16,6 @@ import socialMedia from './app/app.social-media'
 
     $body.classList.toggle('has-sidenav')
   }))
-
-  /* Social Media
-  /* ---------------------------------------------------------- */
-  if (typeof followSocialMedia === 'object' && followSocialMedia !== null) {
-    socialMedia(followSocialMedia)
-  }
 
   /*  Toggle modal
   /* ---------------------------------------------------------- */

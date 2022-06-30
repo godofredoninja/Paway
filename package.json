@@ -65,6 +65,14 @@
         "bookmark",
         "blockquote"
       ]
+    },
+    "custom": {
+      "instagram_url": {
+        "type": "text"
+      },
+      "youtube_url": {
+        "type": "text"
+      }
     }
   },
   "browserslist": [
