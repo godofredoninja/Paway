@@ -72,6 +72,10 @@
       },
       "youtube_url": {
         "type": "text"
+      },
+      "comments_disqus_short_name": {
+        "type": "text",
+        "group": "post"
       }
     }
   },
