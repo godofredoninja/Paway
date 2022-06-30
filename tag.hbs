@@ -3,10 +3,10 @@
 into the {body} of the default.hbs template --}}
 
 {{#tag}}
-<header class="py-vw6 text-center max-w-2xl mx-auto">
-    <div class="page-hero-subtitle text-gray-500 uppercase tracking-wider">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
-    <h1 class="page-hero-title text-44 capitalize my-2">{{name}}</h1>
-    {{#if description}}<p class="page-hero-description font-serif text-xl text-gray-500 italic my-6">{{description}}</p>{{/if}}
+<header class="py-vw6 text-center max-w-2xl mx-auto px-4">
+    <div class="text-gray-500 text-sm uppercase tracking-wider mb-3">{{plural ../pagination.total empty=(t "posts") singular=(t "% post") plural=(t "% posts")}} {{t "in"}}</div>
+    <h1 class="text-title text-4xl leading-none md:text-5xl">{{name}}</h1>
+    {{#if description}}<p class="font-serif text-xl text-gray-500 italic mt-6">{{description}}</p>{{/if}}
 </header>
 {{/tag}}
 

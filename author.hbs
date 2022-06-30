@@ -3,21 +3,21 @@
 into the {body} of the default.hbs template --}}
 
 {{#author}}
-<header class="post-author py-vw6 text-center max-w-2xl mx-auto">
-    <img class="post-author-avatar inline-block mb-4 h-28 w-28 rounded-full"
+<header class="py-vw6 text-center max-w-2xl mx-auto px-4">
+    <img class="inline-block mb-4 h-32 w-32 rounded-full"
         src="{{#if profile_image}}{{img_url profile_image size="s"}}{{else}}{{asset "images/avatar.png"}}{{/if}}"
         alt="{{t "Go to the profile of "}} {{name}}"/>
-    <h2 class="post-author-name text-44">{{name}}</h2>
-    {{#if bio}}<p class="post-author-bio font-serif text-xl text-gray-500 italic my-6">{{bio}}</p>{{/if}}
+    <h1 class="text-title text-4xl leading-none md:text-5xl">{{name}}</h1>
+    {{#if bio}}<p class="font-serif text-xl text-gray-500 italic mt-6">{{bio}}</p>{{/if}}
 
     {{!-- Facebook - Twitter - Webpage --}}
     {{#has any="twitter, facebook, website"}}
-    <div class="post-author-meta">
+    <div class="post-author-meta mt-6">
         <ul class="uppercase text-xs space-x-2 font-medium tracking-wider">
             <li class="inline-block text-gray-500">{{t "follow me"}}</li>
-            {{#if facebook}}<li class="inline-block"><a class="post-author-meta-link border-b border-gray-300" href="{{facebook_url}}" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>{{/if}}
-            {{#if twitter}}<li class="inline-block"><a class="post-author-meta-link border-b border-gray-300" href="{{twitter_url}}" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>{{/if}}
-            {{#if website}}<li class="inline-block"><a class="post-author-meta-link border-b border-gray-300" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">Website</a></li>{{/if}}
+            {{#if facebook}}<li class="inline-block"><a class="border-b border-gray-300" href="{{facebook_url}}" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>{{/if}}
+            {{#if twitter}}<li class="inline-block"><a class="border-b border-gray-300" href="{{twitter_url}}" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>{{/if}}
+            {{#if website}}<li class="inline-block"><a class="border-b border-gray-300" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">Website</a></li>{{/if}}
         </ul>
     </div>
     {{/has}}
