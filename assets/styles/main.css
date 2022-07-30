@@ -1552,6 +1552,9 @@ except for when immediately preceeded by a heading */
 .mb-7 {
   margin-bottom: 1.75rem;
 }
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1563,9 +1566,6 @@ except for when immediately preceeded by a heading */
 }
 .ml-3 {
   margin-left: 0.75rem;
-}
-.mb-3 {
-  margin-bottom: 0.75rem;
 }
 .mb-5 {
   margin-bottom: 1.25rem;
@@ -1603,8 +1603,8 @@ except for when immediately preceeded by a heading */
 .hidden {
   display: none;
 }
-.h-28 {
-  height: 7rem;
+.h-32 {
+  height: 8rem;
 }
 .h-64 {
   height: 16rem;
@@ -1627,11 +1627,11 @@ except for when immediately preceeded by a heading */
 .h-24 {
   height: 6rem;
 }
-.h-32 {
-  height: 8rem;
+.min-h-screen {
+  min-height: 100vh;
 }
-.w-28 {
-  width: 7rem;
+.w-32 {
+  width: 8rem;
 }
 .w-full {
   width: 100%;
@@ -1642,17 +1642,14 @@ except for when immediately preceeded by a heading */
 .w-20 {
   width: 5rem;
 }
-.w-32 {
-  width: 8rem;
-}
 .max-w-2xl {
   max-width: 42rem;
 }
-.max-w-3xl {
-  max-width: 48rem;
-}
 .max-w-lg {
   max-width: 32rem;
+}
+.max-w-3xl {
+  max-width: 48rem;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -1859,17 +1856,14 @@ except for when immediately preceeded by a heading */
 .text-sm {
   font-size: 0.875rem;
 }
-.text-44 {
-  font-size: 2.75rem;
+.text-4xl {
+  font-size: 2.25rem;
 }
 .text-xl {
   font-size: 1.25rem;
 }
 .text-xs {
   font-size: 0.75rem;
-}
-.text-5xl {
-  font-size: 3rem;
 }
 .text-3xl {
   font-size: 1.875rem;
@@ -1881,11 +1875,14 @@ except for when immediately preceeded by a heading */
   font-size: 8rem;
   line-height: 1;
 }
+.text-44 {
+  font-size: 2.75rem;
+}
 .text-base {
   font-size: 1rem;
 }
-.text-4xl {
-  font-size: 2.25rem;
+.text-5xl {
+  font-size: 3rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -1920,6 +1917,9 @@ except for when immediately preceeded by a heading */
 .leading-snug {
   line-height: 1.375;
 }
+.leading-tight {
+  line-height: 1.25;
+}
 .tracking-wider {
   letter-spacing: 0.05em;
 }
@@ -1944,6 +1944,15 @@ except for when immediately preceeded by a heading */
 }
 .text-opacity-60 {
   --tw-text-opacity: 0.6;
+}
+.text-opacity-70 {
+  --tw-text-opacity: 0.7;
+}
+.text-opacity-80 {
+  --tw-text-opacity: 0.8;
+}
+.text-opacity-90 {
+  --tw-text-opacity: 0.9;
 }
 .underline {
   text-decoration-line: underline;
@@ -2113,11 +2122,14 @@ body.has-sidenav .sidenav {
   .md\:flex-row {
     flex-direction: row;
   }
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
   .md\:text-4xl {
     font-size: 2.25rem;
   }
-  .md\:text-5xl {
-    font-size: 3rem;
+  .md\:text-7xl {
+    font-size: 4.5rem;
   }
 }
 @media (min-width: 1000px) {

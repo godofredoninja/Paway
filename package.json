@@ -73,6 +73,15 @@
       "youtube_url": {
         "type": "text"
       },
+      "publication_cover": {
+        "type": "select",
+        "options": [
+          "None",
+          "Featured"
+        ],
+        "default": "Featured",
+        "group": "homepage"
+      },
       "comments_disqus_short_name": {
         "type": "text",
         "group": "post"

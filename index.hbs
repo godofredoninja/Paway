@@ -2,6 +2,10 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
+{{#match @custom.publication_cover "Featured"}}{{#get "posts" limit="1" include="tags,authors" filter="featured:true" as |godo_featured_post| }}
+    {{#if godo_featured_post}} {{#foreach godo_featured_post}}{{> "story/story-card-large"}}{{/foreach}}{{/if}}
+{{/get}}{{/match}}
+
 {{!-- All Story - partials/loop.hbs --}}
 {{> "loop"}}
 
