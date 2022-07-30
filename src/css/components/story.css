@@ -1,5 +1,5 @@
 .story {
-  background-color: #222831;
+  /* background-color: #222831; */
   max-height: 660px;
 
   &-body {
@@ -37,6 +37,12 @@
   color: #212025;
   border-bottom: 3px solid #efeff0;
 } */
+
+.more-link::after {
+  display: inline-block;
+  margin-left: .125em;
+  content: "\2026";
+}
 
 /* Previus and next post
 /* ---------------------------------------------------------- */

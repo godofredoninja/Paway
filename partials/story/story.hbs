@@ -1,32 +1,49 @@
 <article class="story relative overflow-hidden">
     {{#if feature_image}}
-    <figure class="story-figure">
-        <a href="{{url}}" class="story-image-link" aria-hidden="true" tabindex="-1">
-            <img class="story-img inset-image blur-up lazyload"
-                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                data-srcset="{{img_url feature_image size="s"}} 300w,
-                        {{img_url feature_image size="m"}} 600w,
-                        {{img_url feature_image size="l"}} 1000w,
-                        {{img_url feature_image size="xl"}} 2000w"
-                data-sizes="auto"
-                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-            />
-        </a>
-    </figure>
-    {{/if}}
+        <figure class="story-figure">
+            <a href="{{url}}" class="story-image-link" aria-hidden="true" tabindex="-1">
+                <img class="story-img inset-image blur-up lazyload"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                    data-srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    data-sizes="auto"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                />
+            </a>
+        </figure>
+        <div class="story-body absolute z-2 bottom-0 left-0 right-0">
+            {{#if primary_tag}}{{#primary_tag}}
+            <div class="cat-links uppercase mb-4 text-sm tracking-wider font-bold leading-normal">
+                <a href="{{url}}" title="{{name}}" class="cat-links-item text-white inline-block border-white border-b-3 border-opacity-25">{{name}}</a>
+            </div>
+            {{/primary_tag}}{{/if}}
 
-    <div class="story-body absolute z-2 bottom-0 left-0 right-0">
-        {{!-- Category --}}
-        {{#if primary_tag}}{{#primary_tag}}
-        <div class="cat-links uppercase mb-4 text-sm tracking-wider font-bold leading-normal">
-            <a href="{{url}}" title="{{name}}" class="cat-links-item text-white inline-block border-white border-b-3 border-opacity-25">{{name}}</a>
+            <h2 class="story-title text-white mb-4 md:text-4xl"><a href="{{url}}">{{title}}</a></h2>
+
+            {{!-- Author Meta partials/components/author-meta.hbs --}}
+            {{> "components/author-meta" class="text-base text-white text-opacity-60" classLink="hover:text-white"}}
         </div>
-        {{/primary_tag}}{{/if}}
 
-        {{!-- Title --}}
-        <h2 class="story-title text-white mb-4 md:text-4xl"><a href="{{url}}" class="story-title-link">{{title}}</a></h2>
+    {{else}}
 
-        {{!-- Author Meta partials/components/author-meta.hbs --}}
-        {{> "components/author-meta" class="text-base text-white text-opacity-60" classLink="hover:text-white"}}
-    </div>
+        <div class="story-body">
+            {{#if primary_tag}}{{#primary_tag}}
+            <div class="cat-links uppercase mb-4 text-sm tracking-wider font-bold leading-normal">
+                <a href="{{url}}" title="{{name}}" class="cat-links-item inline-block hover:text-primary border-gray-300 border-b-3 border-opacity-50">{{name}}</a>
+            </div>
+            {{/primary_tag}}{{/if}}
+
+            <h2 class="story-title text-title mb-4 md:text-4xl"><a class="hover:text-primary" href="{{url}}">{{title}}</a></h2>
+
+            {{!-- Author Meta partials/components/author-meta.hbs --}}
+            {{> "components/author-meta" class="text-base text-gray-500"}}
+
+            <div class="text-lg leading-relaxed font-serif mt-6 line-clamp-5">{{excerpt}}</div>
+
+            <div class="mt-6 text-gray-500 italic font-serif"><a href="{{url}}" class="more-link underline hover:no-underline">{{t "Continue reading"}}</a></div>
+        </div>
+
+    {{/if}}
 </article>
