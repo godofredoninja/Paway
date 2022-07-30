@@ -4,7 +4,7 @@ into the {body} of the default.hbs template --}}
 
 {{#post}}
 <article class="post py-vmin8 relative">
-    <header class="post-header godo-canvas mb-7">
+    <header class="post-header godo-canvas">
         {{!-- Category --}}
         {{#if primary_tag}}{{#primary_tag}}
         <div class="cat-links uppercase mb-4 text-base tracking-wider font-bold leading-normal">
@@ -21,7 +21,7 @@ into the {body} of the default.hbs template --}}
 
     {{!-- Featured Image --}}
     {{#if feature_image}}
-    <figure class="post-image godo-canvas">
+    <figure class="post-image godo-canvas mt-7">
         <img class="post-img kg-width-full w-full"
             srcset="{{img_url feature_image size="s"}} 300w,
                     {{img_url feature_image size="m"}} 600w,
