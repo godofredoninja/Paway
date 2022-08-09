@@ -1126,68 +1126,7 @@ a > code[class*="language-"] {
 .token.entity {
   cursor: help;
 }
-/* Modal
-/* ---------------------------------------------------------- */
-.modal {
-  opacity: 0;
-  transition: opacity .2s ease-out .1s, visibility 0s .4s;
-  visibility: hidden;
-  z-index: 100;
-}
-&-content {
-  opacity: 0;
-  transform: scale(.6);
-  transition: transform .3s cubic-bezier(.06, .47, .38, .99), opacity .3s cubic-bezier(.06, .47, .38, .99);
-}
-.modal.is-active .modal-content {
-  opacity: 1;
-  transform: scale(1);
-  transition: transform .8s cubic-bezier(.26, .63, 0, .96);
-}
-.modal.is-active{
-    opacity: 1;
-    transition: opacity .3s ease;
-    visibility: visible;
-
-    /* .modal-content {
-      @extend %modal-active;
-    } */
-  }
-.search-form input {
-  border: none;
-  background: transparent;
-  text-align: center;
-  font-size: 2.5rem
-}
-.search-form input::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.search-form input:-ms-input-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.search-form input::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.search-form input:focus {
-    box-shadow: none;
-  }
-.search-results {
-  max-height: calc(100vh - 12rem);
-}
-.search-results li {
-    background-color: #0f0f0f
-  }
-.search-results li:hover,  .search-results li.is-active {
-  background-color: var(--ghost-accent-color);
-}
-.search-results a {
-  padding: 10px;
-  border-bottom: 1px solid #33312e;
-  line-height: 1.5;
-}
+/* @import "./components/modal.css"; */
 /* Pages
 /* ---------------------------------------------------------- */
 .godo-canvas {
@@ -1970,10 +1909,6 @@ except for when immediately preceeded by a heading */
 }
 .outline {
   outline-style: solid;
-}
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .brightness-50 {
   --tw-brightness: brightness(.5);

@@ -44,16 +44,8 @@
     {{!-- Sidenav - partials/sidenav.hbs --}}
     {{> "sidenav"}}
 
-    {{!-- Search - partials/widget/widget-search.hbs--}}
-    {{> "widget/widget-search"}}
-
     {{!-- icons --}}
     {{> "icons/icons"}}
-
-    <script>
-        var siteUrl = '{{@site.url}}';
-        var siteSearch = '{{asset "scripts/search.js"}}';
-    </script>
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
     {{ghost_foot}}

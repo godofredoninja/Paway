@@ -151,7 +151,6 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "flexsearch": "^0.6.32",
     "lazysizes": "^5.3.2",
     "normalize.css": "^8.0.1",
     "tailwindcss": "^3.1.4"
