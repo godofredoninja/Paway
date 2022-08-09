@@ -53,7 +53,7 @@
 }
 /* base
 /* ---------------------------------------------------------- */
-/* ! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -1415,12 +1415,6 @@ except for when immediately preceeded by a heading */
 .sticky {
   position: sticky;
 }
-.inset-0 {
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
 .top-0 {
   top: 0px;
 }
@@ -1450,9 +1444,6 @@ except for when immediately preceeded by a heading */
 }
 .z-2 {
   z-index: 2;
-}
-.z-50 {
-  z-index: 50;
 }
 .m-0 {
   margin: 0px;
@@ -1528,9 +1519,6 @@ except for when immediately preceeded by a heading */
 }
 .mb-7 {
   margin-bottom: 1.75rem;
-}
-.mt-5 {
-  margin-top: 1.25rem;
 }
 .block {
   display: block;
@@ -1663,14 +1651,6 @@ except for when immediately preceeded by a heading */
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.overflow-auto {
-  overflow: auto;
-}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1692,9 +1672,6 @@ except for when immediately preceeded by a heading */
 .border-b-3 {
   border-bottom-width: 0.1875rem;
 }
-.border-b-2 {
-  border-bottom-width: 2px;
-}
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1702,9 +1679,6 @@ except for when immediately preceeded by a heading */
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-.border-primary {
-  border-color: var(--ghost-accent-color);
 }
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
@@ -1724,26 +1698,11 @@ except for when immediately preceeded by a heading */
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-modal {
-  background-color: rgba(0,0,0,.9);
-}
-.bg-primary {
-  background-color: var(--ghost-accent-color);
-}
-.bg-opacity-60 {
-  --tw-bg-opacity: 0.6;
-}
 .object-cover {
   object-fit: cover;
 }
 .p-3 {
   padding: 0.75rem;
-}
-.p-2 {
-  padding: 0.5rem;
-}
-.p-1 {
-  padding: 0.25rem;
 }
 .py-vw6 {
   padding-top: 6vw;
@@ -1765,14 +1724,6 @@ except for when immediately preceeded by a heading */
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -1787,12 +1738,6 @@ except for when immediately preceeded by a heading */
 }
 .pl-4 {
   padding-left: 1rem;
-}
-.pt-vw6 {
-  padding-top: 6vw;
-}
-.pb-5 {
-  padding-bottom: 1.25rem;
 }
 .text-left {
   text-align: left;
@@ -2059,9 +2004,6 @@ body.has-sidenav .sidenav {
   text-decoration-line: none;
 }
 @media (min-width: 768px) {
-  .md\:flex {
-    display: flex;
-  }
   .md\:h-10 {
     height: 2.5rem;
   }
