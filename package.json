@@ -81,10 +81,6 @@
         ],
         "default": "Featured",
         "group": "homepage"
-      },
-      "comments_disqus_short_name": {
-        "type": "text",
-        "group": "post"
       }
     }
   },

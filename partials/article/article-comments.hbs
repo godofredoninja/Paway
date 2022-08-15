@@ -1,40 +1,5 @@
-{{#if @custom.comments_disqus_short_name}}
-
-<div id="post-comments" class="post-comments">
-    <div class="container mx-auto max-w-4xl py-vmin8">
-        {{!-- Disqus Comments --}}
-        <div id="disqus_thread" class="simply-disqus"></div>
+{{#if comments}}
+   <div class="container mx-auto max-w-4xl py-vmin8">
+        {{comments title=(t "Comments") mode="light"}}
     </div>
-</div>
-
-{{#contentFor "scripts"}}
-<script>
-(function(d, s, id) {
-    var disqus_config = function () {
-        this.page.url = '{{url absolute="true"}}';
-        this.page.identifier = 'ghost-{{comment_id}}';
-    };
-
-    /*var disqusComments = d.querySelectorAll('.js-comments');
-    disqusComments.forEach(function(item){item.classList.remove('u-hide')});*/
-    function loadDisqus() {
-        var currentScroll = d.scrollingElement.scrollTop;
-        var disqusTarget = d.getElementById('disqus_thread');
-        if (d.getElementById(id)) return;
-        if( disqusTarget && (currentScroll > disqusTarget.getBoundingClientRect().top - 150) ) {
-            var js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://{{@custom.comments_disqus_short_name}}.disqus.com/embed.js';
-            js.async = true;
-            js.defer = true;
-            js.setAttribute('data-timestamp', +new Date());
-            d.body.appendChild(js);
-            window.removeEventListener('scroll', loadDisqus);
-        }
-    }
-    window.addEventListener('scroll', loadDisqus);
-}(document, 'script', 'disqus-js'));
-</script>
-{{/contentFor}}
-
 {{/if}}
