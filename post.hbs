@@ -22,17 +22,34 @@ into the {body} of the default.hbs template --}}
     {{!-- Featured Image --}}
     {{#if feature_image}}
     <figure class="post-image godo-canvas mt-7">
-        <img class="post-img kg-width-full w-full"
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            sizes="(max-width: 800px) 400px,
-                    (max-width: 1170px) 700px,
-                    1400px"
-            src="{{img_url feature_image size="xl"}}"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-        />
+        <picture class="post-img kg-width-full w-full">
+            <source
+                srcset="{{img_url feature_image size="s" format="avif"}} 300w,
+                        {{img_url feature_image size="m" format="avif"}} 600w,
+                        {{img_url feature_image size="l" format="avif"}} 1000w,
+                        {{img_url feature_image size="xl" format="avif"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                type="image/avif"
+            >
+            <source
+                srcset="{{img_url feature_image size="s" format="webp"}} 300w,
+                        {{img_url feature_image size="m" format="webp"}} 600w,
+                        {{img_url feature_image size="l" format="webp"}} 1000w,
+                        {{img_url feature_image size="xl" format="webp"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                type="image/webp"
+            >
+            <img
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            >
+        </picture>
+
         {{#if feature_image_caption}}<figcaption class="post-figcaption">{{feature_image_caption}}</figcaption>{{/if}}
     </figure>
     {{/if}}

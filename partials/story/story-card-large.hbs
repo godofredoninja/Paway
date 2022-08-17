@@ -1,16 +1,34 @@
 <article class="relative flex items-center justify-center flex-col min-h-screen text-center bg-dark">
     {{#if feature_image}}
-    <a class="" href="{{url}}">
-        <img class="inset-image lazyload brightness-50"
-            src="{{img_url feature_image size="m"}}"
-            srcset="{{img_url feature_image size="xxs"}}"
-            data-srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            data-sizes="(max-width: 1000px) 400px, 700px"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-        />
+    <a href="{{url}}">
+        <picture>
+            <source
+                srcset="{{img_url feature_image size="s" format="avif"}} 300w,
+                        {{img_url feature_image size="m" format="avif"}} 600w,
+                        {{img_url feature_image size="l" format="avif"}} 1000w,
+                        {{img_url feature_image size="xl" format="avif"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                type="image/avif"
+            >
+            <source
+                srcset="{{img_url feature_image size="s" format="webp"}} 300w,
+                        {{img_url feature_image size="m" format="webp"}} 600w,
+                        {{img_url feature_image size="l" format="webp"}} 1000w,
+                        {{img_url feature_image size="xl" format="webp"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                type="image/webp"
+            >
+            <img
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw"
+                class="inset-image brightness-50"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            >
+        </picture>
     </a>
     {{/if}}
 
@@ -25,4 +43,5 @@
 
         {{!-- Author Meta partials/components/author-meta.hbs --}}
         {{> "components/author-meta" class="text-xl text-white text-opacity-90" classLink="hover:text-white"}}
+    </div>
 </article>
