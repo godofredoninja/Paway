@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [...defaultTheme.fontFamily.sans],
-      serif: ['Lora', ...defaultTheme.fontFamily.serif]
+      serif: ['Lora', ...defaultTheme.fontFamily.serif],
+      title: 'var(--font-title)'
     },
     colors: {
       transparent: 'transparent',
@@ -102,7 +103,8 @@ module.exports = {
         //
         22: '1.375rem',
         32: '2rem',
-        44: '2.75rem'
+        40: '2.5rem',
+        44: '44px'
       },
       backgroundOpacity: {
         40: '0.4',

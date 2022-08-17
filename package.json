@@ -81,6 +81,14 @@
         ],
         "default": "Featured",
         "group": "homepage"
+      },
+      "title_font": {
+        "type": "select",
+        "options": [
+            "Modern sans-serif",
+            "Playfair Display"
+        ],
+        "default": "Modern sans-serif"
       }
     }
   },

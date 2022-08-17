@@ -69,6 +69,7 @@
   h5,
   h6 {
     color: var(--title-color);
+    font-family: var(--font-title);
     scroll-margin-top: calc(4rem + 4vmin);
   }
 
