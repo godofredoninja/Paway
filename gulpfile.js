@@ -111,7 +111,7 @@ function styles (done) {
 
 // Scripts
 function scripts (done) {
-  const files = ['main', 'post']
+  const files = ['main']
 
   merge(files.map(function (file) {
     return pump([

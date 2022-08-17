@@ -52,9 +52,6 @@
 
     {{!-- Main Scripts --}}
     <script src="{{asset "scripts/main.js"}}"></script>
-    {{#is "post, page"}}
-    <script src="{{asset "scripts/post.js"}}"></script>
-    {{/is}}
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. --}}
     {{{block "scripts"}}}

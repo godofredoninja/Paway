@@ -1,114 +1,116 @@
-/* global followSocialMedia siteSearch */
-
 import 'lazysizes'
 
 ((window, document) => {
-  /* Variables
+  /* Load Script and Styles
   /* ---------------------------------------------------------- */
-  const $body = document.body
-  const $header = document.querySelector('.header')
-  // const $header = document.getElementById('header')
+  const loadScript = (src, callback) => {
+    const scriptElement = document.createElement('script')
+    scriptElement.src = src
+    callback && scriptElement.addEventListener('load', callback)
+    document.body.appendChild(scriptElement)
+  }
+
+  const loadStyle = href => {
+    const linkElement = document.createElement('link')
+    linkElement.rel = 'stylesheet'
+    linkElement.href = href
+    document.head.appendChild(linkElement)
+  }
 
   /* Toggle Menu
   /* ---------------------------------------------------------- */
   document.querySelectorAll('.js-menu-toggle').forEach(item => item.addEventListener('click', function (e) {
     e.preventDefault()
 
-    $body.classList.toggle('has-sidenav')
+    document.body.classList.toggle('has-sidenav')
   }))
 
-  /*  Toggle modal
-  /* ---------------------------------------------------------- */
-  // const modal = () => {
-  //   const $modals = document.querySelectorAll('.js-modal')
-  //   const $modalButtons = document.querySelectorAll('.js-modal-button')
-  //   const $modalCloses = document.querySelectorAll('.js-modal-close')
-
-  //   // Modal Click Open
-  //   if (!$modalButtons.length) return
-  //   $modalButtons.forEach($el => $el.addEventListener('click', () => openModal($el.dataset.target)))
-
-  //   // Modal Click Close
-  //   if (!$modalCloses.length) return
-  //   $modalCloses.forEach(el => el.addEventListener('click', () => closeModals()))
-
-  //   const openModal = target => {
-  //     document.body.classList.remove('has-menu')
-  //     const $target = document.getElementById(target)
-  //     document.documentElement.classList.add('overflow-hidden')
-  //     $target.classList.add('is-active')
-
-  //     if (target === 'modal-search') {
-  //       document.querySelector('#search-field').focus()
-  //     }
-  //   }
-
-  //   const closeModals = () => {
-  //     document.documentElement.classList.remove('overflow-hidden')
-  //     $modals.forEach($el => $el.classList.remove('is-active'))
-  //   }
-
-  //   document.addEventListener('keydown', function (event) {
-  //     const e = event || window.event
-  //     if (e.keyCode === 27) {
-  //       closeModals()
-  //       // closeDropdowns()
-  //     }
-  //   })
-  // }
-
-  // modal()
-
-  /* Load Script
-  /* ---------------------------------------------------------- */
-  const loadScript = (src, callback) => {
-    const scriptElement = document.createElement('script')
-    scriptElement.src = src
-    scriptElement.defer = true
-    scriptElement.async = true
-
-    callback && scriptElement.addEventListener('load', callback)
-    document.body.appendChild(scriptElement)
-  }
-
-  /* Load Search
-  /* ---------------------------------------------------------- */
-  // if (typeof searchSettings !== 'undefined' && typeof siteSearch !== 'undefined') {
-  //   loadScript(siteSearch)
-  // }
-
-  /* Scroll - add border bottom in the header
+  /* return if you are not on the post page
   /* ---------------------------------------------------------- */
 
-  let lastScrollY = window.scrollY
-  let ticking = false
+  if(!document.querySelector('.post-body')) return
 
-  const onScroll = () => {
-    lastScrollY = window.scrollY
-    requestTick()
+  /* All Video Responsive
+  /* ---------------------------------------------------------- */
+  const videoResponsive = () => {
+    const iframeSelectors = [
+      'iframe[src*="player.vimeo.com"]',
+      'iframe[src*="dailymotion.com"]',
+      'iframe[src*="youtube.com"]',
+      'iframe[src*="youtube-nocookie.com"]',
+      'iframe[src*="kickstarter.com"][src*="video.html"]'
+    ]
+
+    const $iframes = document.querySelectorAll(iframeSelectors.join(','))
+
+    if (!$iframes.length) return
+
+    $iframes.forEach(el => {
+      const box = document.createElement('div')
+      box.className = 'video-responsive'
+      el.parentNode.insertBefore(box, el)
+      box.appendChild(el)
+    })
   }
 
-  const requestTick = () => {
-    if (!ticking) {
-      requestAnimationFrame(update)
-    }
+  videoResponsive()
 
-    ticking = true
+  /* Paway Gallery
+  /* ---------------------------------------------------------- */
+  const pawayGallery = () => {
+    // <img> Set Atribute (data-src - data-sub-html)
+    document.querySelectorAll('.post-body img').forEach(el => {
+      if (el.closest('a')) return
+
+      el.classList.add('paway-light-gallery')
+      el.setAttribute('data-src', el.src)
+
+      const nextElement = el.nextSibling
+
+      if (nextElement !== null && nextElement.nodeName.toLowerCase() === 'figcaption') {
+        el.setAttribute('data-sub-html', nextElement.innerHTML)
+      }
+    })
+
+    // Lightgallery
+    const lightGallery = document.querySelectorAll('.paway-light-gallery')
+
+    if (!lightGallery.length) return
+
+    loadStyle('https://unpkg.com/lightgallery.js/dist/css/lightgallery.min.css')
+
+    loadScript('https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js', () => {
+      loadScript('https://unpkg.com/lg-zoom.js@1.0.1/dist/lg-zoom.min.js')
+
+      window.lightGallery(document.querySelector('.post-body'), { selector: '.paway-light-gallery' })
+    })
   }
 
-  const update = () => {
-    if (lastScrollY >= 100) {
-      $header.classList.add('has-shadow')
-    } else {
-      $header.classList.remove('has-shadow')
-    }
+  pawayGallery()
 
-    ticking = false
+  /* Post Share
+  /* ---------------------------------------------------------- */
+  const pawayShare = () => {
+    document.querySelectorAll('.js-share').forEach(item => item.addEventListener('click', e => {
+      const width = 640
+      const height = 400
+
+      const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX
+      const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY
+
+      const containerWidth = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : window.screen.width
+      const containerHeight = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : window.screen.height
+
+      const left = ((containerWidth / 2) - (width / 2)) + dualScreenLeft
+      const top = ((containerHeight / 2) - (height / 2)) + dualScreenTop
+      const newWindow = window.open(e.currentTarget.href, 'share-window', `scrollbars=yes, width=${width}, height=${height}, top=${top}, left=${left}`)
+
+      // Puts focus on the newWindow
+      window.focus && newWindow.focus()
+
+      e.preventDefault()
+    }))
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true })
-
-  update()
-
-  //
+  pawayShare()
 })(window, document)
